@@ -1,5 +1,5 @@
 # qxcode
-## Projeto de Software de Prática de Programação com Banco de Questões
+## Projeto de Software de Prática de Programação 
 
 Bem-vindo ao repositório do nosso projeto de software de prática de programação com um banco de questões! Este projeto tem como objetivo criar uma plataforma capaz de armazenar e auxiliar na resolução de diversos problemas de programação. Ele foi desenvolvido para atender tanto programadores experientes que desejam treinar para entrevistas, competições e olimpíadas, quanto programadores iniciantes que desejam praticar e solidificar a base de seus conhecimentos em programação.
 
