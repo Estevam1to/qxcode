@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1af63c41-6928-456e-a11a-bc89bda5513c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/implements-qxcode/models/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/qxcode-codigo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/qxcode-codigo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/qxcode_implements/View/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/qxcode_implements/View/App.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,11 +17,17 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectColorInfo">{
@@ -44,18 +49,31 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/estevam/Área de Trabalho/qxcode/qxcode-codigo",
+    "git-widget-placeholder": "tela-question",
+    "last_opened_file_path": "/home/kairogod/Downloads/openjfx-18_linux-x64_bin-sdk/javafx-sdk-18/lib",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "/home/estevam/Área de Trabalho/qxcode/qxcode-codigo/src/Main.java",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.JavaFX",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="qxcode_implements.View.App" />
+      <module name="qxcode-codigo" />
+      <option name="VM_PARAMETERS" value="--module-path $USER_HOME$/Downloads/openjfx-18_linux-x64_bin-sdk/javafx-sdk-18 --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -67,6 +85,7 @@
       <workItem from="1696306864024" duration="65000" />
       <workItem from="1696307539984" duration="138000" />
       <workItem from="1696318484839" duration="1265000" />
+      <workItem from="1696341903368" duration="5527000" />
     </task>
     <servers />
   </component>
