@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="1af63c41-6928-456e-a11a-bc89bda5513c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qxcode-codigo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/qxcode-codigo.iml" afterDir="false" />
+    </list>
+=======
     <list default="true" id="1af63c41-6928-456e-a11a-bc89bda5513c" name="Changes" comment="" />
+>>>>>>> 5fc5aeb61b6dde59a7fe0bd7e0f7e50bddbcf8ca
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,6 +22,7 @@
       <list>
         <option value="FxmlFile" />
         <option value="Class" />
+        <option value="FxmlFile" />
       </list>
     </option>
   </component>
@@ -45,19 +53,35 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+<<<<<<< HEAD
+    "git-widget-placeholder": "modal-notificacao",
+    "jdk.selected.JAVA_MODULE": "18",
+    "last_opened_file_path": "/home/estevam/project gugu",
+=======
     "git-widget-placeholder": "tela-question",
     "last_opened_file_path": "/home/kairogod/Downloads/openjfx-18_linux-x64_bin-sdk/javafx-sdk-18/lib",
+>>>>>>> 5fc5aeb61b6dde59a7fe0bd7e0f7e50bddbcf8ca
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "onboarding.tips.debug.path": "/home/estevam/Área de Trabalho/qxcode/qxcode-codigo/src/Main.java",
+<<<<<<< HEAD
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+=======
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
+>>>>>>> 5fc5aeb61b6dde59a7fe0bd7e0f7e50bddbcf8ca
     "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "preferences.JavaFX",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "PLAIN_TEXT"
+    ]
   }
 }]]></component>
   <component name="RunManager">
@@ -81,7 +105,14 @@
       <workItem from="1696306864024" duration="65000" />
       <workItem from="1696307539984" duration="138000" />
       <workItem from="1696318484839" duration="1265000" />
+<<<<<<< HEAD
+      <workItem from="1696345648573" duration="1107000" />
+      <workItem from="1696359325613" duration="21000" />
+      <workItem from="1696359627033" duration="2348000" />
+      <workItem from="1696367667658" duration="3035000" />
+=======
       <workItem from="1696341903368" duration="6757000" />
+>>>>>>> 5fc5aeb61b6dde59a7fe0bd7e0f7e50bddbcf8ca
     </task>
     <servers />
   </component>

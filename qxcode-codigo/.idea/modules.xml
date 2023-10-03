@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/src/qxcode_implements/View/modal/modal.iml" filepath="$PROJECT_DIR$/src/qxcode_implements/View/modal/modal.iml" />
       <module fileurl="file://$PROJECT_DIR$/qxcode-codigo.iml" filepath="$PROJECT_DIR$/qxcode-codigo.iml" />
     </modules>
   </component>
