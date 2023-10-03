@@ -1,11 +1,6 @@
-
-public class Main {
+public class App {
     public static void main(String[] args) {
-        Main main = new Main();
-        main.iniciar();
-    }
-
-    public void iniciar() {
-        //código roda aqui
+        App.main(args);
+        System.out.println("Hello World");
     }
 }
