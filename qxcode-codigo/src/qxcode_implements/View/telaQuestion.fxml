@@ -75,7 +75,7 @@
                   <Line endX="23.0" startX="23.0" startY="-19.5" stroke="WHITE" />
                </children>
             </Group>
-            <ScrollBar layoutX="500.0" orientation="VERTICAL" prefHeight="298.0" prefWidth="15.0" />
+            <ScrollBar layoutX="501.0" orientation="VERTICAL" prefHeight="298.0" prefWidth="15.0" />
          </children>
       </Group>
       <Group layoutX="80.0" layoutY="506.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="516.0">
@@ -85,13 +85,49 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Label layoutX="284.0" text="Saida" textFill="WHITE">
+            <Label layoutX="292.0" text="Saida" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
             </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="198.0" layoutY="32.0" stroke="BLACK" strokeType="INSIDE" width="226.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="198.0" layoutX="283.0" layoutY="32.0" stroke="BLACK" strokeType="INSIDE" width="226.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="198.0" layoutY="32.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="226.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="198.0" layoutX="290.0" layoutY="32.0" stroke="WHITE" strokeType="INSIDE" width="226.0" />
+            <Text fill="WHITE" layoutX="50.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1 2 3 4 5" wrappingWidth="12.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Text fill="WHITE" layoutX="335.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1 2 3 4 5" wrappingWidth="12.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Group layoutX="16.0" layoutY="45.0">
+               <children>
+                  <Line endX="19.0" layoutX="-2.0" layoutY="-1.0" stroke="WHITE" />
+                  <Line endX="-3.0" endY="15.792892456054688" startX="-3.0" startY="-1.5" stroke="WHITE" />
+               </children>
+            </Group>
+            <Group layoutX="304.0" layoutY="45.0">
+               <children>
+                  <Line endX="19.0" layoutX="-2.0" layoutY="-1.0" stroke="WHITE" />
+                  <Line endX="-3.0" endY="15.792892456054688" startX="-3.0" startY="-1.5" stroke="WHITE" />
+               </children>
+            </Group>
+            <Group layoutX="467.0" layoutY="218.0">
+               <children>
+                  <Line endX="23.0" startX="4.0" stroke="WHITE" />
+                  <Line endX="23.0" startX="23.0" startY="-19.5" stroke="WHITE" />
+               </children>
+            </Group>
+            <Group layoutX="177.0" layoutY="217.0">
+               <children>
+                  <Line endX="23.0" startX="4.0" stroke="WHITE" />
+                  <Line endX="23.0" startX="23.0" startY="-19.5" stroke="WHITE" />
+               </children>
+            </Group>
+            <ScrollBar layoutX="211.0" layoutY="32.0" orientation="VERTICAL" prefHeight="198.0" prefWidth="15.0" />
+            <ScrollBar layoutX="501.0" layoutY="32.0" orientation="VERTICAL" prefHeight="198.0" prefWidth="15.0" />
          </children>
       </Group>
 
