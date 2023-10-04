@@ -1,28 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
-
+<?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="720.0" prefWidth="1280.0" style="-fx-background-color: #0E1A25;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qxcode_implements.View.TelaQuestion">
    <children>
-      <Group layoutX="81.0" layoutY="60.0" AnchorPane.leftAnchor="81.0" AnchorPane.rightAnchor="81.0">
+      <Group layoutX="81.0" layoutY="60.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="32.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2a4d6f" height="60.0" stroke="BLACK" strokeType="INSIDE" style="-fx-arc-height: 66; -fx-arc-width: 66;" width="1120.0" />
-            <Label layoutX="52.0" layoutY="13.0" text="Inicio" textFill="WHITE">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2a4d6f" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 66; -fx-arc-width: 66;" width="1120.0" />
+            <Label layoutX="100.0" layoutY="15.0" text="Inicio" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label layoutX="157.0" layoutY="13.0" text="Favoritos" textFill="WHITE">
+            <Label layoutX="210.0" layoutY="15.0" text="Favoritos" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <TextField layoutX="800.0" layoutY="5.23" prefHeight="50.0" prefWidth="300.0" promptText="Pesquisar" style="-fx-background-color: #1c334a; -fx-background-radius: 66; -fx-text-fill: #ffffff;">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </TextField>
+         </children>
+      </Group>
+      <Group AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="124.0">
+         <children>
+            <Label text="Variavel" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="32.0" />
                </font>
             </Label>
          </children>
       </Group>
+      <Group layoutX="80.0" layoutY="506.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="516.0">
+         <children>
+            <Label text="Entrada" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Label>
+         </children>
+      </Group>
+
+      <Group AnchorPane.topAnchor="732.0">
+         <children>
+            <Rectangle fill="#0e1a25" height="60.0" strokeType="INSIDE" strokeWidth="0.0" width="1280.0" />
+            <Rectangle fill="#2a4d6f" height="3.0" strokeType="INSIDE" strokeWidth="0.0" width="1280.0" />
+            <Group layoutY="15.0">
+               <children>
+                  <Button layoutX="15.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Voltar" />
+                  <Button layoutX="90.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Avançar" />
+               </children>
+            </Group>
+         </children>
+      </Group>
+      <Group layoutY="-16.7080078125" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="192.0">
+         <children>
+            <Text fill="WHITE" layoutX="20.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum." wrappingWidth="480.0">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="300.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="516.0" />
+            <Group layoutX="14.0" layoutY="12.0">
+               <children>
+                  <Line endX="19.0" layoutX="-2.0" layoutY="-1.0" stroke="WHITE" />
+                  <Line endX="-3.0" endY="15.792892456054688" startX="-3.0" startY="-1.5" stroke="WHITE" />
+               </children>
+            </Group>
+            <Group layoutX="467.0" layoutY="290.0">
+               <children>
+                  <Line endX="23.0" startX="4.0" stroke="WHITE" />
+                  <Line endX="23.0" startX="23.0" startY="-19.5" stroke="WHITE" />
+               </children>
+            </Group>
+            <ScrollBar layoutX="500.0" orientation="VERTICAL" prefHeight="298.0" prefWidth="15.0" />
+         </children>
+      </Group>
+
    </children>
 </AnchorPane>
