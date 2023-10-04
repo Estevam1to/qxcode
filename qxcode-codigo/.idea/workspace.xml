@@ -7,11 +7,17 @@
 <<<<<<< HEAD
     <list default="true" id="1af63c41-6928-456e-a11a-bc89bda5513c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
+=======
+<<<<<<< HEAD
+    <list default="true" id="1af63c41-6928-456e-a11a-bc89bda5513c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/qxcode-codigo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/qxcode-codigo.iml" afterDir="false" />
     </list>
 =======
     <list default="true" id="1af63c41-6928-456e-a11a-bc89bda5513c" name="Changes" comment="" />
 >>>>>>> 5fc5aeb61b6dde59a7fe0bd7e0f7e50bddbcf8ca
+>>>>>>> b13a8a0d3337d1f4b97a1f426feb64e14dd7b479
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,9 +75,13 @@
     "onboarding.tips.debug.path": "/home/estevam/Área de Trabalho/qxcode/qxcode-codigo/src/Main.java",
 <<<<<<< HEAD
     "project.structure.last.edited": "Libraries",
+=======
+<<<<<<< HEAD
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.0",
 =======
     "project.structure.last.edited": "Modules",
+>>>>>>> b13a8a0d3337d1f4b97a1f426feb64e14dd7b479
     "project.structure.proportion": "0.15",
 >>>>>>> 5fc5aeb61b6dde59a7fe0bd7e0f7e50bddbcf8ca
     "project.structure.side.proportion": "0.2",
@@ -112,7 +122,11 @@
       <workItem from="1696367667658" duration="3035000" />
 =======
       <workItem from="1696341903368" duration="6757000" />
+<<<<<<< HEAD
+      <workItem from="1696361763719" duration="2787000" />
+=======
 >>>>>>> 5fc5aeb61b6dde59a7fe0bd7e0f7e50bddbcf8ca
+>>>>>>> b13a8a0d3337d1f4b97a1f426feb64e14dd7b479
     </task>
     <servers />
   </component>
