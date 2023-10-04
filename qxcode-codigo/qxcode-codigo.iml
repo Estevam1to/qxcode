@@ -8,9 +8,5 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="lib" level="project" />
-<<<<<<< HEAD
-    <orderEntry type="library" name="fontawesomefx-8.0.1" level="project" />
-=======
->>>>>>> 5fc5aeb61b6dde59a7fe0bd7e0f7e50bddbcf8ca
   </component>
 </module>
