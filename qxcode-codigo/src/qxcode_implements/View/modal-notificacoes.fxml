@@ -16,9 +16,9 @@
             <Image url="@../../qxcode_resources/Assets/icon-modal-notification.png" />
          </image>
       </ImageView>
-      <Text layoutX="138.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resposta Correta!" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="150.7" AnchorPane.rightAnchor="150.71250000000003">
+      <Text layoutX="138.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Resposta Correta!" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="145.0" AnchorPane.rightAnchor="144.06093750000002">
          <font>
-            <Font size="24.0" />
+            <Font name="System Bold" size="24.0" />
          </font>
       </Text>
       <Line endX="340.0" layoutX="148.0" layoutY="186.0" startX="-140.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="4.05" AnchorPane.rightAnchor="4.050000000000011" />
