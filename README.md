@@ -19,6 +19,7 @@ O nosso software de prática de programação oferece uma série de recursos e f
 
 ### Protótipo
 - **Para utilizar o protótipo interativo, é necessário baixar o software Balsamiq, que é utilizado para criação de protótipos de baixa fidelidade.**
-
+- **O protótipo de alta fidelidade foi criado na plataforma Figma, segue o link**
+https://www.figma.com/file/SvZKoGQQV8JD2DproAIBnV/QXCODE-prototype?type=design&node-id=1%3A16&mode=design&t=cO2toiP6mBuDuPXW-1
 
 
