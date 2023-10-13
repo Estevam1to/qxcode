@@ -12,9 +12,18 @@ public class Main extends Application {
     }
     @Override
     public void start(Stage stage) throws Exception {
+        //Carregar tela
         Parent root = FXMLLoader.load(getClass().getResource("../View/telaQuestion.fxml"));
         stage.setTitle("Question");
-        stage.setScene(new Scene(root, 1450, 850));
+
+        //setar tamanho da tela
+        stage.setMaxWidth(1450);
+        stage.setMaxHeight(850);
+        stage.setMinWidth(1450);
+        stage.setMinHeight(850);
+
+        //Setar
+        stage.setScene(new Scene(root));
         stage.show();
     }
 }

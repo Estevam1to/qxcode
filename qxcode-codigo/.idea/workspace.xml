@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1af63c41-6928-456e-a11a-bc89bda5513c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/lib2.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qxcode-codigo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/qxcode-codigo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/qxcode_implements/Controller/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/qxcode_implements/Controller/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/qxcode_implements/Controller/SubmisaoController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/qxcode_implements/DAO/CasosDeTesteDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/qxcode_implements/DAO/CategoriaDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/qxcode_implements/DAO/QuestaoDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/qxcode_implements/DAO/SubmissaoDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/qxcode_implements/DAO/UsuarioDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/qxcode_implements/View/modal/modal.iml" beforeDir="false" afterPath="$PROJECT_DIR$/src/qxcode_implements/View/modal/modal.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/qxcode-codigo/qxcode_implements/Controller/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/qxcode_implements/Controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/qxcode_implements/Controller/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +108,7 @@
       <workItem from="1696367667658" duration="3035000" />
       <workItem from="1696341903368" duration="6757000" />
       <workItem from="1696361763719" duration="2787000" />
-      <workItem from="1697163341231" duration="1589000" />
+      <workItem from="1697163341231" duration="1909000" />
     </task>
     <servers />
   </component>
