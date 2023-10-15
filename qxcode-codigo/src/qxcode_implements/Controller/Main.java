@@ -13,7 +13,9 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         //Carregar tela
-        Parent root = FXMLLoader.load(getClass().getResource("../View/telaQuestion.fxml"));
+        TelaQuestion telaQuestion = new TelaQuestion();
+        Parent root = FXMLLoader.load(getClass().getResource(telaQuestion.getTela()));
+
         stage.setTitle("Question");
 
         //setar tamanho da tela
@@ -22,7 +24,7 @@ public class Main extends Application {
         stage.setMinWidth(1450);
         stage.setMinHeight(850);
 
-        //Setar
+        //setar tela e mostrar tela
         stage.setScene(new Scene(root));
         stage.show();
     }
