@@ -28,7 +28,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <TextField layoutX="800.0" layoutY="5.23" prefHeight="50.0" prefWidth="300.0" promptText="Pesquisar" style="-fx-background-color: #1c334a; -fx-background-radius: 66; -fx-text-fill: #ffffff;">
+            <TextField layoutX="800.0" layoutY="5.23" prefHeight="50.0" prefWidth="300.0" promptText="Pesquisar" style="-fx-background-color: #1c334a; -fx-background-radius: 66; -fx-text-fill: #ffffff;" fx:id="entradaUsuario">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
@@ -152,7 +152,7 @@
             </TextField>
          </children>
       </Group>
-      <Button layoutX="763.0" layoutY="706.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="516.0" style="-fx-background-color: #2A4D6F; -fx-border-radius: 66; -fx-background-radius: 66;" text="Submeter" textFill="WHITE" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="694.0">
+      <Button layoutX="763.0" layoutY="706.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="516.0" style="-fx-background-color: #2A4D6F; -fx-border-radius: 66; -fx-background-radius: 66;" text="Submeter" textFill="WHITE" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="694.0" fx:id="buttonpSubmeter">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
