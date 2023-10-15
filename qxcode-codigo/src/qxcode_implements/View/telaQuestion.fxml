@@ -145,14 +145,14 @@
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="400.0" stroke="WHITE" strokeType="INSIDE" width="516.0" />
             <ScrollBar layoutX="502.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="15.0" />
-            <TextField alignment="TOP_LEFT" prefHeight="400.0" prefWidth="503.0" promptText="Seu código aqui">
+            <TextField alignment="TOP_LEFT" prefHeight="400.0" prefWidth="503.0" promptText="Seu código aqui" fx:id="entradaUsuario" >
                <font>
                   <Font size="18.0" />
                </font>
             </TextField>
          </children>
       </Group>
-      <Button layoutX="763.0" layoutY="706.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="516.0" style="-fx-background-color: #2A4D6F; -fx-border-radius: 66; -fx-background-radius: 66;" text="Submeter" textFill="WHITE" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="694.0" fx:id="buttonpSubmeter">
+      <Button layoutX="763.0" layoutY="706.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="516.0" style="-fx-background-color: #2A4D6F; -fx-border-radius: 66; -fx-background-radius: 66;" text="Submeter" textFill="WHITE" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="694.0" fx:id="btnSubmeter">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>

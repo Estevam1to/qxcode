@@ -1,4 +1,4 @@
-package JDBC;
+package qxcode_implements.JDBC;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

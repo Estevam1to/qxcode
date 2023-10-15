@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="1af63c41-6928-456e-a11a-bc89bda5513c" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/JDBC/JDBC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/qxcode_implements/JDBC/JDBC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/qxcode_implements/Controller/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/qxcode_implements/Controller/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/qxcode_implements/Controller/TelaQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/qxcode_implements/Controller/TelaQuestion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/qxcode_implements/View/telaQuestion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/qxcode_implements/View/telaQuestion.fxml" afterDir="false" />
@@ -72,7 +73,14 @@
     ]
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="HelloWorld" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="HelloWorld" />
+      <module name="qxcode-codigo" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="qxcode_implements.Controller.Main" />
       <module name="qxcode-codigo" />
@@ -90,6 +98,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.HelloWorld" />
       </list>
     </recent_temporary>
   </component>
@@ -111,7 +120,7 @@
       <workItem from="1696341903368" duration="6757000" />
       <workItem from="1696361763719" duration="2787000" />
       <workItem from="1697163341231" duration="2782000" />
-      <workItem from="1697324525565" duration="6144000" />
+      <workItem from="1697324525565" duration="9377000" />
     </task>
     <servers />
   </component>
@@ -128,17 +137,6 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/qxcode_implements/Controller/Main.java</url>
-          <line>23</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
