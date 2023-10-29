@@ -1,0 +1,111 @@
+package DAO;
+
+import model.casoDeTeste;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class casoDeTesteDAO implements IDAO<casoDeTeste> {
+    Connection conn = null;
+
+    private final EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Questão");
+    private final EntityManager entityManager = entityManagerFactory.createEntityManager();
+
+
+    @Override
+    public Connection Connect() {
+        try {
+            Class.forName("org.sqlite.JDBC");
+            conn = DriverManager.getConnection("jdbc:sqlite:/home/teamate/Documents/Projeto_integrado/ModelagemBD/QXcode.db");
+            if (conn != null) {
+                System.out.println("Connection Successful");
+            } else {
+                System.out.println("Connection Failed");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return conn;
+    }
+
+    @Override
+    public void Close() {
+        try {
+            if (conn != null && !conn.isClosed()) {
+                conn.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public boolean Insert(casoDeTeste casoDeTeste) {
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.persist(casoDeTeste);
+            entityManager.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            e.printStackTrace();
+            return false;
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    @Override
+    public boolean Update(casoDeTeste casoDeTeste) {
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.merge(casoDeTeste);
+            entityManager.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            e.printStackTrace();
+            return false;
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    @Override
+    public boolean Delete(casoDeTeste casoDeTeste) {
+        try {
+            entityManager.getTransaction().begin();
+            entityManager.remove(entityManager.contains(casoDeTeste) ? casoDeTeste : entityManager.merge(casoDeTeste));
+            entityManager.getTransaction().commit();
+            return true;
+        } catch (Exception e) {
+            if (entityManager.getTransaction().isActive()) {
+                entityManager.getTransaction().rollback();
+            }
+            e.printStackTrace();
+            return false;
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    @Override
+    public casoDeTeste FindById(int id) {
+        try {
+            return entityManager.find(casoDeTeste.class, id);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+
+
+}
