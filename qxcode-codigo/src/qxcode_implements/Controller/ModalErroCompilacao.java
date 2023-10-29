@@ -1,9 +1,9 @@
 package qxcode_implements.Controller;
 
-import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 
-public class TelaCategory {
-    @FXML
+public class ModalErroCompilacao {
     public void initialize() {
+      
     }
 }

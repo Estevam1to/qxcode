@@ -5,6 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1af63c41-6928-456e-a11a-bc89bda5513c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/qxcode_implements/Controller/TelaCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/qxcode_implements/Controller/TelaCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/qxcode_implements/Controller/TelaQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/qxcode_implements/Controller/TelaQuestion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/qxcode_implements/Utils/TranformaEmArquivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/qxcode_implements/Utils/TranformaEmArquivo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/qxcode_implements/View/modal-erro-de-compilacao.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/qxcode_implements/View/modal-erro-de-compilacao.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Banco de Dados/Banco de Dados.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Banco de Dados/Banco de Dados.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../QXCode.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../QXCode.iml" afterDir="false" />
     </list>
@@ -42,6 +48,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "feat/Receber-o-código-do-usuário-e-salvar-em-um-arquivo",
+    "jdk.selected.JAVA_MODULE": "18",
+    "last_opened_file_path": "/home/estevam/openjfx-18.0.2_linux-x64_bin-sdk/javafx-sdk-18.0.2/lib/javafx.web.jar",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "/home/estevam/Área de Trabalho/qxcode/qxcode-codigo/src/Main.java",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pathVariables",
+    "vue.rearranger.settings.migration": "true"
+=======
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
@@ -118,6 +146,7 @@
       <workItem from="1696361763719" duration="2787000" />
       <workItem from="1697163341231" duration="2782000" />
       <workItem from="1697324525565" duration="9377000" />
+      <workItem from="1698543262994" duration="2134000" />
     </task>
     <servers />
   </component>
