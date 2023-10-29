@@ -45,4 +45,9 @@ public class TranformaEmArquivo {
             System.out.println("O arquivo não foi criado. Execute 'criarArquivo()' primeiro.");
         }
     }
+
+    public void solver() {
+        criarArquivo();
+        escreverArquivo();
+    }   
 }

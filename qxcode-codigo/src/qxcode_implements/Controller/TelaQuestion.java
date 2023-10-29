@@ -20,8 +20,7 @@ public class TelaQuestion {
     private void submeterAcao() {
         String entrada = entradaUsuario.getText();
         tranformaEmArquivo = new TranformaEmArquivo(entrada);
-        tranformaEmArquivo.criarArquivo();
-        tranformaEmArquivo.escreverArquivo();
+        tranformaEmArquivo.solver();
     }
 
     public String getTela() {
