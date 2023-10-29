@@ -15,7 +15,7 @@ public class TranformaEmArquivo {
     
     // Cria o arquivo .java
     public void criarArquivo() {
-        file = new File("src/qxcode_resources/Arquivos/Question.java");
+        file = new File("src/qxcode_resources/Arquivos/File/Question.java");
         try {
             file.createNewFile();
         } catch (Exception e) {

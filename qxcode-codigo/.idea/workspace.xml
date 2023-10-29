@@ -1,171 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="1af63c41-6928-456e-a11a-bc89bda5513c" name="Changes" comment="">
+    <list default="true" id="ca28b502-ef02-4c3e-8620-c71aee12ae85" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../QXCode.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../QXCode.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/qxcode_implements/Controller/TelaCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/qxcode_implements/Controller/TelaCategory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/qxcode-codigo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/qxcode-codigo.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/qxcode_implements/Controller/TelaQuestion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/qxcode_implements/Controller/TelaQuestion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/qxcode_implements/Utils/TranformaEmArquivo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/qxcode_implements/Utils/TranformaEmArquivo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/qxcode_implements/View/modal-erro-de-compilacao.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/qxcode_implements/View/modal-erro-de-compilacao.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Banco de Dados/Banco de Dados.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../Banco de Dados/Banco de Dados.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../QXCode.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../QXCode.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/qxcode_implements/View/telaQuestion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/qxcode_implements/View/telaQuestion.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/qxcode_resources/Arquivos/File/Question.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="FxmlFile" />
-        <option value="FxmlFile" />
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$/.." value="main" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 5
 }</component>
-  <component name="ProjectId" id="2WEnyOjOVdK0DriEUoTOqKwwINb" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="1" id="Add" />
-  </component>
+  <component name="ProjectId" id="2XS19pMS4htdSYRB5NznXAkBnej" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "feat/Receber-o-código-do-usuário-e-salvar-em-um-arquivo",
-    "jdk.selected.JAVA_MODULE": "18",
-    "last_opened_file_path": "/home/estevam/openjfx-18.0.2_linux-x64_bin-sdk/javafx-sdk-18.0.2/lib/javafx.web.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "onboarding.tips.debug.path": "/home/estevam/Área de Trabalho/qxcode/qxcode-codigo/src/Main.java",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.pathVariables",
-    "vue.rearranger.settings.migration": "true"
-=======
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;18&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/estevam/openjfx-18.0.2_linux-x64_bin-sdk/javafx-sdk-18.0.2/lib/javafx.web.jar&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;onboarding.tips.debug.path&quot;: &quot;/home/estevam/Área de Trabalho/qxcode/qxcode-codigo/src/Main.java&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pathVariables&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
-  },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;PLAIN_TEXT&quot;
-    ]
   }
 }</component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="HelloWorld" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="HelloWorld" />
-      <module name="qxcode-codigo" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="qxcode_implements.Controller.Main" />
-      <module name="qxcode-codigo" />
-      <option name="VM_PARAMETERS" value="--module-path ${PATH_TO_FX} --add-modules javafx.fxml,javafx.controls,javafx.graphics" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="qxcode_implements.Controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.HelloWorld" />
-      </list>
-    </recent_temporary>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="1af63c41-6928-456e-a11a-bc89bda5513c" name="Changes" comment="" />
-      <created>1696306863060</created>
+      <changelist id="ca28b502-ef02-4c3e-8620-c71aee12ae85" name="Changes" comment="" />
+      <created>1698607519580</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1696306863060</updated>
-      <workItem from="1696306864024" duration="65000" />
-      <workItem from="1696307539984" duration="138000" />
-      <workItem from="1696318484839" duration="1265000" />
-      <workItem from="1696345648573" duration="1107000" />
-      <workItem from="1696359325613" duration="21000" />
-      <workItem from="1696359627033" duration="2348000" />
-      <workItem from="1696367667658" duration="3035000" />
-      <workItem from="1696341903368" duration="6757000" />
-      <workItem from="1696361763719" duration="2787000" />
-      <workItem from="1697163341231" duration="2782000" />
-      <workItem from="1697324525565" duration="9377000" />
-      <workItem from="1698543262994" duration="2134000" />
+      <updated>1698607519580</updated>
+      <workItem from="1698607521376" duration="120000" />
+      <workItem from="1698608461302" duration="124000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>

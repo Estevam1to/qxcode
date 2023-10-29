@@ -1,14 +1,14 @@
 package qxcode_implements.Controller;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.Button;
 import qxcode_implements.Utils.*;
 
 public class TelaQuestion {
     TranformaEmArquivo tranformaEmArquivo;
     @FXML
-    private TextField entradaUsuario;
+    private TextArea entradaUsuario;
     @FXML
     private Button btnSubmeter;
 

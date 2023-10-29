@@ -7,25 +7,5 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="lib" level="application" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/openjfx-18.0.2_linux-x64_bin-sdk/javafx-sdk-18.0.2/lib/javafx-swt.jar!/" />
-          <root url="jar://$USER_HOME$/openjfx-18.0.2_linux-x64_bin-sdk/javafx-sdk-18.0.2/lib/javafx.base.jar!/" />
-          <root url="jar://$USER_HOME$/openjfx-18.0.2_linux-x64_bin-sdk/javafx-sdk-18.0.2/lib/javafx.controls.jar!/" />
-          <root url="jar://$USER_HOME$/openjfx-18.0.2_linux-x64_bin-sdk/javafx-sdk-18.0.2/lib/javafx.fxml.jar!/" />
-          <root url="jar://$USER_HOME$/openjfx-18.0.2_linux-x64_bin-sdk/javafx-sdk-18.0.2/lib/javafx.graphics.jar!/" />
-          <root url="jar://$USER_HOME$/openjfx-18.0.2_linux-x64_bin-sdk/javafx-sdk-18.0.2/lib/javafx.media.jar!/" />
-          <root url="jar://$USER_HOME$/openjfx-18.0.2_linux-x64_bin-sdk/javafx-sdk-18.0.2/lib/javafx.swing.jar!/" />
-          <root url="jar://$USER_HOME$/openjfx-18.0.2_linux-x64_bin-sdk/javafx-sdk-18.0.2/lib/javafx.web.jar!/" />
-          <root url="file://$MODULE_DIR$" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/src" />
-        </SOURCES>
-      </library>
-    </orderEntry>
   </component>
 </module>
