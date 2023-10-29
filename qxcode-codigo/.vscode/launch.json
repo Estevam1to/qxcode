@@ -4,6 +4,15 @@
     // Para obter mais informações, acesse: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+    
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "qxcode_implements.Controller.Main",
+            "projectName": "qxcode-codigo_6d3847dd",
+            "vmArgs": "--module-path \"C:/Program Files/Java/javafx-sdk-18.0.2/lib\" --add-modules javafx.controls,javafx.fxml"
+        },
         {
             "type": "java",
             "name": "Current File",
@@ -17,13 +26,5 @@
             "mainClass": "Question",
             "projectName": "qxcode-codigo_f6a5725c"
         },
-        {
-            "type": "java",
-            "name": "Main",
-            "request": "launch",
-            "mainClass": "qxcode_implements.Controller.Main",
-            "projectName": "qxcode-codigo_f6a5725c",
-            "vmArgs": "--module-path \"/home/estevam/openjfx-18.0.2_linux-x64_bin-sdk/javafx-sdk-18.0.2/lib\" --add-modules javafx.controls,javafx.fxml"
-        }
     ]
 }
