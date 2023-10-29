@@ -1,18 +1,18 @@
-package qxcode_implements.Controller;
+package qxcode_implements.Utils;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.File;
 
-class TransformaEmArquivo {
+public class TranformaEmArquivo {
     private String code;
     private File file;
-
-    public TransformaEmArquivo(String code) {
+    
+    public TranformaEmArquivo(String code) {
         this.code = code;
     }
-
+    
     // Cria o arquivo .java
     public void criarArquivo() {
         file = new File("src/qxcode_resources/Arquivos/Question.java");
@@ -22,7 +22,7 @@ class TransformaEmArquivo {
             System.out.println(e);
         }
     }
-
+    
     // Escreve no arquivo .java
     public void escreverArquivo() {
         if (file != null) {
@@ -30,10 +30,10 @@ class TransformaEmArquivo {
                 // Cria um objeto FileWriter
                 FileWriter fileWriter = new FileWriter(file);
                 BufferedWriter writer = new BufferedWriter(fileWriter);
-
+    
                 // Escreve o conteúdo da string no arquivo
                 writer.write(code);
-
+    
                 // Fecha o BufferedWriter e FileWriter para garantir que os dados sejam gravados
                 writer.close();
                 fileWriter.close();
