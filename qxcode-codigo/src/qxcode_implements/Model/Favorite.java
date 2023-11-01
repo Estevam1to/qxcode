@@ -3,10 +3,10 @@ import java.util.ArrayList;
 
 public class Favorite {
 
-    private ArrayList<Questao> favorites;
+    private ArrayList<Question> favorites;
 
 
-    public Favorite(ArrayList<Questao> favorites) {
+    public Favorite(ArrayList<Question> favorites) {
         this.favorites = favorites;
     }
 
@@ -29,12 +29,12 @@ public class Favorite {
         }
     }
 
-    public ArrayList<Questao> getFavorites() {
+    public ArrayList<Question> getFavorites() {
         return favorites;
     }
 
-    public Questao getFavorites(int id) {
-        for (Questao q : favorites) {
+    public Question getFavorites(int id) {
+        for (Question q : favorites) {
             if (q.getId() == id) {
                 return q;
             }

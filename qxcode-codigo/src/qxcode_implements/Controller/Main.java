@@ -13,10 +13,14 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         //Carregar tela
-        TelaQuestion telaQuestion = new TelaQuestion();
-        Parent root = FXMLLoader.load(getClass().getResource(telaQuestion.getTela()));
+        // TelaQuestion telaQuestion = new TelaQuestion();
+        // Parent root = FXMLLoader.load(getClass().getResource(telaQuestion.getTela()));
 
-        stage.setTitle("Question");
+        TelaCategory telaCategory = new TelaCategory();
+        Parent root = FXMLLoader.load(getClass().getResource(telaCategory.getTela()));
+
+        // stage.setTitle("Question");
+        stage.setTitle("Category");
 
         //setar tamanho da tela
         stage.setMaxWidth(1450);
