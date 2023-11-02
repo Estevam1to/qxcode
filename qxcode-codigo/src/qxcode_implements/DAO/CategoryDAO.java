@@ -11,13 +11,14 @@ import qxcode_implements.JDBC.JDBC;
 import qxcode_implements.Model.Category;
 
 public class CategoryDAO {
+    Connection conn = JDBC.getConnection();
     public List<Category> getAllCategories() {
         List<Category> categories = new ArrayList<>();
         Connection conn = JDBC.getConnection();
 
         if (conn != null) {
             try {
-                String sql = "SELECT id_categoria, titulo, descricao FROM categoria";
+                String sql = "SELECT * FROM categoria";
                 PreparedStatement preparedStatement = conn.prepareStatement(sql);
                 ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -32,11 +33,44 @@ public class CategoryDAO {
 
                 resultSet.close();
                 preparedStatement.close();
+                return categories;
             } catch (SQLException e) {
                 e.printStackTrace();
+                return null;
             }
         }
 
-        return categories;
+        return null;
     }
+
+    public String getTitleById(int id) {
+        String title = null;
+        String sql = "SELECT titulo FROM categoria WHERE id_categoria = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                title = rs.getString("titulo");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return title;
+    }
+
+    public String getDescriptionById(int id) {
+        String description = null;
+        String sql = "SELECT descricao FROM categoria WHERE id_categoria = ?";
+        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
+            stmt.setInt(1, id);
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                description = rs.getString("descricao");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return description;
+    }
+
 }

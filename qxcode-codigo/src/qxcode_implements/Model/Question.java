@@ -15,6 +15,8 @@ public class Question {
         this.examples = examples;
     }
 
+    public Question() {};
+
     public int getId() {
         return id;
     }
