@@ -7,11 +7,9 @@ import java.sql.SQLException;
 public class JDBC {
     private static Connection conn = null;
     static {
-        String url = "jdbc:postgres://localhost:5432/postgres";
-        String user = "postgres";
-        String password = "1234";
+        String url = "jdbc:sqlite:"; //URL DO Banco de Dados
         try {
-            conn = DriverManager.getConnection(url, user, password);
+            conn = DriverManager.getConnection(url);
         } catch (SQLException e) {
             System.out.println(e);
         }
