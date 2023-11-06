@@ -1,6 +1,5 @@
 package com.qxcode;
 
-import com.qxcode.JDBC.JDBC;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
