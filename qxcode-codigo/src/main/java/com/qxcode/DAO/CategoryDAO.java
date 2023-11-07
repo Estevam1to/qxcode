@@ -73,4 +73,30 @@ public class CategoryDAO {
         return description;
     }
 
+    public ArrayList<Integer> getCategoryQuestionsId(int id_category) {
+        ArrayList<Integer> categories_questions_ids = new ArrayList<>();
+
+        if (conn != null) {
+            try {
+                String sql = "SELECT id_questao FROM possuir_categoria WHERE id_categoria = ?";
+                PreparedStatement preparedStatement = conn.prepareStatement(sql);
+                preparedStatement.setInt(1, id_category);
+                ResultSet resultSet = preparedStatement.executeQuery();
+
+                while (resultSet.next()) {
+                    int id_questao = resultSet.getInt("id_questao");
+
+                    categories_questions_ids.add(id_questao);
+                }
+
+                resultSet.close();
+                preparedStatement.close();
+                return categories_questions_ids;
+            } catch (SQLException e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+        return null;
+    }
 }
