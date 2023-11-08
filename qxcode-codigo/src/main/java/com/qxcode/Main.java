@@ -14,7 +14,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
 
-        FXMLLoader loader = new FXMLLoader(Main.class.getResource("View/telaCategory.fxml"));
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource("View/telaQuestion.fxml"));
         Parent root = loader.load();
 
         stage.setTitle("Category");
@@ -22,7 +22,7 @@ public class Main extends Application {
         stage.setMaxWidth(1450);
         stage.setMaxHeight(850);
         stage.setMinWidth(1450);
-        stage.setMinHeight(850);
+        stage.setMinHeight(850);//1450 e 850
 
         stage.setScene(new Scene(root));
         stage.show();
