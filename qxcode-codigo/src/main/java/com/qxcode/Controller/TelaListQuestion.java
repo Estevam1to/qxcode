@@ -53,6 +53,6 @@ public class TelaListQuestion {
 
     public String getTela(String nameCategory) {
         System.out.println(nameCategory);
-        return "com/qxcode/View/telaListQuestion.fxml";
+        return "View/telaListQuestion.fxml";
     }
 }
