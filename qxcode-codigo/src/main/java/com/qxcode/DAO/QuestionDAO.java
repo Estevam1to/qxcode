@@ -10,15 +10,46 @@ import com.qxcode.Model.Question;
 
 public class QuestionDAO {
 
-    Connection conn = JDBC.getConnection();
+    public void Insert (Question question) {
+        String sql = "INSERT INTO questão (id_questão, descrição, titulo, dificuldade, exemplos) VALUES (?, ?, ?, ?, ?)";
+
+        try (Connection conn = JDBC.getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+
+            preparedStatement.setInt(1, question.getId());
+            preparedStatement.setString(2, question.getDescription());
+            preparedStatement.setString(3, question.getTitle());
+            preparedStatement.setInt(4, question.getDifficulty());
+            preparedStatement.setString(5, question.getExamples());
+
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void Delete (int id) {
+        String sql = "DELETE FROM questão WHERE id_questão = ?";
+
+        try (Connection conn = JDBC.getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+
+            preparedStatement.setInt(1, id);
+            preparedStatement.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public Question getQuestionById(int id) {
-        Connection conn = JDBC.getConnection();
 
-        if (conn != null) {
-            try {
-                String sql = "SELECT id_questao, descricao, titulo, dificuldade, exemplos FROM questao WHERE id_questao = ?";
-                PreparedStatement preparedStatement = conn.prepareStatement(sql);
+        String sql = "SELECT id_questao, descricao, titulo, dificuldade, exemplos FROM questao WHERE id_questao = ?";
+
+        try(Connection conn = JDBC.getConnection();
+            PreparedStatement preparedStatement = conn.prepareStatement(sql);) {
+
                 preparedStatement.setInt(1, id);
                 ResultSet resultSet = preparedStatement.executeQuery();
 
@@ -37,17 +68,18 @@ public class QuestionDAO {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-        }
-
         return null;
     }
 
     public String getExamplesById(int id) {
         String exemplos = null;
         String sql = "SELECT exemplos FROM questao WHERE id_questao = ?";
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
+
+        try (Connection conn = JDBC.getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(sql);) {
+
+            preparedStatement.setInt(1, id);
+            ResultSet rs = preparedStatement.executeQuery();
 
             exemplos = rs.getString("exemplos");
 
@@ -60,9 +92,12 @@ public class QuestionDAO {
     public String getTitleById(int id) {
         String title = null;
         String sql = "SELECT titulo FROM questao WHERE id_questao = ?";
-        try (PreparedStatement stmt = conn.prepareStatement(sql)) {
-            stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
+
+        try (Connection conn = JDBC.getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+
+            preparedStatement.setInt(1, id);
+            ResultSet rs = preparedStatement.executeQuery();
             if (rs.next()) {
                 title = rs.getString("titulo");
             }
