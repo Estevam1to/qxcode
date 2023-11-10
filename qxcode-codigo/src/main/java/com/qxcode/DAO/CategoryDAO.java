@@ -1,9 +1,6 @@
 package com.qxcode.DAO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -100,4 +97,42 @@ public class CategoryDAO {
                 return null;
             }
     }
+
+    public void addCategory(String title, String description) {
+        String sql = "INSERT INTO categoria (titulo, descricao) VALUES (?, ?)";
+
+        try (Connection conn = JDBC.getConnection()) {
+            conn.setAutoCommit(false); // Starts transaction.
+
+            try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+                preparedStatement.setString(1, title);
+                preparedStatement.setString(2, description);
+
+                int rowsAffected = preparedStatement.executeUpdate();
+
+                if (rowsAffected == 0) {
+                    throw new SQLException("Falha ao adicionar categoria, nenhuma linha afetada.");
+                }
+
+                try (Statement statement = conn.createStatement();
+                     ResultSet generatedKeys = statement.executeQuery("SELECT last_insert_rowid()")) {
+                    if (generatedKeys.next()) {
+                        int idGerado = generatedKeys.getInt(1);
+
+                        // Criar uma nova instância do modelo Category com o ID gerado
+                        Category novaCategoria = new Category(idGerado, title, description);
+
+                        conn.commit(); // Commits transaction.
+                    } else {
+                        throw new SQLException("Falha ao obter o ID da categoria, nenhum ID gerado.");
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+
 }

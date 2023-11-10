@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class JDBC {
     private static Connection conn = null;
     static {
-        String url = "jdbc:sqlite:/home/kairogod/Área de Trabalho/qxcode/Banco de Dados/BancoDeDados.bd";
+        String url = "jdbc:sqlite:C:/Users/ofern/OneDrive/Documentos/UFC/qxcode/qxcode-codigo/DataBase/QXCODEDB.db";
         try {
             conn = DriverManager.getConnection(url);
         } catch (SQLException e) {

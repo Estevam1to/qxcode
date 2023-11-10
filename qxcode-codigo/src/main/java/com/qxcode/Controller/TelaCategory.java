@@ -1,7 +1,10 @@
 package com.qxcode.Controller;
 
+import com.qxcode.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -16,6 +19,8 @@ public class TelaCategory {
     private GridPane gridPane;
     @FXML
     private ArrayList<Pane> categoryCards;
+    @FXML
+    NewCategory newCategory = new NewCategory();
     
     @FXML
     public void initialize() {
@@ -49,6 +54,10 @@ public class TelaCategory {
                 rowIndex++;
             }
         }
+    }
+
+    public void entrarNovaCategoria(MouseEvent mouseEvent) throws IOException {
+        Main.setRoot(newCategory.getTela());
     }
 
     public String getTela() {
