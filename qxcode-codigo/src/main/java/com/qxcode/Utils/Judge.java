@@ -2,58 +2,164 @@ package com.qxcode.Utils;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.io.IOException;
+import java.lang.InterruptedException;
+import java.lang.ProcessBuilder;
+
 
 public class Judge {
-    private File arquivo;
-    private ArrayList<File> outputsExpecteds;
-    private ArrayList<File> outputsUser;
-    private ArrayList<File> inputs;
-    private ProcessBuilder builder;
-    
-    public Judge(String entrada) {
-        arquivo = new File("src/qxcode_resources/Arquivos/Question.java");
+    private final File userFile;
+    private final ArrayList<File> outputsExpecteds;
+    private final ArrayList<File> outputsUser;
+    private final ArrayList<File> inputs;
+
+    //private ControllerQuestion controllerQuestion;
+
+    public static void main(String[] args) {
+        Judge judge = new Judge();
+        judge.compilar();
+        boolean result = judge.verifyDiff();
+        if (result) System.out.println("Tudo certo");
+        else System.out.println("Deu ruim");
+        //judge.destroyArquivos();
+    }
+
+
+    public Judge() {
+        //  controllerQuestion.getExtension();
+        userFile = new File("../../../../resources/com/qxcode/Arquivos/File/Question.cpp");
         outputsExpecteds = new ArrayList<File>();
         outputsUser = new ArrayList<File>();
         inputs = new ArrayList<File>();
+
+        File path = new File("../../../../resources/com/qxcode/Arquivos/OutputExpecteds");
+        if (path.isDirectory() && path.exists()) {
+            File[] files = path.listFiles();
+            for (File file : files) {
+                outputsExpecteds.add(file);
+            }
+        }
+        path = new File("../../../../resources/com/qxcode/Arquivos/Inputs");
+        if (path.isDirectory() && path.exists()) {
+            File[] files = path.listFiles();
+            for (File file : files) {
+                inputs.add(file);
+            }
+        }
+
     }
 
     public void compilar() {
-        int count = 0;
-        for (File input : inputs) {
+        long tempoInicial = System.currentTimeMillis();
+        long tempoFinal = 0;
+        try {
+            ProcessBuilder pbCompilacao = new ProcessBuilder("g++", userFile.getName(), "-o", "question");
+            pbCompilacao.directory(userFile.getParentFile());
+            pbCompilacao.redirectError(new File("error.txt"));
+            File error = new File("./error.txt");
+            Process process = pbCompilacao.start();
+            process.waitFor();
+            if (error.length() == 0) {
+                for (int i = 0; i < inputs.size(); ++i) {
+                    ProcessBuilder pbExecucao = new ProcessBuilder("./question");
+                    pbExecucao.redirectInput(inputs.get(i));
+                    pbExecucao.redirectOutput(new File("../../../../resources/com/qxcode/Arquivos/OutputUser", "userOut0" + (i + 1) + ".out"));
+                    Process processExecucao = pbExecucao.start();
+                    processExecucao.waitFor();
+                }
+
+            } else {
+                System.out.println("Não compilou");
+            }
+            tempoFinal = System.currentTimeMillis();
+            System.out.println("Executado em = " + (tempoFinal - tempoInicial) + " ms");
+        } catch (IOException e) {
+            System.out.println("Erro de I/O" + e.getMessage());
+        } catch (InterruptedException e) {
+            System.out.println("Erro de interrupção" + e.getMessage());
+        }
+
+    }
+
+    public void carregarUserOutputs() {
+        File path = new File("../../../../resources/com/qxcode/Arquivos/OutputUser");
+        if (path.isDirectory() && path.exists()) {
+            File[] files = path.listFiles();
+            for (File file : files) {
+                outputsUser.add(file);
+            }
+        }
+    }
+
+    public boolean verifyDiff() {
+        carregarUserOutputs();
+
+        for (int i = 0; i < outputsUser.size(); ++i) {
+            String pathOutputUser = outputsUser.get(i).getAbsolutePath();
+            String pathOutputExpected = outputsExpecteds.get(i).getAbsolutePath();
             try {
-                String cmd = "javac " + arquivo.getName() + " < " + input.getName();
-                builder = new ProcessBuilder("bash", "-c", cmd);
-                builder.redirectOutput(new File("src/qxcode_resources/Arquivos/Output-User/" + count + ".out"));
-                builder.start();
+                System.out.println("Comparando " + outputsExpecteds.get(i).getName() + " com " + outputsUser.get(i).getName());
+                ProcessBuilder pbDiff = new ProcessBuilder("diff", pathOutputExpected, pathOutputUser);
+                pbDiff.redirectOutput(new File("../../../../resources/com/qxcode/Arquivos/Diffs", "diff0" + (i + 1) + ".out"));
+                Process pDiff = pbDiff.start();
+                pDiff.waitFor();
             } catch (Exception e) {
                 System.out.println(e);
             }
         }
-       
-    }
 
-    public boolean diff() {
-        boolean result = true;
-        for (File outputExpected : outputsExpecteds) {
-            for (File userOutput : outputsUser) {
-                try {
-                    String cmd = "diff " + outputExpected.getName() + " " + userOutput.getName();
-                    builder = new ProcessBuilder("bash", "-c", cmd);
-                    builder.start();
-                } catch (Exception e) {
-                    System.out.println(e);
-                    result = false;
-                }
+        File pasta = new File("../../../../resources/com/qxcode/Arquivos/Diffs");
+        if (pasta.isDirectory() && pasta.exists()) {
+            File[] files = pasta.listFiles();
+            assert files != null;
+            for (File file : files) {
+                if (file.length() != 0) return false;
             }
-        } 
-        return result;  
+        }
+        return true;
     }
 
-    public void result() {
-        if(diff()) {
-            System.out.println("Parabéns, você acertou todos os testes!");
-        } else {
-            System.out.println("Você errou algum teste, tente novamente!");
+    public  void destroyArquivos() {
+        File path = new File("../../../../resources/com/qxcode/Arquivos/OutputUser");
+        if (path.isDirectory() && path.exists()) {
+            File[] files = path.listFiles();
+            assert files != null;
+            for (File file : files) {
+                file.delete();
+            }
         }
+
+        path = new File("../../../../resources/com/qxcode/Arquivos/Diffs");
+        if (path.isDirectory() && path.exists()) {
+            File[] files = path.listFiles();
+            assert files != null;
+            for (File file : files) {
+                file.delete();
+            }
+        }
+
+        path = new File("../../../../resources/com/qxcode/Arquivos/Inputs");
+        if (path.isDirectory() && path.exists()) {
+            File[] files = path.listFiles();
+            assert files != null;
+            for (File file : files) {
+                file.delete();
+            }
+        }
+
+        path = new  File("../../../../resources/com/qxcode/Arquivos/OutputExpecteds");
+        if (path.isDirectory() && path.exists()) {
+            File[] files = path.listFiles();
+            assert files != null;
+            for (File file : files) {
+                file.delete();
+            }
+        }
+
+        File error = new File("./error.txt");
+        error.delete();
+
+        File question = new File("./question");
+        question.delete();
     }
 }
