@@ -36,6 +36,33 @@ public class CategoryDAO {
             }
     }
 
+    public Category getCategoryById(int idC) {
+        Category categoria = null;
+        String sql = "SELECT * FROM categoria WHERE id_categoria = ?";
+
+        try (Connection conn = JDBC.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, idC);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                int id = rs.getInt("id_categoria");
+                String title = rs.getString("titulo");
+                String description = rs.getString("descricao");
+
+                categoria = new Category(id, title, description);
+            }
+
+            return categoria;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Erro no DAO, função getCategoryById");
+            return null;
+        }
+    }
+
+
     public String getTitleById(int id) {
         String title = null;
         String sql = "SELECT titulo FROM categoria WHERE id_categoria = ?";
