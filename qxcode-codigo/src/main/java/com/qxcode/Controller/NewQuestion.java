@@ -2,10 +2,14 @@ package com.qxcode.Controller;
 
 import com.qxcode.DAO.CategoryDAO;
 import com.qxcode.DAO.QuestionDAO;
+import com.qxcode.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+
+import java.io.IOException;
 
 public class NewQuestion {
 
@@ -43,6 +47,10 @@ public class NewQuestion {
         System.out.println("Descrição: " + descricao);
         System.out.println("Dificuldade: " + dificuldade);
         System.out.println("Exemplos: " + exemplos);
+    }
+
+    public void entrarInicio(MouseEvent mouseEvent) throws IOException {
+        Main.setRoot("View/telaCategory.fxml");
     }
 
     public String getTela() {
