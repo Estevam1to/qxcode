@@ -29,7 +29,7 @@ public class NewCategory {
         String titulo = titleInput.getText();
         String descricao = decriptionInput.getText();
 
-        categoryDAO.addCategory(titulo, descricao);
+        categoryDAO.insertCategory(titulo, descricao);
 
         // Limpar os campos após a adição da categoria
         titleInput.clear();

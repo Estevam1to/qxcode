@@ -21,6 +21,8 @@ public class NewQuestion {
     private TextArea dificultyInput;
     @FXML
     private TextArea examplesInput;
+    @FXML
+    private TextArea categoryInput;
 
     private QuestionDAO questionDAO;
 
@@ -32,21 +34,27 @@ public class NewQuestion {
     private void salvarQuestao() {
         String titulo = titleInput.getText();
         String descricao = decriptionInput.getText();
-        Integer dificuldade = Integer.parseInt(dificultyInput.getText());
+        int dificuldade = Integer.parseInt(dificultyInput.getText());
         String exemplos = examplesInput.getText();
+        int id_categoria = Integer.parseInt(categoryInput.getText());
 
-        questionDAO.addQuestion(titulo, descricao, dificuldade, exemplos);
+
+        questionDAO.insertQuestion(titulo, descricao, dificuldade, exemplos, id_categoria);
 
         // Limpar os campos após a adição da categoria
         titleInput.clear();
         decriptionInput.clear();
         dificultyInput.clear();
         examplesInput.clear();
+        categoryInput.clear();
+
 
         System.out.println("Título: " + titulo);
         System.out.println("Descrição: " + descricao);
         System.out.println("Dificuldade: " + dificuldade);
         System.out.println("Exemplos: " + exemplos);
+        System.out.println("Categoria: " + id_categoria);
+
     }
 
     public void entrarInicio(MouseEvent mouseEvent) throws IOException {
