@@ -1,15 +1,48 @@
 package com.qxcode.DAO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 
 import com.qxcode.JDBC.JDBC;
 import com.qxcode.Model.Question;
 
 public class QuestionDAO {
 
+    public void addQuestion(String title, String description, Integer dificulty, String examples) {
+        String sql = "INSERT INTO questao (titulo, descricao, dificuldade, exemplos) VALUES (?, ?, ?, ?)";
+
+        try (Connection conn = JDBC.getConnection()) {
+            conn.setAutoCommit(false); // Starts transaction.
+
+            try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+                preparedStatement.setString(1, title);
+                preparedStatement.setString(2, description);
+                preparedStatement.setInt(3, dificulty);
+                preparedStatement.setString(4, examples);
+
+                int rowsAffected = preparedStatement.executeUpdate();
+
+                if (rowsAffected == 0) {
+                    throw new SQLException("Falha ao adicionar questao, nenhuma linha afetada.");
+                }
+
+                try (Statement statement = conn.createStatement();
+                     ResultSet generatedKeys = statement.executeQuery("SELECT last_insert_rowid()")) {
+                    if (generatedKeys.next()) {
+                        int idGerado = generatedKeys.getInt(1);
+
+                        // Criar uma nova instância do modelo Category com o ID gerado
+                        Question novaQuestao = new Question(idGerado, title, description, dificulty, examples);
+
+                        conn.commit(); // Commits transaction.
+                    } else {
+                        throw new SQLException("Falha ao obter o ID da questao, nenhum ID gerado.");
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
     public void Insert (Question question) {
         String sql = "INSERT INTO questão (id_questão, descrição, titulo, dificuldade, exemplos) VALUES (?, ?, ?, ?, ?)";
 

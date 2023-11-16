@@ -27,6 +27,9 @@ public class TelaCategory {
     private ArrayList<Pane> categoryCards;
     @FXML
     NewCategory newCategory = new NewCategory();
+    @FXML
+    NewQuestion newQuestion = new NewQuestion();
+
 
     @FXML
     public void initialize() throws IOException {
@@ -98,6 +101,10 @@ public class TelaCategory {
 
     public void entrarNovaCategoria(MouseEvent mouseEvent) throws IOException {
         Main.setRoot(newCategory.getTela());
+    }
+
+    public void entrarNovaQuestao(MouseEvent mouseEvent) throws IOException {
+        Main.setRoot(newQuestion.getTela());
     }
 
     public String getTela() {
