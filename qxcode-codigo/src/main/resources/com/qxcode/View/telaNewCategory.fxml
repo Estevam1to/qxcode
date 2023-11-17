@@ -15,7 +15,7 @@
         <Group layoutX="81.0" layoutY="60.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="32.0">
             <children>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2a4d6f" height="60.0" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 66; -fx-arc-width: 66;" width="1120.0" />
-                <Label layoutX="100.0" layoutY="15.0" text="Inicio" textFill="WHITE">
+                <Label onMouseClicked="#entrarInicio" layoutX="100.0" layoutY="15.0" text="Inicio" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="24.0" />
                     </font>
@@ -26,6 +26,11 @@
                     </font>
                 </Label>
                 <Label layoutX="371.0" layoutY="15.0" text="Nova Categoria" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Label>
+                <Label layoutX="597.0" layoutY="15.0" text="Nova Questão" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="24.0" />
                     </font>

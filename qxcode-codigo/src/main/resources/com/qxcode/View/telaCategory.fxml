@@ -33,6 +33,11 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
+            <Label onMouseClicked="#entrarNovaQuestao" layoutX="597.0" layoutY="15.0" text="Nova Questão" textFill="WHITE">
+               <font>
+                   <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
             <TextField layoutX="800.0" layoutY="5.23" prefHeight="50.0" prefWidth="300.0" promptText="Pesquisar" style="-fx-background-color: #1c334a; -fx-background-radius: 66; -fx-text-fill: #ffffff;">
                <font>
                   <Font name="System Bold" size="18.0" />

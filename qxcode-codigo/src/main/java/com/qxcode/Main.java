@@ -30,9 +30,6 @@ public class Main extends Application {
 
         stage.setScene(scene);
         stage.show();
-
-
-
     }
     public static void setRoot(String tela) throws IOException {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource(tela));

@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="newQuestion" prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: #0E1A25;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qxcode.Controller.NewQuestion">
+
+    <children>
+        <Group layoutX="81.0" layoutY="60.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="32.0">
+            <children>
+                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2a4d6f" height="60.0" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 66; -fx-arc-width: 66;" width="1120.0" />
+                <Label layoutX="100.0" layoutY="15.0" onMouseClicked="#entrarInicio" text="Inicio" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Label>
+                <Label layoutX="210.0" layoutY="15.0" text="Favoritos" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Label>
+                <Label layoutX="371.0" layoutY="15.0" text="Nova Categoria" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Label>
+                <Label layoutX="597.0" layoutY="15.0" text="Nova Questão" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Label>
+                <TextField layoutX="800.0" layoutY="5.23" prefHeight="50.0" prefWidth="300.0" promptText="Pesquisar" style="-fx-background-color: #1c334a; -fx-background-radius: 66; -fx-text-fill: #ffffff;">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </TextField>
+            </children>
+        </Group>
+        <Group layoutX="80.0" layoutY="124.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="124.0">
+            <children>
+                <Label text="Nova Questão" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="32.0" />
+                    </font>
+                </Label>
+            </children>
+        </Group>
+      <Group layoutX="79.0" layoutY="193.0">
+         <children>
+                <Label layoutX="226.0" text="Título" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Label>
+                <TextArea fx:id="decriptionInput" layoutY="149.0" prefHeight="354.0" prefWidth="516.0" promptText="Descrição da questão...">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </TextArea>
+                <TextArea fx:id="titleInput" layoutX="1.0" layoutY="35.0" prefHeight="56.0" prefWidth="516.0" promptText="Título da questão...">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </TextArea>
+                <Label layoutX="204.0" layoutY="114.0" text="Descrição" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+                </Label>
+                <Button fx:id="btnSalvar" layoutX="605.0" layoutY="447.0" mnemonicParsing="false" onAction="#salvarQuestao" prefHeight="56.0" prefWidth="516.0" style="-fx-background-color: #2A4D6F; -fx-border-radius: 66; -fx-background-radius: 66;" stylesheets="../CSS/styleButon.css" text="Salvar" textFill="WHITE">
+                    <font>
+                        <Font name="System Bold" size="24.0" />
+                    </font>
+      
+                </Button>
+                <Label layoutX="797.0" text="Dificuldade" textFill="WHITE">
+                   <font>
+                      <Font name="System Bold" size="24.0" />
+                   </font>
+                </Label>
+            <Group layoutX="707.0" layoutY="49.0">
+               <children>
+                  <RadioButton fx:id="difficulty1" layoutY="1.0" mnemonicParsing="false" selected="true" text="1" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                     <toggleGroup>
+                        <ToggleGroup fx:id="difficultyInput" />
+                     </toggleGroup>
+                  </RadioButton>
+                  <RadioButton fx:id="difficulty2" layoutX="68.0" layoutY="1.0" mnemonicParsing="false" text="2" textFill="WHITE" toggleGroup="$difficultyInput">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="difficulty3" layoutX="132.0" layoutY="1.0" mnemonicParsing="false" text="3" textFill="WHITE" toggleGroup="$difficultyInput">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="difficulty4" layoutX="198.0" layoutY="1.0" mnemonicParsing="false" text="4" textFill="WHITE" toggleGroup="$difficultyInput">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+                  <RadioButton fx:id="difficulty5" layoutX="265.0" layoutY="1.0" mnemonicParsing="false" text="5" textFill="WHITE" toggleGroup="$difficultyInput">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </RadioButton>
+               </children>
+            </Group>
+                <Label layoutX="808.0" layoutY="114.0" text="Exemplos" textFill="WHITE">
+                   <font>
+                      <Font name="System Bold" size="24.0" />
+                   </font>
+                </Label>
+                <TextArea fx:id="examplesInput" layoutX="604.0" layoutY="149.0" prefHeight="168.0" prefWidth="516.0" promptText="Exemplos...">
+                   <font>
+                      <Font size="18.0" />
+                   </font>
+                </TextArea>
+                <Label layoutX="808.0" layoutY="336.0" text="Categoria" textFill="WHITE">
+                   <font>
+                      <Font name="System Bold" size="24.0" />
+                   </font>
+                </Label>
+            <ChoiceBox fx:id="categoryInput" layoutX="604.0" layoutY="374.0" prefHeight="54.0" prefWidth="516.0" />
+         </children>
+      </Group>
+        <Group AnchorPane.topAnchor="775.0">
+            <children>
+                <Rectangle fill="#0e1a25" height="60.0" strokeType="INSIDE" strokeWidth="0.0" width="1280.0" />
+                <Rectangle fill="#2a4d6f" height="3.0" strokeType="INSIDE" strokeWidth="0.0" width="1280.0" />
+                <Group layoutY="15.0">
+                    <children>
+                        <Button layoutX="15.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Voltar" />
+                        <Button layoutX="90.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Avançar" />
+                    </children>
+                </Group>
+            </children>
+        </Group>
+    </children>
+</AnchorPane>

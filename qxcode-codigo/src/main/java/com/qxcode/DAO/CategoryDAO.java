@@ -36,69 +36,58 @@ public class CategoryDAO {
             }
     }
 
-    public String getTitleById(int id) {
-        String title = null;
-        String sql = "SELECT titulo FROM categoria WHERE id_categoria = ?";
+    public Category getCategoryById(int idC) {
+        Category categoria = null;
+        String sql = "SELECT * FROM categoria WHERE id_categoria = ?";
 
         try (Connection conn = JDBC.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setInt(1, id);
+            stmt.setInt(1, idC);
             ResultSet rs = stmt.executeQuery();
+
             if (rs.next()) {
-                title = rs.getString("titulo");
+                int id = rs.getInt("id_categoria");
+                String title = rs.getString("titulo");
+                String description = rs.getString("descricao");
+
+                categoria = new Category(id, title, description);
             }
+
+            return categoria;
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("Erro no DAO, função getCategoryById");
+            return null;
         }
-        return title;
     }
 
-    public String getDescriptionById(int id) {
-        String description = null;
-        String sql = "SELECT descricao FROM categoria WHERE id_categoria = ?";
-
+    public Category getCategoryByTitle(String titulo) {
+        Category categoria = null;
+        String sql = "SELECT * FROM categoria WHERE titulo = ?";
         try (Connection conn = JDBC.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setInt(1, id);
+            stmt.setString(1, titulo);
             ResultSet rs = stmt.executeQuery();
 
             if (rs.next()) {
-                description = rs.getString("descricao");
+                int id = rs.getInt("id_categoria");
+                String title = rs.getString("titulo");
+                String description = rs.getString("descricao");
+
+                categoria = new Category(id, title, description);
             }
+
+            return categoria;
         } catch (SQLException e) {
             e.printStackTrace();
+            System.out.println("Erro no DAO, função getCategoryById");
+            return null;
         }
-        return description;
     }
 
-    public ArrayList<Integer> getCategoryQuestionsId(int id_category) {
-        ArrayList<Integer> categories_questions_ids = new ArrayList<>();
-        String sql = "SELECT id_questao FROM possuir_categoria WHERE id_categoria = ?";
-
-            try(Connection conn = JDBC.getConnection();
-                PreparedStatement preparedStatement = conn.prepareStatement(sql);) {
-
-                preparedStatement.setInt(1, id_category);
-                ResultSet resultSet = preparedStatement.executeQuery();
-
-                while (resultSet.next()) {
-                    int id_questao = resultSet.getInt("id_questao");
-
-                    categories_questions_ids.add(id_questao);
-                }
-
-                resultSet.close();
-                preparedStatement.close();
-                return categories_questions_ids;
-            } catch (SQLException e) {
-                e.printStackTrace();
-                return null;
-            }
-    }
-
-    public void addCategory(String title, String description) {
+    public void insertCategory(String title, String description) {
         String sql = "INSERT INTO categoria (titulo, descricao) VALUES (?, ?)";
 
         try (Connection conn = JDBC.getConnection()) {

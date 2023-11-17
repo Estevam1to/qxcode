@@ -1,10 +1,14 @@
 package com.qxcode.Controller;
 
 import com.qxcode.DAO.CategoryDAO;
+import com.qxcode.Main;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+
+import java.io.IOException;
 
 public class NewCategory {
 
@@ -25,7 +29,7 @@ public class NewCategory {
         String titulo = titleInput.getText();
         String descricao = decriptionInput.getText();
 
-        categoryDAO.addCategory(titulo, descricao);
+        categoryDAO.insertCategory(titulo, descricao);
 
         // Limpar os campos após a adição da categoria
         titleInput.clear();
@@ -33,6 +37,10 @@ public class NewCategory {
 
         System.out.println("Título: " + titulo);
         System.out.println("Descrição: " + descricao);
+    }
+
+    public void entrarInicio(MouseEvent mouseEvent) throws IOException {
+        Main.setRoot("View/telaCategory.fxml");
     }
 
     public String getTela() {
