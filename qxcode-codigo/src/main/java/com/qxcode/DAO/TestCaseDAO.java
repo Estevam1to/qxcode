@@ -49,4 +49,41 @@ public class TestCaseDAO {
         }
         return outputs;
     }
+
+    public String getOutputsStringByQuestionId(int id) {
+
+        ArrayList<String> received = new ArrayList<>();
+        String outputs = "";
+        received = this.getOutputByQuestionId(id);
+
+        for (String x : received) {
+            x = x.replace('/', '\n');
+            outputs = outputs.concat(x + "\n");
+        }
+
+        return outputs;
+
+    }
+
+    public String getInputsStringByQuestionId(int id) {
+
+        ArrayList<String> received = new ArrayList<>();
+        String inputs = "";
+        received = this.getInputByQuestionId(id);
+
+        for (String x : received) {
+
+            if (!inputs.isEmpty()) {
+                x = x.replace('/', '\n');
+                inputs = inputs.concat("\n");
+            }
+
+            inputs = inputs.concat(x);
+
+        }
+
+        return inputs;
+
+    }
+
 }
