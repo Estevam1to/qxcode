@@ -46,6 +46,6 @@ public class CategoryComponent {
 
 
     public void entrarListQuestion(MouseEvent mouseEvent) throws IOException {
-        Main.setRoot(telaListQuestion.getTela(categoryTitle.getText()));
+        Main.setRoot(telaListQuestion.getTela(), categoryTitle.getText());
     }
 }

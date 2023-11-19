@@ -10,7 +10,7 @@ public class JDBC {
     public static Connection getConnection() {
         try {
             if (conn == null || conn.isClosed()) {
-                String url = "jdbc:sqlite:C:/Users/ofern/OneDrive/Documentos/UFC/qxcode/qxcode-codigo/DataBase/QXCODEDB.db";
+                String url = "jdbc:sqlite:qxcode-codigo/DataBase/QXCODEDB.db";
                 conn = DriverManager.getConnection(url);
             }
         } catch (SQLException e) {

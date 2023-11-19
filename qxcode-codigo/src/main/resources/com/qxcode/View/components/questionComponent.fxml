@@ -7,22 +7,21 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="60.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qxcode.Controller.QuestionComponent">
    <children>
-      <HBox prefHeight="60.0" prefWidth="1120.0">
+      <HBox alignment="CENTER" prefHeight="60.0" prefWidth="1120.0">
          <children>
-            <Label alignment="CENTER" prefHeight="60.0" prefWidth="165.0" style="-fx-border-color: #000000;" text="Label">
+            <Label fx:id="numberQuestion" alignment="CENTER" prefHeight="60.0" prefWidth="165.0" text="Label">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" prefHeight="60.0" prefWidth="395.0" style="-fx-border-color: #000000;" text="Label">
+            <Label fx:id="nameQuestion" alignment="CENTER" prefHeight="60.0" prefWidth="395.0" text="Label">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <CheckBox alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="60.0" prefWidth="252.0" style="-fx-border-color: #000000;" textAlignment="CENTER" textOverrun="CLIP">
+            <CheckBox fx:id="favoriteQuestion" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="60.0" prefWidth="252.0" textAlignment="CENTER" textOverrun="CLIP">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -36,7 +35,7 @@
                   <Insets left="116.0" />
                </padding>
             </CheckBox>
-            <Label alignment="CENTER" prefHeight="60.0" prefWidth="308.0" style="-fx-border-color: #000000;" text="Label">
+            <Label fx:id="levelQuestion" alignment="CENTER" prefHeight="60.0" prefWidth="308.0" text="Label">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
