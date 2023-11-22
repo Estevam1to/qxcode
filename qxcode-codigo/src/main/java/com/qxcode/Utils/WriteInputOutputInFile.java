@@ -14,7 +14,7 @@ public class WriteInputOutputInFile {
         ArrayList<String> listInput = controller.getInputListByQuestionId(id);
 
         for (int i = 0; i < listInput.size(); i++) {
-            String destiny = "src/FilesWritten";
+            String destiny = "src/main/resources/com/qxcode/Arquivos/Inputs";
             String filename = (i + 1) + ".in";
             String content = listInput.get(i).replace('/', '\n');;
 
@@ -38,7 +38,7 @@ public class WriteInputOutputInFile {
 
         for (int i = 0; i< listOutput.size(); i++){
 
-            String destiny = "src/outputs";
+            String destiny = "src/main/resources/com/qxcode/Arquivos/OutputExpecteds";
             String filename = (i + 1) + ".out";
             String content = listOutput.get(i).replace('/', '\n');
 

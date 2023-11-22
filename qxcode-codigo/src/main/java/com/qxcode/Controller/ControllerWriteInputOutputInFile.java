@@ -3,7 +3,7 @@ import com.qxcode.Utils.WriteInputOutputInFile;
 
 public class ControllerWriteInputOutputInFile {
 
-    private WriteInputOutputInFile writeInputOutput = new WriteInputOutputInFile();
+    private WriteInputOutputInFile writeInputOutput;
 
     ControllerWriteInputOutputInFile () {
         this.writeInputOutput = new WriteInputOutputInFile();
