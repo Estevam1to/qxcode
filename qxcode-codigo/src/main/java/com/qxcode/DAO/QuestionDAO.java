@@ -76,7 +76,7 @@ public class QuestionDAO {
             return null;
         }
     }
-    public void insertQuestion(String title, String description, Integer dificulty, String examples, int categoryId) {
+    public void insertQuestion(String title, String description, Integer difficulty, String examples, int categoryId) {
         String sql = "INSERT INTO questao (titulo, descricao, dificuldade, exemplos, id_categoria) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = JDBC.getConnection()) {
@@ -85,7 +85,7 @@ public class QuestionDAO {
             try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
                 preparedStatement.setString(1, title);
                 preparedStatement.setString(2, description);
-                preparedStatement.setInt(3, dificulty);
+                preparedStatement.setInt(3, difficulty);
                 preparedStatement.setString(4, examples);
                 preparedStatement.setInt(5, categoryId);
 
@@ -102,7 +102,7 @@ public class QuestionDAO {
                         int idGerado = generatedKeys.getInt(1);
 
                         // Criar uma nova instância do modelo Category com o ID gerado
-                        Question novaQuestao = new Question(idGerado, title, description, dificulty, examples, categoryId, 0);
+                        Question novaQuestao = new Question(idGerado, title, description, difficulty, examples, categoryId, 0);
 
                         conn.commit(); // Commits transaction.
                     } else {
@@ -112,6 +112,65 @@ public class QuestionDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    public List<Question> getAllQuestions() {
+        List<Question> questions = new ArrayList<>();
+        String sql = "SELECT * FROM questao";
+
+
+        try (Connection conn = JDBC.getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(sql);
+             ResultSet resultSet = preparedStatement.executeQuery();){
+
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id_questao");
+                String description = resultSet.getString("descricao");
+                String title = resultSet.getString("titulo");
+                int difficulty = resultSet.getInt("dificuldade");
+                String examples = resultSet.getString("exemplos");
+                int categoryId = resultSet.getInt("id_categoria");
+                int favorite = resultSet.getInt("favorito");
+
+                Question question = new Question(id, description, title, difficulty, examples, categoryId, favorite);
+                questions.add(question);
+            }
+
+            resultSet.close();
+            preparedStatement.close();
+            return questions;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+    }
+
+    public Question getQuestionByTitle(String titulo) {
+        Question question = null;
+        String sql = "SELECT * FROM questao WHERE titulo = ?";
+        try (Connection conn = JDBC.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, titulo);
+            ResultSet rs = stmt.executeQuery();
+
+                int id = rs.getInt("id_questao");
+                String title = rs.getString("titulo");
+                String description = rs.getString("descricao");
+                int difficulty = rs.getInt("dificuldade");
+                String examples = rs.getString("exemplos");
+                int categoryId = rs.getInt("id_categoria");
+                int favorite = rs.getInt("favorito");
+
+                question = new Question(id, description, title, difficulty, examples,categoryId, favorite);
+
+
+            return question;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
         }
     }
 
