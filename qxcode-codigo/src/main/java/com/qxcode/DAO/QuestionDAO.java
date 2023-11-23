@@ -40,6 +40,32 @@ public class QuestionDAO {
         }
     }
 
+    public Question getQuestionById(int idQuestion){
+        String sql = "SELECT * FROM questao WHERE id_questao = ?";
+
+        try (Connection conn = JDBC.getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+            preparedStatement.setInt(1, idQuestion);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+
+            int id = resultSet.getInt("id_questao");
+            String title = resultSet.getString("titulo");
+            String description = resultSet.getString("descricao");
+            int difficulty = resultSet.getInt("dificuldade");
+            String examples = resultSet.getString("exemplos");
+            int categId = resultSet.getInt("id_categoria");
+            int favorite = resultSet.getInt("favorito");
+
+            Question question = new Question(id,description, title, difficulty, examples, categId, favorite);
+            resultSet.close();
+            return question;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
     public List<Question> getFavoriteQuestions(){
         List<Question> questions = new ArrayList<>();

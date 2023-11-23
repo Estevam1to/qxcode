@@ -62,6 +62,6 @@ public class QuestionComponent {
 
 
     public void entrarQuestion(MouseEvent mouseEvent) throws IOException {
-        Main.setRoot(telaQuestion.getTela());
+        Main.setRoot(telaQuestion.getTela(), question.getId());
     }
 }
