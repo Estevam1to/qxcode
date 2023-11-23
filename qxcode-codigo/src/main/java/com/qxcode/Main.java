@@ -24,10 +24,10 @@ public class Main extends Application {
 
         stage.setTitle("Category");
 
-        stage.setMaxWidth(1450);
-        stage.setMaxHeight(850);
-        stage.setMinWidth(1450);
-        stage.setMinHeight(850);//1450 e 850
+        stage.setMaxWidth(1280);
+        stage.setMaxHeight(832);
+        stage.setMinWidth(1280);
+        stage.setMinHeight(832);//1450 e 850
 
         stage.setScene(scene);
         stage.show();

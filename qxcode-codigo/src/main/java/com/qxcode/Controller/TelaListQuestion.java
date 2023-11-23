@@ -69,8 +69,10 @@ public class TelaListQuestion {
             gridPane.getChildren().add(childNode);
 
             GridPane.setColumnIndex(childNode, 0);
+            int rowIndex = gridPane.getChildren().indexOf(childNode) / gridPane.getColumnCount();
 
-            GridPane.setRowIndex(childNode, currentRowIndex);
+
+            GridPane.setRowIndex(childNode, rowIndex);
             currentRowIndex++;
 
         } catch (IOException e) {
@@ -97,10 +99,8 @@ public class TelaListQuestion {
         List<Question> questions = controller.getQuestionByCategory(this.nameCategorySelect);
         if (questions != null) {
             return questions;
-        } else {
-            // handle the null case, e.g. return an empty list
-            return new ArrayList<>();
         }
+        return new ArrayList<>();
     }
 
     public String getTela() {
