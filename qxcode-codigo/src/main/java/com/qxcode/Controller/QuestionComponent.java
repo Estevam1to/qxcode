@@ -14,8 +14,6 @@ import java.io.IOException;
 
 public class QuestionComponent {
 
-    TelaListQuestion telaListQuestion = new TelaListQuestion();
-
     @FXML
     private Label numberQuestion;
     @FXML
@@ -25,10 +23,15 @@ public class QuestionComponent {
     @FXML
     private Label levelQuestion;
 
-    TelaQuestion telaQuestion = new TelaQuestion();
+    TelaQuestion telaQuestion;
 
-    private CategoryDAO dao = new CategoryDAO();
+    CategoryDAO dao;
     private Question question;
+
+    public QuestionComponent(){
+        telaQuestion = new TelaQuestion();
+        dao = new CategoryDAO();
+    }
 
 
 

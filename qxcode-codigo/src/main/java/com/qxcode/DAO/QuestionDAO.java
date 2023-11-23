@@ -10,36 +10,9 @@ import com.qxcode.Model.Question;
 
 public class QuestionDAO {
 
-    public int getIdCategory(String categoryName){
-        String getCategorySql = "SELECT id_categoria FROM categoria WHERE titulo = ?";
-
-        try (Connection conn = JDBC.getConnection();
-             PreparedStatement getCategoryStatement = conn.prepareStatement(getCategorySql)) {
-
-            getCategoryStatement.setString(1, categoryName);
-            ResultSet categoryResultSet = getCategoryStatement.executeQuery();
-
-            int categoryId = -1;
-
-            if (categoryResultSet.next()) {
-                categoryId = categoryResultSet.getInt("id_categoria");
-                categoryResultSet.close();
-                return categoryId;
-            } else {
-                System.out.println("Category not found: " + categoryName);
-                return -1;
-            }
-
-        }catch (SQLException e) {
-            e.printStackTrace();
-            return -1;
-        }
-    }
-
-    public List<Question> getQuestionsByCategory(String categoryName) {
+    public List<Question> getQuestionsByCategory(int categoryId) {
         List<Question> questions = new ArrayList<>();
         String sql = "SELECT * FROM questao WHERE id_categoria = ?";
-        int categoryId = getIdCategory(categoryName);
 
         try (Connection conn = JDBC.getConnection();
              PreparedStatement preparedStatement = conn.prepareStatement(sql)) {

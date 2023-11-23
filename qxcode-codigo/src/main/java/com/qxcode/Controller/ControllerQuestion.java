@@ -18,7 +18,7 @@ public class ControllerQuestion {
         return "/com/qxcode/View/components/questionComponent.fxml";
     }
 
-    public List<Question> getQuestionByCategory(String category) {
+    public List<Question> getQuestionByCategory(int category) {
         return dao.getQuestionsByCategory(category);
     }
 }
