@@ -13,7 +13,7 @@ public class TestCaseDAO {
 
     public void insert (String inputs, String outputs, int questionId) {
 
-        String sql = "INSERT INTO caso_de_teste VALUES (?, ?, ?)";
+        String sql = "INSERT INTO caso_de_teste VALUES (1, ?, ?, ?)";
 
         try (   Connection conn = JDBC.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -21,9 +21,8 @@ public class TestCaseDAO {
             stmt.setString(1, inputs);
             stmt.setString(2, outputs);
             stmt.setInt(3, questionId);
-            ResultSet rs = stmt.executeQuery();
+            stmt.executeUpdate();
 
-            rs.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
