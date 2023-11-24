@@ -11,6 +11,10 @@ public class ControllerTestCaseDAO {
         this.testCaseDAO = new TestCaseDAO();
     }
 
+    public void insert(String inputs, String outputs, int questionId) {
+        testCaseDAO.insert(inputs, outputs, questionId);
+    }
+
     public ArrayList<String> getInputListByQuestionId(int id) {
         return testCaseDAO.getInputByQuestionId(id);
     }
