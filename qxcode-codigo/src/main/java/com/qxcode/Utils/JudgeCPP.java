@@ -7,7 +7,7 @@ import java.lang.InterruptedException;
 import java.lang.ProcessBuilder;
 
 
-public class Judge {
+public class JudgeCPP implements IJudge {
     private final File userFile;
     private final ArrayList<File> outputsExpecteds;
     private final ArrayList<File> outputsUser;
@@ -15,17 +15,7 @@ public class Judge {
 
     //private ControllerQuestion controllerQuestion;
 
-    public static void main(String[] args) {
-        Judge judge = new Judge();
-        judge.compilar();
-        boolean result = judge.verifyDiff();
-        if (result) System.out.println("Tudo certo");
-        else System.out.println("Deu ruim");
-        //judge.destroyArquivos();
-    }
-
-
-    public Judge() {
+    public JudgeCPP() {
         //  controllerQuestion.getExtension();
         userFile = new File("../../../../resources/com/qxcode/Arquivos/File/Question.cpp");
         outputsExpecteds = new ArrayList<File>();
