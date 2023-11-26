@@ -7,7 +7,7 @@ import java.lang.InterruptedException;
 import java.lang.ProcessBuilder;
 
 
-public class JudgeCPP implements IJudge {
+public class JudgeCpp implements IJudge {
     private final File userFile;
     private final ArrayList<File> outputsExpecteds;
     private final ArrayList<File> outputsUser;
@@ -15,28 +15,41 @@ public class JudgeCPP implements IJudge {
 
     //private ControllerQuestion controllerQuestion;
 
-    public JudgeCPP() {
+    private final String pathQuestion = "../../../../resources/com/qxcode/Arquivos/File/Question.cpp";
+    private final String pathOutputUser = "../../../../resources/com/qxcode/Arquivos/OutputUser";
+    private final String pathOutputExpected = "../../../../resources/com/qxcode/Arquivos/OutputExpecteds";
+    private final String pathInput = "../../../../resources/com/qxcode/Arquivos/Inputs";
+    private final String pathDiff = "../../../../resources/com/qxcode/Arquivos/Diffs";
+
+
+    public JudgeCpp() {
         //  controllerQuestion.getExtension();
-        userFile = new File("../../../../resources/com/qxcode/Arquivos/File/Question.cpp");
+        userFile = new File(pathQuestion);
         outputsExpecteds = new ArrayList<File>();
         outputsUser = new ArrayList<File>();
         inputs = new ArrayList<File>();
+        carregarOutputs();
+        carregarInputs();
+    }
 
-        File path = new File("../../../../resources/com/qxcode/Arquivos/OutputExpecteds");
-        if (path.isDirectory() && path.exists()) {
-            File[] files = path.listFiles();
-            for (File file : files) {
-                outputsExpecteds.add(file);
-            }
-        }
-        path = new File("../../../../resources/com/qxcode/Arquivos/Inputs");
+    private void carregarInputs() {
+        File path = new File(pathInput);
         if (path.isDirectory() && path.exists()) {
             File[] files = path.listFiles();
             for (File file : files) {
                 inputs.add(file);
             }
         }
+    }
 
+    private void carregarOutputs() {
+        File path = new File(pathOutputExpected);
+        if (path.isDirectory() && path.exists()) {
+            File[] files = path.listFiles();
+            for (File file : files) {
+                outputsExpecteds.add(file);
+            }
+        }
     }
 
     public void compilar() {
@@ -53,7 +66,7 @@ public class JudgeCPP implements IJudge {
                 for (int i = 0; i < inputs.size(); ++i) {
                     ProcessBuilder pbExecucao = new ProcessBuilder("./question");
                     pbExecucao.redirectInput(inputs.get(i));
-                    pbExecucao.redirectOutput(new File("../../../../resources/com/qxcode/Arquivos/OutputUser", "userOut0" + (i + 1) + ".out"));
+                    pbExecucao.redirectOutput(new File(pathOutputUser, "userOut0" + (i + 1) + ".out"));
                     Process processExecucao = pbExecucao.start();
                     processExecucao.waitFor();
                 }
@@ -72,7 +85,7 @@ public class JudgeCPP implements IJudge {
     }
 
     public void carregarUserOutputs() {
-        File path = new File("../../../../resources/com/qxcode/Arquivos/OutputUser");
+        File path = new File(pathOutputUser);
         if (path.isDirectory() && path.exists()) {
             File[] files = path.listFiles();
             for (File file : files) {
@@ -85,12 +98,12 @@ public class JudgeCPP implements IJudge {
         carregarUserOutputs();
 
         for (int i = 0; i < outputsUser.size(); ++i) {
-            String pathOutputUser = outputsUser.get(i).getAbsolutePath();
-            String pathOutputExpected = outputsExpecteds.get(i).getAbsolutePath();
+            String pathOutputUserTest = outputsUser.get(i).getAbsolutePath();
+            String pathOutputExpectedTest = outputsExpecteds.get(i).getAbsolutePath();
             try {
                 System.out.println("Comparando " + outputsExpecteds.get(i).getName() + " com " + outputsUser.get(i).getName());
-                ProcessBuilder pbDiff = new ProcessBuilder("diff", pathOutputExpected, pathOutputUser);
-                pbDiff.redirectOutput(new File("../../../../resources/com/qxcode/Arquivos/Diffs", "diff0" + (i + 1) + ".out"));
+                ProcessBuilder pbDiff = new ProcessBuilder("diff", pathOutputExpectedTest, pathOutputUserTest);
+                pbDiff.redirectOutput(new File(pathDiff, "diff0" + (i + 1) + ".out"));
                 Process pDiff = pbDiff.start();
                 pDiff.waitFor();
             } catch (Exception e) {
@@ -98,7 +111,7 @@ public class JudgeCPP implements IJudge {
             }
         }
 
-        File pasta = new File("../../../../resources/com/qxcode/Arquivos/Diffs");
+        File pasta = new File(pathDiff);
         if (pasta.isDirectory() && pasta.exists()) {
             File[] files = pasta.listFiles();
             assert files != null;
@@ -109,47 +122,32 @@ public class JudgeCPP implements IJudge {
         return true;
     }
 
+    private void Destroy(String path) {
+        File file = new File(path);
+        if (file.isDirectory() && file.exists()) {
+            File[] files = file.listFiles();
+            assert files != null;
+            for (File file1 : files) {
+                file1.delete();
+            }
+        }
+    }
+
     public  void destroyArquivos() {
-        File path = new File("../../../../resources/com/qxcode/Arquivos/OutputUser");
-        if (path.isDirectory() && path.exists()) {
-            File[] files = path.listFiles();
-            assert files != null;
-            for (File file : files) {
-                file.delete();
-            }
-        }
+        ArrayList<String> paths = new ArrayList<String>();
+        paths.add(pathOutputUser);
+        paths.add(pathDiff);
+        paths.add(pathOutputExpected);
+        paths.add(pathInput);
 
-        path = new File("../../../../resources/com/qxcode/Arquivos/Diffs");
-        if (path.isDirectory() && path.exists()) {
-            File[] files = path.listFiles();
-            assert files != null;
-            for (File file : files) {
-                file.delete();
-            }
-        }
-
-        path = new File("../../../../resources/com/qxcode/Arquivos/Inputs");
-        if (path.isDirectory() && path.exists()) {
-            File[] files = path.listFiles();
-            assert files != null;
-            for (File file : files) {
-                file.delete();
-            }
-        }
-
-        path = new  File("../../../../resources/com/qxcode/Arquivos/OutputExpecteds");
-        if (path.isDirectory() && path.exists()) {
-            File[] files = path.listFiles();
-            assert files != null;
-            for (File file : files) {
-                file.delete();
-            }
+        for (String path : paths) {
+            Destroy(path);
         }
 
         File error = new File("./error.txt");
         error.delete();
 
-        File question = new File("./question");
+        File question = new File(pathQuestion);
         question.delete();
     }
 }
