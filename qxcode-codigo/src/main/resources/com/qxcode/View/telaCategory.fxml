@@ -28,12 +28,12 @@
                           <Font name="System Bold" size="24.0" />
                       </font>
                   </Label>
-            <Label onMouseClicked="#entrarNovaCategoria" layoutX="371.0" layoutY="15.0" text="Nova Categoria" textFill="WHITE">
+            <Label layoutX="371.0" layoutY="15.0" onMouseClicked="#entrarNovaCategoria" text="Nova Categoria" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label onMouseClicked="#entrarNovaQuestao" layoutX="597.0" layoutY="15.0" text="Nova Questão" textFill="WHITE">
+            <Label layoutX="597.0" layoutY="15.0" onMouseClicked="#entrarNovaQuestao" text="Nova Questão" textFill="WHITE">
                <font>
                    <Font name="System Bold" size="24.0" />
                </font>
@@ -55,7 +55,7 @@
                 </Label>
          </children>
       </Group>
-      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="80.0" layoutY="187.0" prefViewportHeight="500.0" style="-fx-background-color: #0E1A25; -fx-border-color: #FFFFFF;" vbarPolicy="ALWAYS" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="192.0">
+      <ScrollPane fitToWidth="true" hbarPolicy="NEVER" layoutX="80.0" layoutY="187.0" prefHeight="550.0" prefViewportHeight="500.0" style="-fx-background-color: #0E1A25; -fx-border-color: #FFFFFF;" vbarPolicy="ALWAYS" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="192.0">
          <content>
                 <GridPane fx:id="gridPane" hgap="35.0" style="-fx-background-color: #0E1A25;" vgap="24.0">
                     <columnConstraints>
