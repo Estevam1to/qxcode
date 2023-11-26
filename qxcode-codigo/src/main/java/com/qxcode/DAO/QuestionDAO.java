@@ -52,16 +52,8 @@ public class QuestionDAO {
             preparedStatement.setInt(1, idQuestion);
             ResultSet resultSet = preparedStatement.executeQuery();
 
+            Question question = createQuestion(resultSet);
 
-            int id = resultSet.getInt("id_questao");
-            String title = resultSet.getString("titulo");
-            String description = resultSet.getString("descricao");
-            int difficulty = resultSet.getInt("dificuldade");
-            String examples = resultSet.getString("exemplos");
-            int categId = resultSet.getInt("id_categoria");
-            int favorite = resultSet.getInt("favorito");
-
-            Question question = new Question(id,description, title, difficulty, examples, categId, favorite);
             resultSet.close();
             return question;
         } catch (SQLException e) {
@@ -82,17 +74,9 @@ public class QuestionDAO {
 
 
             while (resultSet.next()) {
-                int id = resultSet.getInt("id_categoria");
-                String title = resultSet.getString("titulo");
-                String description = resultSet.getString("descricao");
-                int difficulty = resultSet.getInt("dificuldade");
-                String examples = resultSet.getString("exemplos");
-                int categId = resultSet.getInt("id_categoria");
-                int favorite = resultSet.getInt("favorito");
-
-
-                Question question = new Question(id, title, description, difficulty, examples, categId, favorite);
-                questions.add(question);
+                while (resultSet.next()) {
+                    questions.add(createQuestion(resultSet));
+                }
             }
 
             resultSet.close();
