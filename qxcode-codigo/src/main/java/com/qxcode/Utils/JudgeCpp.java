@@ -12,6 +12,7 @@ public class JudgeCpp implements IJudge {
     private final ArrayList<File> outputsExpecteds;
     private final ArrayList<File> outputsUser;
     private final ArrayList<File> inputs;
+    private final ArrayList<File> diffs;
 
     //private ControllerQuestion controllerQuestion;
 
@@ -28,28 +29,29 @@ public class JudgeCpp implements IJudge {
         outputsExpecteds = new ArrayList<File>();
         outputsUser = new ArrayList<File>();
         inputs = new ArrayList<File>();
-        carregarOutputs();
-        carregarInputs();
+        diffs = new ArrayList<File>();
+        carregar(pathInput, inputs);
+        carregar(pathOutputExpected, outputsExpecteds);
     }
 
-    private void carregarInputs() {
-        File path = new File(pathInput);
-        if (path.isDirectory() && path.exists()) {
-            File[] files = path.listFiles();
-            for (File file : files) {
-                inputs.add(file);
+    private void carregar(String path, ArrayList<File> list) {
+        File file = new File(path);
+        if (file.isDirectory() && file.exists()) {
+            File[] files = file.listFiles();
+            assert files != null;
+            for (File file1 : files) {
+                list.add(file1);
             }
         }
     }
 
-    private void carregarOutputs() {
-        File path = new File(pathOutputExpected);
-        if (path.isDirectory() && path.exists()) {
-            File[] files = path.listFiles();
-            for (File file : files) {
-                outputsExpecteds.add(file);
+    private boolean verifyIsNull(ArrayList<File> list) {
+        for (File file : list) {
+            if (file.length() == 0) {
+                return true;
             }
         }
+        return false;
     }
 
     public void compilar() {
@@ -84,19 +86,8 @@ public class JudgeCpp implements IJudge {
 
     }
 
-    public void carregarUserOutputs() {
-        File path = new File(pathOutputUser);
-        if (path.isDirectory() && path.exists()) {
-            File[] files = path.listFiles();
-            for (File file : files) {
-                outputsUser.add(file);
-            }
-        }
-    }
-
     public boolean verifyDiff() {
-        carregarUserOutputs();
-
+        carregar(pathOutputUser, outputsUser);
         for (int i = 0; i < outputsUser.size(); ++i) {
             String pathOutputUserTest = outputsUser.get(i).getAbsolutePath();
             String pathOutputExpectedTest = outputsExpecteds.get(i).getAbsolutePath();
@@ -110,14 +101,9 @@ public class JudgeCpp implements IJudge {
                 System.out.println(e);
             }
         }
-
-        File pasta = new File(pathDiff);
-        if (pasta.isDirectory() && pasta.exists()) {
-            File[] files = pasta.listFiles();
-            assert files != null;
-            for (File file : files) {
-                if (file.length() != 0) return false;
-            }
+        carregar(pathDiff, diffs);
+        if (verifyIsNull(diffs)) {
+            return false;
         }
         return true;
     }
