@@ -9,6 +9,7 @@ import java.lang.ProcessBuilder;
 
 public class JudgeCpp implements IJudge {
     private final File userFile;
+    private long time;
     private final ArrayList<File> outputsExpecteds;
     private final ArrayList<File> outputsUser;
     private final ArrayList<File> inputs;
@@ -77,7 +78,7 @@ public class JudgeCpp implements IJudge {
                 System.out.println("Não compilou");
             }
             tempoFinal = System.currentTimeMillis();
-            System.out.println("Executado em = " + (tempoFinal - tempoInicial) + " ms");
+            time = tempoFinal - tempoInicial;
         } catch (IOException e) {
             System.out.println("Erro de I/O" + e.getMessage());
         } catch (InterruptedException e) {
@@ -92,7 +93,7 @@ public class JudgeCpp implements IJudge {
             String pathOutputUserTest = outputsUser.get(i).getAbsolutePath();
             String pathOutputExpectedTest = outputsExpecteds.get(i).getAbsolutePath();
             try {
-                System.out.println("Comparando " + outputsExpecteds.get(i).getName() + " com " + outputsUser.get(i).getName());
+                //System.out.println("Comparando " + outputsExpecteds.get(i).getName() + " com " + outputsUser.get(i).getName());
                 ProcessBuilder pbDiff = new ProcessBuilder("diff", pathOutputExpectedTest, pathOutputUserTest);
                 pbDiff.redirectOutput(new File(pathDiff, "diff0" + (i + 1) + ".out"));
                 Process pDiff = pbDiff.start();
@@ -135,5 +136,19 @@ public class JudgeCpp implements IJudge {
 
         File question = new File(pathQuestion);
         question.delete();
+    }
+
+    public String getResult() {
+        String result = "";
+        if (time > 1000) {
+            result = "TLE";
+        } else if (verifyDiff()) {
+            result = "AC";
+        }else if(!verifyDiff()){
+            result = "WA";
+        } else {
+            result = "ERRO";
+        }
+        return result;
     }
 }

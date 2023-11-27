@@ -9,6 +9,7 @@ import java.lang.ProcessBuilder;
 
 public class JudgePy implements IJudge {
     private final File userFile;
+    private long time;
     private final ArrayList<File> outputsExpecteds;
     private final ArrayList<File> outputsUser;
     private final ArrayList<File> inputs;
@@ -55,7 +56,8 @@ public class JudgePy implements IJudge {
                 processExecucao.waitFor();
             }
             tempoFinal = System.currentTimeMillis();
-            System.out.println("Executado em = " + (tempoFinal - tempoInicial) + " ms");
+            //System.out.println("Executado em = " + (tempoFinal - tempoInicial) + " ms");
+            time = tempoFinal - tempoInicial;
         } catch (IOException e) {
             System.out.println("Erro de I/O" + e.getMessage());
         } catch (InterruptedException e) {
@@ -125,5 +127,19 @@ public class JudgePy implements IJudge {
 
         File question = new File(pathQuestion);
         question.delete();
+    }
+
+    public String getResult() {
+        String result = "";
+        if (time > 1500) {
+            result = "TLE";
+        } else if (verifyDiff()) {
+            result = "AC";
+        }else if(!verifyDiff()){
+            result = "WA";
+        } else {
+            result = "ERRO";
+        }
+        return result;
     }
 }
