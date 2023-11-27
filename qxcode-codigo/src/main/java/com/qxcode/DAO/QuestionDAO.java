@@ -24,6 +24,28 @@ public class QuestionDAO {
         return question;
     }
 
+    public void updateQuestionFavorite(int id) {
+
+    }
+
+    public Question getQuestionById(int idQuestion){
+        String sql = "SELECT * FROM questao WHERE id_questao = ?";
+
+        try (Connection conn = JDBC.getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+            preparedStatement.setInt(1, idQuestion);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            Question question = resultSetToQuestion(resultSet);
+
+            resultSet.close();
+            return question;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
     public List<Question> getQuestionsByCategory(int categoryId){
         List<Question> questions = new ArrayList<>();
         String sql = "SELECT * FROM questao WHERE id_categoria = ?";
@@ -33,10 +55,6 @@ public class QuestionDAO {
              preparedStatement.setInt(1, categoryId);
              ResultSet resultSet = preparedStatement.executeQuery();
 
-             while (resultSet.next()) {
-                 questions.add(createQuestion(resultSet));
-             }
-
             while (resultSet.next()) {
 
                 Question question = resultSetToQuestion(resultSet);
@@ -45,7 +63,7 @@ public class QuestionDAO {
             }
 
             resultSet.close();
-            return question;
+            return questions;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;

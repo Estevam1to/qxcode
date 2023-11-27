@@ -32,4 +32,8 @@ public class ControllerQuestionDAO {
         return QuestionDAO.getAllQuestions();
     }
 
+    public void updateQuestionFavorite(int id) {
+        QuestionDAO.updateQuestionFavorite(id);
+    }
+
 }
