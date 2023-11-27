@@ -28,12 +28,14 @@ public class QuestionDAO {
         List<Question> questions = new ArrayList<>();
         String sql = "SELECT * FROM questao WHERE id_categoria = ?";
 
-
         try (Connection conn = JDBC.getConnection();
-             PreparedStatement preparedStatement = conn.prepareStatement(sql);){
+             PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+             preparedStatement.setInt(1, categoryId);
+             ResultSet resultSet = preparedStatement.executeQuery();
 
-            preparedStatement.setInt(1, categoryId);
-            ResultSet resultSet = preparedStatement.executeQuery();
+             while (resultSet.next()) {
+                 questions.add(createQuestion(resultSet));
+             }
 
             while (resultSet.next()) {
 
@@ -43,13 +45,13 @@ public class QuestionDAO {
             }
 
             resultSet.close();
-            preparedStatement.close();
-            return questions;
+            return question;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }
     }
+
 
     public List<Question> getFavoriteQuestions(){
         List<Question> questions = new ArrayList<>();

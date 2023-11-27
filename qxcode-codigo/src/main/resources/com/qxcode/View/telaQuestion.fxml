@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="paneQuestion" prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: #0E1A25;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qxcode.Controller.TelaQuestion">
+<AnchorPane fx:id="paneQuestion" stylesheets="@../CSS/styleButon.css" prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: #0E1A25;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Group layoutX="81.0" layoutY="60.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="32.0">
          <children>
@@ -38,7 +38,7 @@
       </Group>
       <Group AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="124.0">
          <children>
-            <Label text="Variavel" textFill="WHITE">
+            <Label fx:id="questionName" text="Variavel" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="32.0" />
                </font>
@@ -60,7 +60,7 @@
       </Group>
       <Group layoutY="-16.7080078125" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="192.0">
          <children>
-            <Text fill="WHITE" layoutX="20.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.!" wrappingWidth="480.0">
+            <Text fx:id="questionDescription" fill="WHITE" layoutX="20.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.!" wrappingWidth="480.0">
                <font>
                   <Font size="18.0" />
                </font>
@@ -95,7 +95,7 @@
             </Label>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="198.0" layoutY="32.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="226.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="198.0" layoutX="290.0" layoutY="32.0" stroke="WHITE" strokeType="INSIDE" width="226.0" />
-            <Text fill="WHITE" layoutX="50.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1 2 3 4 5" wrappingWidth="12.0">
+            <Text fx:id="questionExInput" fill="WHITE" layoutX="50.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1 2 3 4 5" wrappingWidth="12.0">
                <font>
                   <Font size="18.0" />
                </font>
@@ -134,10 +134,10 @@
          </children>
       </Group>
       <SplitMenuButton layoutX="701.0" layoutY="192.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="516.0" style="-fx-background-color: #0E1A25;" text="Selecione a linguagem" textFill="#0e1a25" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="192.0">
-        <items>
-          <MenuItem mnemonicParsing="false" text="Action 1" />
-          <MenuItem mnemonicParsing="false" text="Action 2" />
-        </items>
+         <items>
+            <MenuItem mnemonicParsing="false" text="Action 1" />
+            <MenuItem mnemonicParsing="false" text="Action 2" />
+         </items>
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
@@ -153,7 +153,7 @@
             </TextArea>
          </children>
       </Group>
-      <Button stylesheets="../CSS/styleButon.css" fx:id="btnSubmeter" layoutX="763.0" layoutY="706.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="516.0" style="-fx-background-color: #2A4D6F; -fx-border-radius: 66; -fx-background-radius: 66;" text="Submeter" textFill="WHITE" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="694.0">
+      <Button fx:id="btnSubmeter" layoutX="763.0" layoutY="706.0" mnemonicParsing="false" prefHeight="56.0" prefWidth="516.0" text="Submeter" textFill="WHITE" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="694.0">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>

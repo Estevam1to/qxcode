@@ -1,5 +1,7 @@
 package com.qxcode;
 
+import com.qxcode.Controller.TelaListQuestion;
+import com.qxcode.Controller.TelaQuestion;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -23,16 +25,35 @@ public class Main extends Application {
 
         stage.setTitle("Category");
 
-        stage.setMaxWidth(1450);
-        stage.setMaxHeight(850);
-        stage.setMinWidth(1450);
-        stage.setMinHeight(850);//1450 e 850
+        stage.setMaxWidth(1280);
+        stage.setMaxHeight(832);
+        stage.setMinWidth(1280);
+        stage.setMinHeight(832);//1450 e 850
 
         stage.setScene(scene);
         stage.show();
     }
     public static void setRoot(String tela) throws IOException {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource(tela));
+
+        scene.setRoot(loader.load());
+    }
+
+    public static void setRoot(String tela, int categoryId, String nameCategory) throws IOException {
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource(tela));
+        TelaListQuestion controller = new TelaListQuestion();
+        controller.setCategory(nameCategory);
+        controller.setId(categoryId);
+        loader.setController(controller);
+
+        scene.setRoot(loader.load());
+    }
+
+    public static void setRoot(String tela, int questionId) throws IOException {
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource(tela));
+        TelaQuestion controller = new TelaQuestion();
+        controller.setId(questionId);
+        loader.setController(controller);
 
         scene.setRoot(loader.load());
     }
