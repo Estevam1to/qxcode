@@ -152,12 +152,12 @@
                 </Group>
             </children>
         </Group>
-      <Button fx:id="btnAddInput" layoutX="682.0" layoutY="527.0" mnemonicParsing="false" onAction="#salvarInputFiles" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #2A4D6F; -fx-border-radius: 66; -fx-background-radius: 66;" stylesheets="../CSS/styleButon.css" text="Adicionar arquivos de entrada" textFill="WHITE">
+      <Button fx:id="btnAddInput" layoutX="682.0" layoutY="527.0" mnemonicParsing="false" onAction="#saveInputFiles" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #2A4D6F; -fx-border-radius: 66; -fx-background-radius: 66;" stylesheets="../CSS/styleButon.css" text="Adicionar arquivos de entrada" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="btnAddOutput" layoutX="950.0" layoutY="527.0" mnemonicParsing="false" onAction="#salvarOutputFiles" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #2A4D6F; -fx-border-radius: 66; -fx-background-radius: 66;" stylesheets="../CSS/styleButon.css" text="Adicionar arquivos de saída" textFill="WHITE">
+      <Button fx:id="btnAddOutput" layoutX="950.0" layoutY="527.0" mnemonicParsing="false" onAction="#saveOutputFiles" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #2A4D6F; -fx-border-radius: 66; -fx-background-radius: 66;" stylesheets="../CSS/styleButon.css" text="Adicionar arquivos de saída" textFill="WHITE">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>

@@ -63,7 +63,7 @@ public class NewQuestion implements Initializable {
     }
 
     @FXML
-    private void salvarInputFiles(ActionEvent event) {
+    private void saveInputFiles(ActionEvent event) {
         FileChooser fc = new FileChooser();
         fc.setInitialDirectory(new File("C:\\Users\\ofern\\OneDrive\\Documentos\\UFC\\qxcode\\qxcode-codigo"));
         fc.getExtensionFilters().addAll(
@@ -78,7 +78,7 @@ public class NewQuestion implements Initializable {
     }
 
     @FXML
-    private void salvarOutputFiles(ActionEvent event) {
+    private void saveOutputFiles(ActionEvent event) {
         FileChooser fc = new FileChooser();
         fc.setInitialDirectory(new File("C:\\Users\\ofern\\OneDrive\\Documentos\\UFC\\qxcode\\qxcode-codigo"));
         fc.getExtensionFilters().addAll(
@@ -103,23 +103,19 @@ public class NewQuestion implements Initializable {
         questionDAO.insertQuestion(titulo, descricao, dificuldade, "exemplo", id_categoria);
 
         int idQuestion = questionDAO.getQuestionByTitle(titulo).getId();
+
         salvarCasosDeTeste(idQuestion);
 
-        // Limpar os campos após a adição da categoria
+        clearFields();
+    }
+
+    private void clearFields(){
         titleInput.clear();
         decriptionInput.clear();
         inputFiles.setItems(null);
         outputFiles.setItems(null);
         selectedInputFiles = null;
         selectedOutputFiles = null;
-
-
-        System.out.println("Título: " + titulo);
-        System.out.println("Descrição: " + descricao);
-        System.out.println("Dificuldade: " + dificuldade);
-//        printar os arquivos
-        System.out.println("Categoria: " + id_categoria);
-
     }
 
     private void salvarCasosDeTeste(int idQuestion) {

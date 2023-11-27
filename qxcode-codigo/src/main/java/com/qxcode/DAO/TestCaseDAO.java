@@ -25,20 +25,6 @@ public class TestCaseDAO {
                 if (rowsAffected == 0) {
                     throw new SQLException("Falha ao adicionar categoria, nenhuma linha afetada.");
                 }
-
-                try (Statement statement = conn.createStatement();
-                     ResultSet generatedKeys = statement.executeQuery("SELECT last_insert_rowid()")) {
-                    if (generatedKeys.next()) {
-                        int idGerado = generatedKeys.getInt(1);
-
-                        // Criar uma nova instância do modelo Category com o ID gerado
-                        TestCase novoCasoDeTeste = new TestCase(idGerado, inputStr, outputStr, idQuestion);
-
-                        conn.commit(); // Commits transaction.
-                    } else {
-                        throw new SQLException("Falha ao obter o ID da categoria, nenhum ID gerado.");
-                    }
-                }
             }
         } catch (SQLException e) {
             e.printStackTrace();

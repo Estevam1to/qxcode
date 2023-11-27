@@ -7,43 +7,33 @@ import java.io.*;
 import java.util.List;
 
 public class ControllerTestCase {
-    TestCaseDAO dao = new TestCaseDAO();
-    @FXML
-    public void initialize() {
+    TestCaseDAO dao;
 
+    public ControllerTestCase() {
+        dao = new TestCaseDAO();
     }
 
     public void saveTestCases(List<File> inputFiles, List<File> outputFiles, int idQuestion) {
         for(int i = 0; i < inputFiles.size(); i++){
-            String input = "";
-            String output = "";
-            try{
-                BufferedReader br = new BufferedReader(new FileReader(inputFiles.get(i)));
-                StringBuilder sb = new StringBuilder();
-                String line;
-                while((line = br.readLine()) != null) {
-                    sb.append(line).append("\n");
-                }
-                input = sb.toString();
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException();
-            } catch (IOException e ) {
-                throw new RuntimeException();
-            }
-            try{
-                BufferedReader br = new BufferedReader(new FileReader(outputFiles.get(i)));
-                StringBuilder sb = new StringBuilder();
-                String line;
-                while((line = br.readLine()) != null) {
-                    sb.append(line).append("\n");
-                }
-                output = sb.toString();
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException();
-            } catch (IOException e ) {
-                throw new RuntimeException();
-            }
+            String input = parseFileToString(inputFiles.get(i));
+            String output = parseFileToString(outputFiles.get(i));
             dao.insertTestCase(input, output, idQuestion);
+        }
+    }
+
+    private String parseFileToString(File file) {
+        try{
+            BufferedReader br = new BufferedReader(new FileReader(file));
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while((line = br.readLine()) != null) {
+                  sb.append(line).append("\n");
+            }
+            return sb.toString();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException();
+        } catch (IOException e ) {
+            throw new RuntimeException();
         }
     }
 }
