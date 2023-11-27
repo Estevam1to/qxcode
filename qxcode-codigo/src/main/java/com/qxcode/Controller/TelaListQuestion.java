@@ -26,7 +26,9 @@ public class TelaListQuestion {
     @FXML
     private Label nameCategory;
 
-    public String nameCategorySelect;
+    private String nameCategorySelect;
+
+    private int idCategorySelect;
 
     private int currentRowIndex = 0;
 
@@ -38,6 +40,10 @@ public class TelaListQuestion {
 
     public void setCategory(String category) {
         this.nameCategorySelect = category;
+    }
+
+    public void setId(int id) {
+        this.idCategorySelect = id;
     }
 
 
@@ -96,7 +102,7 @@ public class TelaListQuestion {
 
     private List<Question> getAllQuestions() {
         ControllerQuestion controller = new ControllerQuestion();
-        List<Question> questions = controller.getQuestionByCategory(this.nameCategorySelect);
+        List<Question> questions = controller.getQuestionByCategory(this.idCategorySelect);
         if (questions != null) {
             return questions;
         }

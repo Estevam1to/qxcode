@@ -1,6 +1,7 @@
 package com.qxcode;
 
 import com.qxcode.Controller.TelaListQuestion;
+import com.qxcode.Controller.TelaQuestion;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -38,13 +39,22 @@ public class Main extends Application {
         scene.setRoot(loader.load());
     }
 
-    public static void setRoot(String tela, String nameCategory) throws IOException {
+    public static void setRoot(String tela, int categoryId, String nameCategory) throws IOException {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource(tela));
         TelaListQuestion controller = new TelaListQuestion();
         controller.setCategory(nameCategory);
+        controller.setId(categoryId);
         loader.setController(controller);
 
         scene.setRoot(loader.load());
+    }
 
+    public static void setRoot(String tela, int questionId) throws IOException {
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource(tela));
+        TelaQuestion controller = new TelaQuestion();
+        controller.setId(questionId);
+        loader.setController(controller);
+
+        scene.setRoot(loader.load());
     }
 }

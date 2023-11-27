@@ -23,36 +23,9 @@ public class QuestionDAO {
         return question;
     }
 
-    public int getIdCategory(String categoryName){
-        String getCategorySql = "SELECT id_categoria FROM categoria WHERE titulo = ?";
-
-        try (Connection conn = JDBC.getConnection();
-             PreparedStatement getCategoryStatement = conn.prepareStatement(getCategorySql)) {
-
-            getCategoryStatement.setString(1, categoryName);
-            ResultSet categoryResultSet = getCategoryStatement.executeQuery();
-
-            int categoryId = -1;
-
-            if (categoryResultSet.next()) {
-                categoryId = categoryResultSet.getInt("id_categoria");
-                categoryResultSet.close();
-                return categoryId;
-            } else {
-                System.out.println("Category not found: " + categoryName);
-                return -1;
-            }
-
-        }catch (SQLException e) {
-            e.printStackTrace();
-            return -1;
-        }
-    }
-
-    public List<Question> getQuestionsByCategory(String categoryName) {
+    public List<Question> getQuestionsByCategory(int categoryId) {
         List<Question> questions = new ArrayList<>();
         String sql = "SELECT * FROM questao WHERE id_categoria = ?";
-        int categoryId = getIdCategory(categoryName);
 
         try (Connection conn = JDBC.getConnection();
              PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
@@ -71,6 +44,24 @@ public class QuestionDAO {
         }
     }
 
+    public Question getQuestionById(int idQuestion){
+        String sql = "SELECT * FROM questao WHERE id_questao = ?";
+
+        try (Connection conn = JDBC.getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+            preparedStatement.setInt(1, idQuestion);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            Question question = createQuestion(resultSet);
+
+            resultSet.close();
+            return question;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
     public List<Question> getFavoriteQuestions(){
         List<Question> questions = new ArrayList<>();
@@ -83,17 +74,9 @@ public class QuestionDAO {
 
 
             while (resultSet.next()) {
-                int id = resultSet.getInt("id_categoria");
-                String title = resultSet.getString("titulo");
-                String description = resultSet.getString("descricao");
-                int difficulty = resultSet.getInt("dificuldade");
-                String examples = resultSet.getString("exemplos");
-                int categId = resultSet.getInt("id_categoria");
-                int favorite = resultSet.getInt("favorito");
-
-
-                Question question = new Question(id, title, description, difficulty, examples, categId, favorite);
-                questions.add(question);
+                while (resultSet.next()) {
+                    questions.add(createQuestion(resultSet));
+                }
             }
 
             resultSet.close();
