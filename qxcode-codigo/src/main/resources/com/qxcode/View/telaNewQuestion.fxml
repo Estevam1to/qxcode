@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -61,7 +62,7 @@
                         <Font name="System Bold" size="24.0" />
                     </font>
                 </Label>
-                <TextArea fx:id="decriptionInput" layoutY="149.0" prefHeight="354.0" prefWidth="516.0" promptText="Descrição da questão...">
+                <TextArea fx:id="decriptionInput" layoutY="149.0" prefHeight="400.0" prefWidth="516.0" promptText="Descrição da questão...">
                     <font>
                         <Font size="18.0" />
                     </font>
@@ -76,18 +77,18 @@
                         <Font name="System Bold" size="24.0" />
                     </font>
                 </Label>
-                <Button fx:id="btnSalvar" layoutX="605.0" layoutY="447.0" mnemonicParsing="false" onAction="#salvarQuestao" prefHeight="56.0" prefWidth="516.0" style="-fx-background-color: #2A4D6F; -fx-border-radius: 66; -fx-background-radius: 66;" stylesheets="../CSS/styleButon.css" text="Salvar" textFill="WHITE">
+                <Button fx:id="btnSalvar" layoutX="604.0" layoutY="493.0" mnemonicParsing="false" onAction="#salvarQuestao" prefHeight="56.0" prefWidth="516.0" style="-fx-background-color: #2A4D6F; -fx-border-radius: 66; -fx-background-radius: 66;" stylesheets="../CSS/styleButon.css" text="Salvar" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="24.0" />
                     </font>
       
-                </Button>
+                            </Button>
                 <Label layoutX="797.0" text="Dificuldade" textFill="WHITE">
                    <font>
                       <Font name="System Bold" size="24.0" />
                    </font>
                 </Label>
-            <Group layoutX="707.0" layoutY="49.0">
+            <Group layoutX="707.0" layoutY="50.0">
                <children>
                   <RadioButton fx:id="difficulty1" layoutY="1.0" mnemonicParsing="false" selected="true" text="1" textFill="WHITE">
                      <font>
@@ -119,22 +120,24 @@
                   </RadioButton>
                </children>
             </Group>
-                <Label layoutX="808.0" layoutY="114.0" text="Exemplos" textFill="WHITE">
+                <Label layoutX="685.0" layoutY="114.0" text="Entrada" textFill="WHITE">
                    <font>
                       <Font name="System Bold" size="24.0" />
                    </font>
                 </Label>
-                <TextArea fx:id="examplesInput" layoutX="604.0" layoutY="149.0" prefHeight="168.0" prefWidth="516.0" promptText="Exemplos...">
-                   <font>
-                      <Font size="18.0" />
-                   </font>
-                </TextArea>
-                <Label layoutX="808.0" layoutY="336.0" text="Categoria" textFill="WHITE">
+                <Label layoutX="807.0" layoutY="382.0" text="Categoria" textFill="WHITE">
                    <font>
                       <Font name="System Bold" size="24.0" />
                    </font>
                 </Label>
-            <ChoiceBox fx:id="categoryInput" layoutX="604.0" layoutY="374.0" prefHeight="54.0" prefWidth="516.0" />
+            <ChoiceBox fx:id="categoryInput" layoutX="603.0" layoutY="420.0" prefHeight="54.0" prefWidth="516.0" />
+            <Label layoutX="966.0" layoutY="114.0" text="Saída" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+            <ListView fx:id="inputFiles" layoutX="604.0" layoutY="149.0" prefHeight="168.0" prefWidth="250.0" />
+            <ListView fx:id="outputFiles" layoutX="871.0" layoutY="149.0" prefHeight="168.0" prefWidth="250.0" />
          </children>
       </Group>
         <Group AnchorPane.topAnchor="775.0">
@@ -149,5 +152,15 @@
                 </Group>
             </children>
         </Group>
+      <Button fx:id="btnAddInput" layoutX="682.0" layoutY="527.0" mnemonicParsing="false" onAction="#salvarInputFiles" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #2A4D6F; -fx-border-radius: 66; -fx-background-radius: 66;" stylesheets="../CSS/styleButon.css" text="Adicionar arquivos de entrada" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnAddOutput" layoutX="950.0" layoutY="527.0" mnemonicParsing="false" onAction="#salvarOutputFiles" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #2A4D6F; -fx-border-radius: 66; -fx-background-radius: 66;" stylesheets="../CSS/styleButon.css" text="Adicionar arquivos de saída" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
     </children>
 </AnchorPane>

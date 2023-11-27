@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class JDBC {
-    private static final String DATABASE_URL = "jdbc:sqlite:qxcode-codigo/DataBase/QXCODEDB.db";
+    private static final String DATABASE_URL = "jdbc:sqlite:DataBase/QXCODEDB.db";
     private static Connection conn = null;
 
     public static Connection getConnection() {

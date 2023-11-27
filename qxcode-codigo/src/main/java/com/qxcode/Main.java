@@ -21,14 +21,14 @@ public class Main extends Application {
 
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("View/telaCategory.fxml"));
 
-        scene = new Scene(loader.load(), 1450, 850);
+        scene = new Scene(loader.load(), 1280, 800);
 
         stage.setTitle("Category");
 
         stage.setMaxWidth(1280);
-        stage.setMaxHeight(832);
+        stage.setMaxHeight(800);
         stage.setMinWidth(1280);
-        stage.setMinHeight(832);//1450 e 850
+        stage.setMinHeight(800);//1450 e 850
 
         stage.setScene(scene);
         stage.show();
