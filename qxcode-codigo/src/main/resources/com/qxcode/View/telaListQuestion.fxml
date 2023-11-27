@@ -84,7 +84,7 @@
          <children>
             <ScrollPane hbarPolicy="NEVER" prefHeight="460.0" prefWidth="1120.0" style="-fx-background-color: #0E1A25;" vbarPolicy="ALWAYS">
                <content>
-                  <GridPane fx:id="gridPane" maxWidth="1100.0" minWidth="-Infinity" prefHeight="5000.0" prefWidth="1100.0" style="-fx-background-color: #0E1A25;">
+                  <GridPane fx:id="gridPane" maxWidth="1100.0" minWidth="-Infinity" prefWidth="1100.0" style="-fx-background-color: #0E1A25;">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.0" minWidth="1120.0" prefWidth="165.0" />
                     </columnConstraints>
