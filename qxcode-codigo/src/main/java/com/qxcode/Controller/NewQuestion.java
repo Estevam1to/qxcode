@@ -97,15 +97,19 @@ public class NewQuestion implements Initializable {
         String titulo = titleInput.getText();
         String descricao = decriptionInput.getText();
         int dificuldade = this.getDifficulty();
-//        Salvar os Arquivos
         int id_categoria = this.getCategory(categoryInput.getValue());
 
 
         questionDAO.insertQuestion(titulo, descricao, dificuldade, "exemplo", id_categoria);
 
+        int idQuestion = questionDAO.getQuestionByTitle(titulo).getId();
+        salvarCasosDeTeste(idQuestion);
+
         // Limpar os campos após a adição da categoria
         titleInput.clear();
         decriptionInput.clear();
+        inputFiles.setItems(null);
+        outputFiles.setItems(null);
         selectedInputFiles = null;
         selectedOutputFiles = null;
 
@@ -116,6 +120,14 @@ public class NewQuestion implements Initializable {
 //        printar os arquivos
         System.out.println("Categoria: " + id_categoria);
 
+    }
+
+    private void salvarCasosDeTeste(int idQuestion) {
+        ControllerTestCase controllerTC = new ControllerTestCase();
+
+        if(selectedInputFiles != null && selectedOutputFiles != null){
+            controllerTC.saveTestCases(selectedInputFiles, selectedOutputFiles, idQuestion);
+        }
     }
 
     public int getCategory(String title){

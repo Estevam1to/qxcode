@@ -62,6 +62,24 @@ public class QuestionDAO {
         }
     }
 
+    public Question getQuestionByTitle(String title) {
+        String sql = "SELECT * FROM questao WHERE titulo = ?";
+
+        try (Connection conn = JDBC.getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+            preparedStatement.setString(1, title);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            Question question = createQuestion(resultSet);
+
+            resultSet.close();
+            return question;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
 
     public List<Question> getFavoriteQuestions(){
         List<Question> questions = new ArrayList<>();

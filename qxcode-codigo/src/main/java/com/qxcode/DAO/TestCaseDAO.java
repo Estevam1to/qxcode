@@ -1,15 +1,49 @@
 package com.qxcode.DAO;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 import com.qxcode.JDBC.JDBC;
+import com.qxcode.Model.Category;
+import com.qxcode.Model.TestCase;
 
 
 public class TestCaseDAO {
+
+    public void insertTestCase(String inputStr, String outputStr,int idQuestion) {
+        String sql = "INSERT INTO caso_de_teste (input, output, id_questão) VALUES (?, ?, ?)";
+        try (Connection conn = JDBC.getConnection()) {
+            conn.setAutoCommit(false); // Starts transaction.
+
+            try (PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
+                preparedStatement.setString(1, inputStr);
+                preparedStatement.setString(2, outputStr);
+                preparedStatement.setInt(3, idQuestion);
+
+                int rowsAffected = preparedStatement.executeUpdate();
+
+                if (rowsAffected == 0) {
+                    throw new SQLException("Falha ao adicionar categoria, nenhuma linha afetada.");
+                }
+
+                try (Statement statement = conn.createStatement();
+                     ResultSet generatedKeys = statement.executeQuery("SELECT last_insert_rowid()")) {
+                    if (generatedKeys.next()) {
+                        int idGerado = generatedKeys.getInt(1);
+
+                        // Criar uma nova instância do modelo Category com o ID gerado
+                        TestCase novoCasoDeTeste = new TestCase(idGerado, inputStr, outputStr, idQuestion);
+
+                        conn.commit(); // Commits transaction.
+                    } else {
+                        throw new SQLException("Falha ao obter o ID da categoria, nenhum ID gerado.");
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
     public ArrayList<String> getInputByQuestionId(int id) {
         ArrayList<String> inputs = new ArrayList<>();
