@@ -1,13 +1,20 @@
 package com.qxcode.Controller;
 
 import com.qxcode.DAO.QuestionDAO;
+import com.qxcode.Main;
 import com.qxcode.Model.Question;
 import com.qxcode.Utils.TranformaEmArquivo;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.Button;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+
+import java.io.IOException;
+import java.net.URL;
 
 public class TelaQuestion {
     TranformaEmArquivo tranformaEmArquivo;
@@ -21,6 +28,8 @@ public class TelaQuestion {
     private Text questionExInput;
     @FXML
     private Label questionName;
+    @FXML
+    private Pane navBar;
 
     QuestionDAO dao;
 
@@ -36,8 +45,9 @@ public class TelaQuestion {
 
 
     @FXML
-    public void initialize() {
+    public void initialize() throws IOException {
         btnSubmeter.setOnAction(e -> submeterAcao());
+        this.initNavBar();
         initQuestion();
     }
 
@@ -52,9 +62,23 @@ public class TelaQuestion {
         questionName.setText(question.getTitle());
         questionDescription.setText(question.getDescription());
     }
+    private void initNavBar() throws IOException {
+        FXMLLoader childLoader = obterFXMLNavBarLoader();
+        AnchorPane childNode = childLoader.load();
+        NavBarComponent childController = childLoader.getController();
+        navBar.getChildren().add(childNode);
+    }
 
 
-
+    private FXMLLoader obterFXMLNavBarLoader() {
+        URL resource = Main.class.getResource("View/components/navBar.fxml");
+        if (resource == null) {
+            System.out.println("FXML file not found");
+        } else {
+            System.out.println("FXML file found at: " + resource);
+        }
+        return new FXMLLoader(resource);
+    }
 
 
     public String getTela() {
