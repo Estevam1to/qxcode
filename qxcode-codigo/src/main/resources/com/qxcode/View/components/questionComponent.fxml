@@ -43,6 +43,5 @@
             </Label>
          </children>
       </HBox>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="60.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="1120.0" onMouseClicked="#entrarQuestion"/>
    </children>
 </AnchorPane>

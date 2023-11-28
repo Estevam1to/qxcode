@@ -5,9 +5,12 @@ import com.qxcode.DAO.QuestionDAO;
 import com.qxcode.Main;
 import com.qxcode.Model.Category;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.net.URL;
@@ -27,6 +30,8 @@ public class NewQuestion implements Initializable {
     private TextArea examplesInput;
     @FXML
     private ChoiceBox<String> categoryInput;
+    @FXML
+    private Pane navBar;
 
     private QuestionDAO questionDAO;
     private CategoryDAO categoryDAO;
@@ -47,6 +52,13 @@ public class NewQuestion implements Initializable {
             String title = category.getTitle();
             categoryInput.getItems().add(title);
         }
+    }
+
+    private void initNavBar() throws IOException {
+        FXMLLoader childLoader = obterFXMLNavBarLoader();
+        AnchorPane childNode = childLoader.load();
+        NavBarComponent childController = childLoader.getController();
+        navBar.getChildren().add(childNode);
     }
 
     @FXML
@@ -94,8 +106,14 @@ public class NewQuestion implements Initializable {
         return 0;
     }
 
-    public void entrarInicio(MouseEvent mouseEvent) throws IOException {
-        Main.setRoot("View/telaCategory.fxml");
+    private FXMLLoader obterFXMLNavBarLoader() {
+        URL resource = Main.class.getResource("View/components/navBar.fxml");
+        if (resource == null) {
+            System.out.println("FXML file not found");
+        } else {
+            System.out.println("FXML file found at: " + resource);
+        }
+        return new FXMLLoader(resource);
     }
 
     public String getTela() {
