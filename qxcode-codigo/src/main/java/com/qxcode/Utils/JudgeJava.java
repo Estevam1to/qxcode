@@ -5,20 +5,22 @@ import java.util.ArrayList;
 import java.io.IOException;
 import java.lang.InterruptedException;
 import java.lang.ProcessBuilder;
+import java.util.Collections;
 
 
 public class JudgeJava implements IJudge {
     private final File userFile;
+    private long time;
     private final ArrayList<File> outputsExpecteds;
     private final ArrayList<File> outputsUser;
     private final ArrayList<File> inputs;
     private final ArrayList<File> diffs;
 
-    private final String pathQuestion = "../../../../resources/com/qxcode/Arquivos/File/Question.java";
-    private final String pathOutputUser = "../../../../resources/com/qxcode/Arquivos/OutputUser";
-    private final String pathOutputExpected = "../../../../resources/com/qxcode/Arquivos/OutputExpecteds";
-    private final String pathInput = "../../../../resources/com/qxcode/Arquivos/Inputs";
-    private final String pathDiff = "../../../../resources/com/qxcode/Arquivos/Diffs";
+    private final String pathQuestion = "src/main/resources/com/qxcode/Arquivos/File/Question.java";
+    private final String pathOutputUser = "src/main/resources/com/qxcode/Arquivos/OutputUser";
+    private final String pathOutputExpected = "src/main/resources/com/qxcode/Arquivos/OutputExpecteds";
+    private final String pathInput = "src/main/resources/com/qxcode/Arquivos/Inputs";
+    private final String pathDiff = "src/main/resources/com/qxcode/Arquivos/Diffs";
 
     //private ControllerQuestion controllerQuestion;
 
@@ -31,6 +33,8 @@ public class JudgeJava implements IJudge {
         diffs = new ArrayList<File>();
         carregar(pathInput, inputs);
         carregar(pathOutputExpected, outputsExpecteds);
+        Collections.reverse(inputs);
+        Collections.reverse(outputsExpecteds);
     }
 
     private void carregar(String path, ArrayList<File> list) {
@@ -57,6 +61,7 @@ public class JudgeJava implements IJudge {
             if (error.length() == 0) {
                 for (int i = 0; i < inputs.size(); ++i) {
                     ProcessBuilder pbExecucao = new ProcessBuilder("java", "Question");
+                    pbExecucao.directory(userFile.getParentFile());
                     pbExecucao.redirectInput(inputs.get(i));
                     pbExecucao.redirectOutput(new File(pathOutputUser, "userOut0" + (i + 1) + ".out"));
                     Process processExecucao = pbExecucao.start();
@@ -67,7 +72,8 @@ public class JudgeJava implements IJudge {
                 System.out.println("Não compilou");
             }
             tempoFinal = System.currentTimeMillis();
-            System.out.println("Executado em = " + (tempoFinal - tempoInicial) + " ms");
+            //System.out.println("Executado em = " + (tempoFinal - tempoInicial) + " ms");
+            time = tempoFinal - tempoInicial;
         } catch (IOException e) {
             System.out.println("Erro de I/O" + e.getMessage());
         } catch (InterruptedException e) {
@@ -85,7 +91,6 @@ public class JudgeJava implements IJudge {
         return false;
     }
 
-
     public boolean verifyDiff() {
         carregar(pathOutputUser, outputsUser);
         for (int i = 0; i < outputsUser.size(); ++i) {
@@ -102,7 +107,7 @@ public class JudgeJava implements IJudge {
             }
         }
         carregar(pathDiff, diffs);
-        if (verifyIsNull(diffs)) {
+        if (!verifyIsNull(diffs)) {
             return false;
         }
         return true;
@@ -135,5 +140,22 @@ public class JudgeJava implements IJudge {
 
         File question = new File(pathQuestion);
         question.delete();
+    }
+
+    public String getResult() {
+        this.compilar();
+        boolean diffResult = this.verifyDiff();
+        String result = "";
+        if (time > 2000) {
+            result = "TLE_RESULT";
+        } else if (diffResult) {
+            result = "AC_RESULT";
+        }else if(!diffResult){
+            result = "WA_RESULT";
+        } else {
+            result = "RE_RESULT";
+        }
+        this.destroyArquivos();
+        return result;
     }
 }

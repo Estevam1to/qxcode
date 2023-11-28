@@ -5,21 +5,24 @@ import java.util.ArrayList;
 import java.io.IOException;
 import java.lang.InterruptedException;
 import java.lang.ProcessBuilder;
+import java.util.Collection;
+import java.util.Collections;
 
 
 public class JudgePy implements IJudge {
     private final File userFile;
+    private long time;
     private final ArrayList<File> outputsExpecteds;
     private final ArrayList<File> outputsUser;
     private final ArrayList<File> inputs;
     private final ArrayList<File> diffs;
     //private ControllerQuestion controllerQuestion;
 
-    private final String pathQuestion = "../../../../resources/com/qxcode/Arquivos/File/Question.py";
-    private final String pathOutputUser = "../../../../resources/com/qxcode/Arquivos/OutputUser";
-    private final String pathOutputExpected = "../../../../resources/com/qxcode/Arquivos/OutputExpecteds";
-    private final String pathInput = "../../../../resources/com/qxcode/Arquivos/Inputs";
-    private final String pathDiff = "../../../../resources/com/qxcode/Arquivos/Diffs";
+    private final String pathQuestion = "src/main/resources/com/qxcode/Arquivos/File/Question.py";
+    private final String pathOutputUser = "src/main/resources/com/qxcode/Arquivos/OutputUser";
+    private final String pathOutputExpected = "src/main/resources/com/qxcode/Arquivos/OutputExpecteds";
+    private final String pathInput = "src/main/resources/com/qxcode/Arquivos/Inputs";
+    private final String pathDiff = "src/main/resources/com/qxcode/Arquivos/Diffs";
 
     public JudgePy() {
         //  controllerQuestion.getExtension();
@@ -28,8 +31,10 @@ public class JudgePy implements IJudge {
         outputsUser = new ArrayList<File>();
         inputs = new ArrayList<File>();
         diffs = new ArrayList<File>();
-        carregar(pathDiff, inputs);
+        carregar(pathInput, inputs);
         carregar(pathOutputExpected, outputsExpecteds);
+        Collections.reverse(inputs);
+        Collections.reverse(outputsExpecteds);
     }
 
     private void carregar(String path, ArrayList<File> list) {
@@ -46,16 +51,21 @@ public class JudgePy implements IJudge {
     public void compilar() {
         long tempoInicial = System.currentTimeMillis();
         long tempoFinal = 0;
+
         try {
-            for (int i = 0; i < inputs.size(); ++i) {
+            for (int i = 0; i < inputs.size(); i ++) {
                 ProcessBuilder pbExecucao = new ProcessBuilder("python3", userFile.getName());
+                pbExecucao.redirectError(new File("./error.txt"));
+                pbExecucao.directory(userFile.getParentFile());
                 pbExecucao.redirectInput(inputs.get(i));
+                //System.out.println("Executando " + inputs.get(i).getName());
                 pbExecucao.redirectOutput(new File(pathOutputUser, "userOut0" + (i + 1) + ".out"));
                 Process processExecucao = pbExecucao.start();
                 processExecucao.waitFor();
             }
             tempoFinal = System.currentTimeMillis();
-            System.out.println("Executado em = " + (tempoFinal - tempoInicial) + " ms");
+            //System.out.println("Executado em = " + (tempoFinal - tempoInicial) + " ms");
+            time = tempoFinal - tempoInicial;
         } catch (IOException e) {
             System.out.println("Erro de I/O" + e.getMessage());
         } catch (InterruptedException e) {
@@ -80,7 +90,7 @@ public class JudgePy implements IJudge {
             String pathOutputUser = outputsUser.get(i).getAbsolutePath();
             String pathOutputExpected = outputsExpecteds.get(i).getAbsolutePath();
             try {
-                System.out.println("Comparando " + outputsExpecteds.get(i).getName() + " com " + outputsUser.get(i).getName());
+                //System.out.println("Comparando " + outputsExpecteds.get(i).getName() + " com " + outputsUser.get(i).getName());
                 ProcessBuilder pbDiff = new ProcessBuilder("diff", pathOutputExpected, pathOutputUser);
                 pbDiff.redirectOutput(new File(pathDiff, "diff0" + (i + 1) + ".out"));
                 Process pDiff = pbDiff.start();
@@ -91,7 +101,7 @@ public class JudgePy implements IJudge {
         }
         
         carregar(pathDiff, diffs);
-        if (verifyIsNull(diffs)) {
+        if (!verifyIsNull(diffs)) {
             return false;
         }
 
@@ -125,5 +135,22 @@ public class JudgePy implements IJudge {
 
         File question = new File(pathQuestion);
         question.delete();
+    }
+
+    public String getResult() {
+        this.compilar();
+        boolean diffResult = this.verifyDiff();
+        String result = "";
+        if (time > 1000) {
+            result = "TLE_RESULT";
+        } else if (diffResult) {
+            result = "AC_RESULT";
+        }else if(!diffResult){
+            result = "WA_RESULT";
+        } else {
+            result = "RE_RESULT";
+        }
+        this.destroyArquivos();
+        return result;
     }
 }

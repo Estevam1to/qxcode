@@ -8,12 +8,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="256.0" prefWidth="480.0" style="-fx-background-color: #386694;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="qxcode_implements.View.ModalNotificacoes" fx:id="ModalErroCompilacao">
+<AnchorPane prefHeight="256.0" prefWidth="480.0" style="-fx-background-color: #386694;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qxcode.Controller.ControllerModalErroCompilacao" fx:id="ModalErroCompilacao">
     <children>
         <Line endX="340.0" layoutX="147.0" layoutY="42.0" startX="-140.0" AnchorPane.leftAnchor="4.05" AnchorPane.rightAnchor="4.050000000000011" AnchorPane.topAnchor="40.0" />
         <ImageView fitHeight="61.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="125.0" AnchorPane.leftAnchor="217.55" AnchorPane.rightAnchor="217.55" AnchorPane.topAnchor="70.0">
             <image>
-                <Image url="@../../../../resources/Assets/icon-erro-de-compilacao.png" />
+                <Image url="@../../Assets/icon-erro-de-compilacao.png" />
             </image>
         </ImageView>
         <Text layoutX="138.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Erro de Compilação!" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="130.7" AnchorPane.rightAnchor="130.73984375000003">

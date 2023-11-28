@@ -36,12 +36,8 @@ public class QuestionComponent {
         controllerQuestion = new ControllerQuestion();
     }
 
-
-
     public void setQuestion(Question question){
         this.question = question;
-
-
         this.setarInfoQuestion();
     }
 
@@ -65,8 +61,6 @@ public class QuestionComponent {
     public void checkboxAddFavorite() {
         controllerQuestion.updateQuestionFavorite(this.question.getId());
     }
-
-
 
     public void entrarQuestion(MouseEvent mouseEvent) throws IOException {
         Main.setRoot(telaQuestion.getTela(), question.getId());

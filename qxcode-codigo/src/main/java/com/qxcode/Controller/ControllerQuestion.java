@@ -8,10 +8,10 @@ import java.util.List;
 
 public class ControllerQuestion {
 
-    QuestionDAO dao;
+    private final QuestionDAO questionDAO;
 
-    public ControllerQuestion(){
-        dao = new QuestionDAO();
+    public ControllerQuestion() {
+        this.questionDAO = new QuestionDAO();
     }
 
     public String getTela() {
@@ -19,12 +19,27 @@ public class ControllerQuestion {
     }
 
     public List<Question> getQuestionByCategory(int category) {
-        return dao.getQuestionsByCategory(category);
+        return questionDAO.getQuestionsByCategory(category);
     }
 
-    public List<Question> getFavoriteQuestions(){return dao.getFavoriteQuestions();}
+    public List<Question> getFavoriteQuestions(){return questionDAO.getFavoriteQuestions();}
+
+    public void insertQuestion(String title, String description, Integer difficulty, String examples, int categoryId) {
+        questionDAO.insertQuestion(title, description, difficulty, examples, categoryId);
+    }
+
+    public Question getQuestionByTitle(String title) {
+        return questionDAO.getQuestionByTitle(title);
+    }
+
+    public List<Question> getFavoriteQuestion() {
+        return questionDAO.getFavoriteQuestions();
+    }
+    public List<Question> getAllQuestions() {
+        return questionDAO.getAllQuestions();
+    }
 
     public void updateQuestionFavorite(int id) {
-        dao.updateQuestionFavorite(id);
+        questionDAO.updateQuestionFavorite(id);
     }
 }

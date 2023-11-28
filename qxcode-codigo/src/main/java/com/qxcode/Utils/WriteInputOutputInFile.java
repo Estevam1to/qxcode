@@ -4,11 +4,11 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
-import com.qxcode.Controller.ControllerTestCaseDAO;
+import com.qxcode.Controller.ControllerTestCase;
 
 public class WriteInputOutputInFile {
 
-    ControllerTestCaseDAO controller = new ControllerTestCaseDAO();
+    ControllerTestCase controller = new ControllerTestCase();
 
     public void WriteInputsByQuestionId(int id) {
         ArrayList<String> listInput = controller.getInputListByQuestionId(id);
