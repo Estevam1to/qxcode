@@ -19,11 +19,11 @@ public class TranformaEmArquivo {
     public void criarArquivo() {
         file = null;
         if (language.equals("Python")) {
-            file = new File("src/qxcode_resources/Arquivos/File/Question.py");
+            file = new File("src/main/resources/com/qxcode/Arquivos/File/Question.py");
         } else if (language.equals("C++") || language.equals("C")) {
-            file = new File("src/qxcode_resources/Arquivos/File/Question.cpp");
+            file = new File("src/main/resources/com/qxcode/Arquivos/File/Question.cpp");
         } else if (language.equals("Java")) {
-            file = new File("src/qxcode_resources/Arquivos/File/Question.java");
+            file = new File("src/main/resources/com/qxcode/Arquivos/File/Question.java");
         }
 
         try {

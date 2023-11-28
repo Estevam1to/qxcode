@@ -15,11 +15,11 @@ public class JudgeJava implements IJudge {
     private final ArrayList<File> inputs;
     private final ArrayList<File> diffs;
 
-    private final String pathQuestion = "../../../../resources/com/qxcode/Arquivos/File/Question.java";
-    private final String pathOutputUser = "../../../../resources/com/qxcode/Arquivos/OutputUser";
-    private final String pathOutputExpected = "../../../../resources/com/qxcode/Arquivos/OutputExpecteds";
-    private final String pathInput = "../../../../resources/com/qxcode/Arquivos/Inputs";
-    private final String pathDiff = "../../../../resources/com/qxcode/Arquivos/Diffs";
+    private final String pathQuestion = "src/main/resources/com/qxcode/Arquivos/File/Question.java";
+    private final String pathOutputUser = "src/main/resources/com/qxcode/Arquivos/OutputUser";
+    private final String pathOutputExpected = "src/main/resources/com/qxcode/Arquivos/OutputExpecteds";
+    private final String pathInput = "src/main/resources/com/qxcode/Arquivos/Inputs";
+    private final String pathDiff = "src/main/resources/com/qxcode/Arquivos/Diffs";
 
     //private ControllerQuestion controllerQuestion;
 
@@ -87,7 +87,6 @@ public class JudgeJava implements IJudge {
         return false;
     }
 
-
     public boolean verifyDiff() {
         carregar(pathOutputUser, outputsUser);
         for (int i = 0; i < outputsUser.size(); ++i) {
@@ -140,16 +139,19 @@ public class JudgeJava implements IJudge {
     }
 
     public String getResult() {
+        this.compilar();
+        boolean diffResult = this.verifyDiff();
         String result = "";
         if (time > 1000) {
             result = "TLE_RESULT";
-        } else if (verifyDiff()) {
+        } else if (diffResult) {
             result = "WA_RESULT";
-        }else if(!verifyDiff()){
+        }else if(!diffResult){
             result = "WA_RESULT";
         } else {
             result = "RE_RESULT";
         }
+        this.destroyArquivos();
         return result;
     }
 }

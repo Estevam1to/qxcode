@@ -13,7 +13,7 @@ public class TestCaseDAO {
 
     public ArrayList<String> getInputByQuestionId(int id) {
         ArrayList<String> inputs = new ArrayList<>();
-        String sql = "SELECT input FROM caso_de_teste WHERE id_questao = ?";
+        String sql = "SELECT input FROM caso_de_teste WHERE id_questão = ?";
         try (   Connection conn = JDBC.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -33,7 +33,7 @@ public class TestCaseDAO {
 
     public ArrayList<String> getOutputByQuestionId(int id) {
         ArrayList<String> outputs = new ArrayList<String>();
-        String sql = "SELECT output FROM caso_de_teste WHERE id_questao = ?";
+        String sql = "SELECT output FROM caso_de_teste WHERE id_questão = ?";
         try (   Connection conn = JDBC.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);
@@ -61,7 +61,7 @@ public class TestCaseDAO {
             outputs.append(x);
             outputs.append('\n');
         }
-
+        outputs.append('\n');
         return outputs.toString();
 
     }

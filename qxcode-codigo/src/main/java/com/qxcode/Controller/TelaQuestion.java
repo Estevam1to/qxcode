@@ -82,12 +82,10 @@ public class TelaQuestion {
         writeInputOutputInFile.WriteOutputsByQuestionId(questionId);
 
         // compila e verifica a saida
-        factoryJudge.getJudge(linguagem).compilar();
-        factoryJudge.getJudge(linguagem).verifyDiff();
         String saida = factoryJudge.getJudge(linguagem).getResult();
-
         // mostra o resultado
-        setModalResult(saida);
+        System.out.println(saida);
+        //setModalResult(saida);
     }
 
     public void setModalResult (String saida) {
@@ -107,7 +105,6 @@ public class TelaQuestion {
         questionName.setText(question.getTitle());
         questionDescription.setText(question.getDescription());
     }
-
 
     public String getTela() {
         return "View/telaQuestion.fxml";

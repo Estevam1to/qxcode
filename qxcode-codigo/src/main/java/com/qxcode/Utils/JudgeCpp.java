@@ -17,11 +17,11 @@ public class JudgeCpp implements IJudge {
 
     //private ControllerQuestion controllerQuestion;
 
-    private final String pathQuestion = "../../../../resources/com/qxcode/Arquivos/File/Question.cpp";
-    private final String pathOutputUser = "../../../../resources/com/qxcode/Arquivos/OutputUser";
-    private final String pathOutputExpected = "../../../../resources/com/qxcode/Arquivos/OutputExpecteds";
-    private final String pathInput = "../../../../resources/com/qxcode/Arquivos/Inputs";
-    private final String pathDiff = "../../../../resources/com/qxcode/Arquivos/Diffs";
+    private final String pathQuestion = "src/main/resources/com/qxcode/Arquivos/File/Question.cpp";
+    private final String pathOutputUser = "src/main/resources/com/qxcode/Arquivos/OutputUser";
+    private final String pathOutputExpected = "src/main/resources/com/qxcode/Arquivos/OutputExpecteds";
+    private final String pathInput = "src/main/resources/com/qxcode/Arquivos/Inputs";
+    private final String pathDiff = "src/main/resources/com/qxcode/Arquivos/Diffs";
 
 
     public JudgeCpp() {
@@ -68,6 +68,7 @@ public class JudgeCpp implements IJudge {
             if (error.length() == 0) {
                 for (int i = 0; i < inputs.size(); ++i) {
                     ProcessBuilder pbExecucao = new ProcessBuilder("./question");
+                    pbExecucao.directory(userFile.getParentFile());
                     pbExecucao.redirectInput(inputs.get(i));
                     pbExecucao.redirectOutput(new File(pathOutputUser, "userOut0" + (i + 1) + ".out"));
                     Process processExecucao = pbExecucao.start();
@@ -134,21 +135,27 @@ public class JudgeCpp implements IJudge {
         File error = new File("./error.txt");
         error.delete();
 
+        File exec = new File("./question");
+        exec.delete();
+
         File question = new File(pathQuestion);
         question.delete();
     }
 
     public String getResult() {
+        this.compilar();
+        boolean diffResult = this.verifyDiff();
         String result = "";
         if (time > 1000) {
             result = "TLE_RESULT";
-        } else if (verifyDiff()) {
+        } else if (diffResult) {
             result = "WA_RESULT";
-        }else if(!verifyDiff()){
+        }else if(!diffResult){
             result = "WA_RESULT";
         } else {
             result = "RE_RESULT";
         }
+        this.destroyArquivos();
         return result;
     }
 }
