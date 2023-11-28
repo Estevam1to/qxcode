@@ -46,7 +46,7 @@ public class QuestionDAO {
         try (   Connection conn = JDBC.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
 
-            stmt.setInt(1, 1);
+            stmt.setInt(1, 0);
             stmt.setInt(2, id);
 
 
@@ -59,7 +59,7 @@ public class QuestionDAO {
 
     public void updateQuestionFavorite(int id) {
 
-        if (this.getQuestionById(id).getFavorite() == 0) {
+        if (this.getQuestionById(id).getFavorite() != 1) {
             addFavorite(id);
         } else {
             removeFavorite(id);
