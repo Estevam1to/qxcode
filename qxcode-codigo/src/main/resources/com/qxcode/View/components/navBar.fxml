@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1120.0" style="-fx-background-color: #0E1A25;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qxcode.Controller.NavBarComponent">
+   <children>
+      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1120.0" style="-fx-background-color: #2a4d6f; -fx-border-radius: 66; -fx-background-radius: 66;">
+         <children>
+                     <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#entrarInicio" prefHeight="60.0" prefWidth="180.0" text="Inicio" textAlignment="CENTER" textFill="WHITE">
+                         <font>
+                             <Font name="System Bold" size="24.0" />
+                         </font>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+                     </Label>
+                     <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#entrarFavoritos" prefHeight="60.0" prefWidth="160.0" text="Favoritos" textAlignment="CENTER" textFill="WHITE">
+                         <font>
+                             <Font name="System Bold" size="24.0" />
+                         </font>
+                     </Label>
+                     <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#entrarNovaCategoria" prefHeight="60.0" prefWidth="260.0" text="Nova Categoria" textAlignment="CENTER" textFill="WHITE">
+                         <font>
+                             <Font name="System Bold" size="24.0" />
+                         </font>
+                     </Label>
+                     <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#entrarNovaQuestao" prefHeight="60.0" prefWidth="220.0" text="Nova Questão" textAlignment="CENTER" textFill="WHITE">
+                         <font>
+                             <Font name="System Bold" size="24.0" />
+                         </font>
+                     </Label>
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>

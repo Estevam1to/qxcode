@@ -6,45 +6,15 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="newQuestion" prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: #0E1A25;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qxcode.Controller.NewQuestion">
 
     <children>
-        <Group layoutX="81.0" layoutY="60.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="32.0">
-            <children>
-                <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#2a4d6f" height="60.0" strokeType="INSIDE" strokeWidth="0.0" style="-fx-arc-height: 66; -fx-arc-width: 66;" width="1120.0" />
-                <Label layoutX="100.0" layoutY="15.0" onMouseClicked="#entrarInicio" text="Inicio" textFill="WHITE">
-                    <font>
-                        <Font name="System Bold" size="24.0" />
-                    </font>
-                </Label>
-                <Label layoutX="210.0" layoutY="15.0" text="Favoritos" textFill="WHITE">
-                    <font>
-                        <Font name="System Bold" size="24.0" />
-                    </font>
-                </Label>
-                <Label layoutX="371.0" layoutY="15.0" text="Nova Categoria" textFill="WHITE">
-                    <font>
-                        <Font name="System Bold" size="24.0" />
-                    </font>
-                </Label>
-                <Label layoutX="597.0" layoutY="15.0" text="Nova Questão" textFill="WHITE">
-                    <font>
-                        <Font name="System Bold" size="24.0" />
-                    </font>
-                </Label>
-                <TextField layoutX="800.0" layoutY="5.23" prefHeight="50.0" prefWidth="300.0" promptText="Pesquisar" style="-fx-background-color: #1c334a; -fx-background-radius: 66; -fx-text-fill: #ffffff;">
-                    <font>
-                        <Font name="System Bold" size="18.0" />
-                    </font>
-                </TextField>
-            </children>
-        </Group>
         <Group layoutX="80.0" layoutY="124.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="124.0">
             <children>
                 <Label text="Nova Questão" textFill="WHITE">
@@ -149,5 +119,6 @@
                 </Group>
             </children>
         </Group>
+      <Pane fx:id="navBar" prefHeight="60.0" prefWidth="1120.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="32.0" />
     </children>
 </AnchorPane>

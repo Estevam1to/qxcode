@@ -9,6 +9,17 @@ import com.qxcode.Model.Category;
 
 public class CategoryDAO {
 
+    public Category resultSetToCategory(ResultSet resultSet) throws SQLException {
+        Category category = new Category(
+        resultSet.getInt("id_categoria"),
+        resultSet.getString("titulo"),
+        resultSet.getString("descricao")
+        );
+
+        return category;
+
+    }
+
     public List<Category> getAllCategories() {
         List<Category> categories = new ArrayList<>();
         String sql = "SELECT * FROM categoria";
@@ -19,16 +30,15 @@ public class CategoryDAO {
                  ResultSet resultSet = preparedStatement.executeQuery();){
 
                 while (resultSet.next()) {
-                    int id = resultSet.getInt("id_categoria");
-                    String title = resultSet.getString("titulo");
-                    String description = resultSet.getString("descricao");
 
-                    Category category = new Category(id, title, description);
+                    Category category = resultSetToCategory(resultSet);
                     categories.add(category);
+
                 }
 
                 resultSet.close();
                 preparedStatement.close();
+
                 return categories;
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -44,15 +54,10 @@ public class CategoryDAO {
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setInt(1, idC);
-            ResultSet rs = stmt.executeQuery();
+            ResultSet resultSet = stmt.executeQuery();
 
-            if (rs.next()) {
-                int id = rs.getInt("id_categoria");
-                String title = rs.getString("titulo");
-                String description = rs.getString("descricao");
+            categoria = resultSetToCategory(resultSet);
 
-                categoria = new Category(id, title, description);
-            }
 
             return categoria;
         } catch (SQLException e) {
@@ -65,18 +70,16 @@ public class CategoryDAO {
     public Category getCategoryByTitle(String titulo) {
         Category categoria = null;
         String sql = "SELECT * FROM categoria WHERE titulo = ?";
+
         try (Connection conn = JDBC.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             stmt.setString(1, titulo);
-            ResultSet rs = stmt.executeQuery();
+            ResultSet resultSet = stmt.executeQuery();
 
-            if (rs.next()) {
-                int id = rs.getInt("id_categoria");
-                String title = rs.getString("titulo");
-                String description = rs.getString("descricao");
+            if (resultSet.next()) {
 
-                categoria = new Category(id, title, description);
+                categoria = resultSetToCategory(resultSet);
             }
 
             return categoria;

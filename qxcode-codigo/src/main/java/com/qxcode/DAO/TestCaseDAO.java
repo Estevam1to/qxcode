@@ -11,6 +11,24 @@ import com.qxcode.JDBC.JDBC;
 
 public class TestCaseDAO {
 
+    public void insert (String inputs, String outputs, int questionId) {
+
+        String sql = "INSERT INTO caso_de_teste (input, output, id_questão) VALUES (?, ?, ?)";
+
+        try (   Connection conn = JDBC.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setString(1, inputs);
+            stmt.setString(2, outputs);
+            stmt.setInt(3, questionId);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public ArrayList<String> getInputByQuestionId(int id) {
         ArrayList<String> inputs = new ArrayList<>();
         String sql = "SELECT input FROM caso_de_teste WHERE id_questão = ?";

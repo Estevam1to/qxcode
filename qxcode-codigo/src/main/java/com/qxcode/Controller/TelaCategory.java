@@ -7,10 +7,13 @@ import com.qxcode.Model.Category;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuBar;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
+
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -25,19 +28,28 @@ public class TelaCategory {
     private GridPane gridPane;
     @FXML
     private ArrayList<Pane> categoryCards;
+
     @FXML
-    NewCategory newCategory = new NewCategory();
+    private Pane navBar;
     @FXML
-    NewQuestion newQuestion = new NewQuestion();
+    private Rectangle teste;
 
 
     @FXML
     public void initialize() throws IOException {
+        this.initNavBar();
         this.initGridCategories();
     }
 
+    private void initNavBar() throws IOException {
+        FXMLLoader childLoader = obterFXMLNavBarLoader();
+        AnchorPane childNode = childLoader.load();
+        NavBarComponent childController = childLoader.getController();
+        navBar.getChildren().add(childNode);
+    }
 
-    private void initGridCategories() {
+
+    private void initGridCategories(){
         List<Category> categories = getAllCategories();
 
         for (Category categoria : categories) {
@@ -87,6 +99,16 @@ public class TelaCategory {
         return new FXMLLoader(resource);
     }
 
+    private FXMLLoader obterFXMLNavBarLoader() {
+        URL resource = Main.class.getResource("View/components/navBar.fxml");
+        if (resource == null) {
+            System.out.println("FXML file not found");
+        } else {
+            System.out.println("FXML file found at: " + resource);
+        }
+        return new FXMLLoader(resource);
+    }
+
 
     private List<Category> getAllCategories() {
         ControllerCategory controller = new ControllerCategory();
@@ -99,15 +121,7 @@ public class TelaCategory {
         }
     }
 
-    public void entrarNovaCategoria(MouseEvent mouseEvent) throws IOException {
-        Main.setRoot(newCategory.getTela());
-    }
-
-    public void entrarNovaQuestao(MouseEvent mouseEvent) throws IOException {
-        Main.setRoot(newQuestion.getTela());
-    }
-
     public String getTela() {
-        return "com/qxcode/View/telaCategory.fxml";
+        return "View/telaCategory.fxml";
     }
 }

@@ -32,10 +32,15 @@ public class TelaListQuestion {
 
     private int currentRowIndex = 0;
 
+    @FXML
+    private Pane navBar;
+
 
     @FXML
     public void initialize() throws IOException {
+        this.initNavBar();
         this.initGridQuestions();
+
     }
 
     public void setCategory(String category) {
@@ -46,6 +51,12 @@ public class TelaListQuestion {
         this.idCategorySelect = id;
     }
 
+    private void initNavBar() throws IOException {
+        FXMLLoader childLoader = obterFXMLNavBarLoader();
+        AnchorPane childNode = childLoader.load();
+        NavBarComponent childController = childLoader.getController();
+        navBar.getChildren().add(childNode);
+    }
 
     private void initGridQuestions() {
         List<Question> questions = getAllQuestions();
@@ -59,11 +70,7 @@ public class TelaListQuestion {
                 System.out.println("Warning: null Question object encountered");
             }
         }
-
     }
-
-
-
 
     private void adicionarQuestionEmGrid(Question question) {
         try {
@@ -99,10 +106,26 @@ public class TelaListQuestion {
         return new FXMLLoader(resource);
     }
 
+    private FXMLLoader obterFXMLNavBarLoader() {
+        URL resource = Main.class.getResource("View/components/navBar.fxml");
+        if (resource == null) {
+            System.out.println("FXML file not found");
+        } else {
+            System.out.println("FXML file found at: " + resource);
+        }
+        return new FXMLLoader(resource);
+    }
+
 
     private List<Question> getAllQuestions() {
-        ControllerQuestion controller = new ControllerQuestion();
-        List<Question> questions = controller.getQuestionByCategory(this.idCategorySelect);
+        ControllerQuestion controllerQuestion = new ControllerQuestion();
+        List<Question> questions;
+        if(this.idCategorySelect == -1){
+            questions = controllerQuestion.getFavoriteQuestions();
+        }else{
+            questions = controllerQuestion.getQuestionByCategory(this.idCategorySelect);
+        }
+
         if (questions != null) {
             return questions;
         }
