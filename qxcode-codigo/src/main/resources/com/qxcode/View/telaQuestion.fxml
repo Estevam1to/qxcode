@@ -113,10 +113,8 @@
             <ScrollBar layoutX="501.0" layoutY="32.0" orientation="VERTICAL" prefHeight="198.0" prefWidth="15.0" />
          </children>
       </Group>
-      <SplitMenuButton layoutX="701.0" layoutY="192.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="516.0" style="-fx-background-color: #0E1A25;" text="Selecione a linguagem" textFill="#0e1a25" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="192.0">
+      <SplitMenuButton layoutX="701.0" layoutY="192.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="516.0" style="-fx-background-color: #0E1A25;" text="Selecione a linguagem" textFill="#0e1a25" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="192.0" fx:id="btnLinguagem">
          <items>
-            <MenuItem mnemonicParsing="false" text="Action 1" />
-            <MenuItem mnemonicParsing="false" text="Action 2" />
          </items>
          <font>
             <Font name="System Bold" size="24.0" />

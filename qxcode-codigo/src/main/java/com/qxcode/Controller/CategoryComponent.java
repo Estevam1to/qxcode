@@ -24,11 +24,8 @@ public class CategoryComponent {
     private Category categoria;
 
 
-
     public void setCategory(Category categoria){
         this.categoria = categoria;
-
-
         this.setarInfoCategory();
     }
 
