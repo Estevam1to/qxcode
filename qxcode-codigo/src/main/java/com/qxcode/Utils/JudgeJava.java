@@ -141,14 +141,14 @@ public class JudgeJava implements IJudge {
 
     public String getResult() {
         String result = "";
-        if (time > 2000) {
-            result = "TLE";
+        if (time > 1000) {
+            result = "TLE_RESULT";
         } else if (verifyDiff()) {
-            result = "AC";
+            result = "WA_RESULT";
         }else if(!verifyDiff()){
-            result = "WA";
+            result = "WA_RESULT";
         } else {
-            result = "ERRO";
+            result = "RE_RESULT";
         }
         return result;
     }

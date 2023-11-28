@@ -24,11 +24,8 @@ public class CategoryComponent {
     private Category categoria;
 
 
-
     public void setCategory(Category categoria){
         this.categoria = categoria;
-
-
         this.setarInfoCategory();
     }
 
@@ -46,6 +43,6 @@ public class CategoryComponent {
 
 
     public void entrarListQuestion(MouseEvent mouseEvent) throws IOException {
-        Main.setRoot(telaListQuestion.getTela(categoryTitle.getText()));
+        Main.setRoot(telaListQuestion.getTela(), categoria.getId(), categoria.getTitle());
     }
 }

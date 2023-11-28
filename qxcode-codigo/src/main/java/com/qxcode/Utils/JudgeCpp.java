@@ -80,7 +80,7 @@ public class JudgeCpp implements IJudge {
             tempoFinal = System.currentTimeMillis();
             time = tempoFinal - tempoInicial;
         } catch (IOException e) {
-            System.out.println("Erro de I/O" + e.getMessage());
+            System.out.println("Erro de IO" + e.getMessage());
         } catch (InterruptedException e) {
             System.out.println("Erro de interrupção" + e.getMessage());
         }
@@ -141,13 +141,13 @@ public class JudgeCpp implements IJudge {
     public String getResult() {
         String result = "";
         if (time > 1000) {
-            result = "TLE";
+            result = "TLE_RESULT";
         } else if (verifyDiff()) {
-            result = "AC";
+            result = "WA_RESULT";
         }else if(!verifyDiff()){
-            result = "WA";
+            result = "WA_RESULT";
         } else {
-            result = "ERRO";
+            result = "RE_RESULT";
         }
         return result;
     }

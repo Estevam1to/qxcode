@@ -7,15 +7,25 @@ import java.io.File;
 
 public class TranformaEmArquivo {
     private String code;
+    private String language;
     private File file;
     
-    public TranformaEmArquivo(String code) {
+    public TranformaEmArquivo(String code, String language) {
         this.code = code;
+        this.language = language;
     }
     
     // Cria o arquivo .java
     public void criarArquivo() {
-        file = new File("src/qxcode_resources/Arquivos/File/Question.java");
+        file = null;
+        if (language.equals("Python")) {
+            file = new File("src/qxcode_resources/Arquivos/File/Question.py");
+        } else if (language.equals("C++") || language.equals("C")) {
+            file = new File("src/qxcode_resources/Arquivos/File/Question.cpp");
+        } else if (language.equals("Java")) {
+            file = new File("src/qxcode_resources/Arquivos/File/Question.java");
+        }
+
         try {
             file.createNewFile();
         } catch (Exception e) {
