@@ -51,7 +51,7 @@ public class ControllerTestCase {
             StringBuilder sb = new StringBuilder();
             String line;
             while((line = br.readLine()) != null) {
-                sb.append(line).append("\n");
+                sb.append(line).append("/");
             }
             return sb.toString();
         } catch (FileNotFoundException e) {
