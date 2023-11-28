@@ -35,6 +35,15 @@ public class ControllerTestCase {
         return testCaseDAO.getInputsStringByQuestionId(id);
     }
 
+    public String getExOutputByQuestionId(int id) {
+        return testCaseDAO.getExOutputsStringByQuestionId(id);
+    }
+
+    public String getExInputByQuestionId(int id) {
+        return testCaseDAO.getExInputsStringByQuestionId(id);
+    }
+
+
     public void saveTestCases(List<File> inputFiles, List<File> outputFiles, int idQuestion) {
         for(int i = 0; i < inputFiles.size(); i++){
             String input = parseFileToString(inputFiles.get(i));

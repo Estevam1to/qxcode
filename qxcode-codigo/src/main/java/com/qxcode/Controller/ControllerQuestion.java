@@ -45,10 +45,10 @@ public class ControllerQuestion {
         questionDAO.updateQuestionFavorite(id);
     }
 
-    public List<String> getExTestCaseInput(int idQuestion){
-        return controllerTestCase.getInputListByQuestionId(idQuestion);
+    public String getExTestCaseInput(int idQuestion){
+        return controllerTestCase.getExInputByQuestionId(idQuestion);
     }
-    public List<String> getExTestCaseOutput(int idQuestion){
-        return controllerTestCase.getOutputListByQuestionId(idQuestion);
+    public String getExTestCaseOutput(int idQuestion){
+        return controllerTestCase.getExOutputByQuestionId(idQuestion);
     }
 }

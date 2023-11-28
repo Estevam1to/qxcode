@@ -133,10 +133,8 @@ public class TelaQuestion {
         Question question = dao.getQuestionById(questionId);
         questionName.setText(question.getTitle());
         questionDescription.setText(question.getDescription());
-        List<String> exInput = controllerQuestion.getExTestCaseInput(question.getId());
-        List<String> exOutput = controllerQuestion.getExTestCaseOutput(question.getId());
-        questionExOutput.setText(exOutput.get(0));
-        questionExInput.setText(exInput.get(0));
+        questionExOutput.setText(controllerQuestion.getExTestCaseOutput(question.getId()));
+        questionExInput.setText(controllerQuestion.getExTestCaseInput(question.getId()));
     }
     private void initNavBar() throws IOException {
         FXMLLoader childLoader = obterFXMLNavBarLoader();
