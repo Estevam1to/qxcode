@@ -1,10 +1,14 @@
 package com.qxcode;
 
+import com.qxcode.Controller.ModalErroCompilacao;
 import com.qxcode.Controller.TelaListQuestion;
 import com.qxcode.Controller.TelaQuestion;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Dialog;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -45,7 +49,6 @@ public class Main extends Application {
         controller.setCategory(nameCategory);
         controller.setId(categoryId);
         loader.setController(controller);
-
         scene.setRoot(loader.load());
     }
 
@@ -54,7 +57,6 @@ public class Main extends Application {
         TelaQuestion controller = new TelaQuestion();
         controller.setId(questionId);
         loader.setController(controller);
-
         scene.setRoot(loader.load());
     }
 }

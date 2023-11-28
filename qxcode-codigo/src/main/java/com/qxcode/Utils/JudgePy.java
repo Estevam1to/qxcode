@@ -9,17 +9,18 @@ import java.lang.ProcessBuilder;
 
 public class JudgePy implements IJudge {
     private final File userFile;
+    private long time;
     private final ArrayList<File> outputsExpecteds;
     private final ArrayList<File> outputsUser;
     private final ArrayList<File> inputs;
     private final ArrayList<File> diffs;
     //private ControllerQuestion controllerQuestion;
 
-    private final String pathQuestion = "../../../../resources/com/qxcode/Arquivos/File/Question.py";
-    private final String pathOutputUser = "../../../../resources/com/qxcode/Arquivos/OutputUser";
-    private final String pathOutputExpected = "../../../../resources/com/qxcode/Arquivos/OutputExpecteds";
-    private final String pathInput = "../../../../resources/com/qxcode/Arquivos/Inputs";
-    private final String pathDiff = "../../../../resources/com/qxcode/Arquivos/Diffs";
+    private final String pathQuestion = "src/main/resources/com/qxcode/Arquivos/File/Question.py";
+    private final String pathOutputUser = "src/main/resources/com/qxcode/Arquivos/OutputUser";
+    private final String pathOutputExpected = "src/main/resources/com/qxcode/Arquivos/OutputExpecteds";
+    private final String pathInput = "src/main/resources/com/qxcode/Arquivos/Inputs";
+    private final String pathDiff = "src/main/resources/com/qxcode/Arquivos/Diffs";
 
     public JudgePy() {
         //  controllerQuestion.getExtension();
@@ -55,7 +56,8 @@ public class JudgePy implements IJudge {
                 processExecucao.waitFor();
             }
             tempoFinal = System.currentTimeMillis();
-            System.out.println("Executado em = " + (tempoFinal - tempoInicial) + " ms");
+            //System.out.println("Executado em = " + (tempoFinal - tempoInicial) + " ms");
+            time = tempoFinal - tempoInicial;
         } catch (IOException e) {
             System.out.println("Erro de I/O" + e.getMessage());
         } catch (InterruptedException e) {
@@ -125,5 +127,22 @@ public class JudgePy implements IJudge {
 
         File question = new File(pathQuestion);
         question.delete();
+    }
+
+    public String getResult() {
+        this.compilar();
+        boolean diffResult = this.verifyDiff();
+        String result = "";
+        if (time > 1000) {
+            result = "TLE_RESULT";
+        } else if (diffResult) {
+            result = "WA_RESULT";
+        }else if(!diffResult){
+            result = "WA_RESULT";
+        } else {
+            result = "RE_RESULT";
+        }
+        this.destroyArquivos();
+        return result;
     }
 }

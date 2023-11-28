@@ -40,8 +40,6 @@ public class QuestionComponent {
 
     public void setQuestion(Question question){
         this.question = question;
-
-
         this.setarInfoQuestion();
     }
 

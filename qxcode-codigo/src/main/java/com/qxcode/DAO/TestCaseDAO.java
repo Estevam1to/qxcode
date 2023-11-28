@@ -79,7 +79,7 @@ public class TestCaseDAO {
             outputs.append(x);
             outputs.append('\n');
         }
-
+        outputs.append('\n');
         return outputs.toString();
 
     }
