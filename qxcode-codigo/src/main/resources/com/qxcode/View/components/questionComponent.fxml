@@ -21,7 +21,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <CheckBox fx:id="favoriteQuestion" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="60.0" prefWidth="252.0" textAlignment="CENTER" textOverrun="CLIP">
+            <CheckBox fx:id="favoriteQuestion" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onMouseClicked="#checkboxAddFavorite" prefHeight="60.0" prefWidth="252.0" textAlignment="CENTER" textOverrun="CLIP">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
