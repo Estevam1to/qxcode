@@ -24,8 +24,46 @@ public class QuestionDAO {
         return question;
     }
 
+    public void addFavorite(int id) {
+        String sql = "UPDATE questao SET favorito = ? WHERE id_questao = ?";
+
+        try (   Connection conn = JDBC.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, 1);
+            stmt.setInt(2, id);
+
+
+            stmt.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void removeFavorite(int id) {
+        String sql = "UPDATE questao SET favorito = ? WHERE id_questao = ?";
+
+        try (   Connection conn = JDBC.getConnection();
+                PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, 1);
+            stmt.setInt(2, id);
+
+
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void updateQuestionFavorite(int id) {
 
+        if (this.getQuestionById(id).getFavorite() == 0) {
+            addFavorite(id);
+        } else {
+            removeFavorite(id);
+        }
     }
 
     public Question getQuestionById(int idQuestion){
