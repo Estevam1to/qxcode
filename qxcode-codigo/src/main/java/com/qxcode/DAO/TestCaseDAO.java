@@ -102,4 +102,26 @@ public class TestCaseDAO {
 
     }
 
+    public String getExOutputsStringByQuestionId(int id) {
+
+        ArrayList<String> received = new ArrayList<>();
+        received = this.getOutputByQuestionId(id);
+        String x = received.get(0);
+
+        x = x.replace('/', '\n');
+
+        return x;
+    }
+
+    public String getExInputsStringByQuestionId(int id) {
+
+        ArrayList<String> received = new ArrayList<>();
+        received = this.getInputByQuestionId(id);
+        String x = received.get(0);
+
+        x = x.replace('/', '\n');
+
+        return x;
+    }
+
 }

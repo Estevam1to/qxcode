@@ -9,9 +9,11 @@ import java.util.List;
 public class ControllerQuestion {
 
     private final QuestionDAO questionDAO;
+    private ControllerTestCase controllerTestCase;
 
     public ControllerQuestion() {
         this.questionDAO = new QuestionDAO();
+        this.controllerTestCase = new ControllerTestCase();
     }
 
     public String getTela() {
@@ -41,5 +43,12 @@ public class ControllerQuestion {
 
     public void updateQuestionFavorite(int id) {
         questionDAO.updateQuestionFavorite(id);
+    }
+
+    public String getExTestCaseInput(int idQuestion){
+        return controllerTestCase.getExInputByQuestionId(idQuestion);
+    }
+    public String getExTestCaseOutput(int idQuestion){
+        return controllerTestCase.getExOutputByQuestionId(idQuestion);
     }
 }
