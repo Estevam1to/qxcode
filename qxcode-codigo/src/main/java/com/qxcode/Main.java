@@ -25,12 +25,7 @@ public class Main extends Application {
 
         scene = new Scene(loader.load(), 1280, 832);
 
-        stage.setTitle("Category");
-
-        stage.setMaxWidth(1280);
-        stage.setMaxHeight(832);
-        stage.setMinWidth(1280);
-        stage.setMinHeight(832);//1450 e 850
+        stage.setTitle("QXcode");
 
         stage.setScene(scene);
         stage.show();

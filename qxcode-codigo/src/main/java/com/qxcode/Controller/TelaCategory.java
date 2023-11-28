@@ -8,6 +8,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.ScrollBar;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
@@ -33,13 +35,17 @@ public class TelaCategory {
     private Pane navBar;
     @FXML
     private Rectangle teste;
+    @FXML
+    private ScrollPane scrollPane;
 
 
     @FXML
     public void initialize() throws IOException {
         this.initNavBar();
         this.initGridCategories();
+
     }
+
 
     private void initNavBar() throws IOException {
         FXMLLoader childLoader = obterFXMLNavBarLoader();

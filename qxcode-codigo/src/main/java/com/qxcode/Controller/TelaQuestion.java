@@ -19,6 +19,7 @@ import javafx.scene.control.MenuItem;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 
 public class TelaQuestion {
     TranformaEmArquivo tranformaEmArquivo;
@@ -31,11 +32,15 @@ public class TelaQuestion {
     @FXML
     private Text questionExInput;
     @FXML
+    private Text questionExOutput;
+    @FXML
     private Label questionName;
     @FXML
     private Pane navBar;
 
     QuestionDAO dao;
+
+    ControllerQuestion controllerQuestion;
 
     private int questionId;
 
@@ -47,6 +52,7 @@ public class TelaQuestion {
 
     public TelaQuestion(){
         dao = new QuestionDAO();
+        controllerQuestion = new ControllerQuestion();
     }
 
     public void setId(int id){
@@ -127,6 +133,10 @@ public class TelaQuestion {
         Question question = dao.getQuestionById(questionId);
         questionName.setText(question.getTitle());
         questionDescription.setText(question.getDescription());
+        List<String> exInput = controllerQuestion.getExTestCaseInput(question.getId());
+        List<String> exOutput = controllerQuestion.getExTestCaseOutput(question.getId());
+        questionExOutput.setText(exOutput.get(0));
+        questionExInput.setText(exInput.get(0));
     }
     private void initNavBar() throws IOException {
         FXMLLoader childLoader = obterFXMLNavBarLoader();
