@@ -70,11 +70,7 @@ public class TelaListQuestion {
                 System.out.println("Warning: null Question object encountered");
             }
         }
-
     }
-
-
-
 
     private void adicionarQuestionEmGrid(Question question) {
         try {
@@ -122,8 +118,14 @@ public class TelaListQuestion {
 
 
     private List<Question> getAllQuestions() {
-        ControllerQuestion controller = new ControllerQuestion();
-        List<Question> questions = controller.getQuestionByCategory(this.idCategorySelect);
+        ControllerQuestion controllerQuestion = new ControllerQuestion();
+        List<Question> questions;
+        if(this.idCategorySelect == -1){
+            questions = controllerQuestion.getFavoriteQuestions();
+        }else{
+            questions = controllerQuestion.getQuestionByCategory(this.idCategorySelect);
+        }
+
         if (questions != null) {
             return questions;
         }

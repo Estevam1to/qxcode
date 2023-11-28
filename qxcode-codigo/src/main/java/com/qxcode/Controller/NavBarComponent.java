@@ -26,7 +26,7 @@ public class NavBarComponent {
         Main.setRoot(telaCategory.getTela());
     }
     public void entrarFavoritos(MouseEvent mouseEvent) throws IOException {
-        Main.setRoot(telaListQuestion.getTela());
+        Main.setRoot(telaListQuestion.getTela(), -1, "Favoritos");
     }
     public void entrarNovaCategoria(MouseEvent mouseEvent) throws IOException {
         Main.setRoot(newCategory.getTela());

@@ -21,4 +21,6 @@ public class ControllerQuestion {
     public List<Question> getQuestionByCategory(int category) {
         return dao.getQuestionsByCategory(category);
     }
+
+    public List<Question> getFavoriteQuestions(){return dao.getFavoriteQuestions();}
 }
