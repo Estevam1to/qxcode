@@ -28,9 +28,12 @@ public class QuestionComponent {
     CategoryDAO dao;
     private Question question;
 
+    private ControllerQuestionDAO controllerQuestionDAO;
+
     public QuestionComponent(){
         telaQuestion = new TelaQuestion();
         dao = new CategoryDAO();
+        controllerQuestionDAO = new ControllerQuestionDAO();
     }
 
 
@@ -57,6 +60,10 @@ public class QuestionComponent {
         } else {
             System.out.println("Erro ao setar info, question is null!");
         }
+    }
+
+    public void checkboxAddFavorite() {
+        controllerQuestionDAO.updateQuestionFavorite(this.question.getId());
     }
 
 
