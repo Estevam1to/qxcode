@@ -23,4 +23,8 @@ public class ControllerQuestion {
     }
 
     public List<Question> getFavoriteQuestions(){return dao.getFavoriteQuestions();}
+
+    public void updateQuestionFavorite(int id) {
+        dao.updateQuestionFavorite(id);
+    }
 }
