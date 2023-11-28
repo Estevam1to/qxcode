@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.io.IOException;
 import java.lang.InterruptedException;
 import java.lang.ProcessBuilder;
+import java.util.Collection;
+import java.util.Collections;
 
 
 public class JudgePy implements IJudge {
@@ -31,6 +33,8 @@ public class JudgePy implements IJudge {
         diffs = new ArrayList<File>();
         carregar(pathInput, inputs);
         carregar(pathOutputExpected, outputsExpecteds);
+        Collections.reverse(inputs);
+        Collections.reverse(outputsExpecteds);
     }
 
     private void carregar(String path, ArrayList<File> list) {
@@ -48,13 +52,13 @@ public class JudgePy implements IJudge {
         long tempoInicial = System.currentTimeMillis();
         long tempoFinal = 0;
 
-        System.out.println("Compilando..." + inputs.get(0).getName());
         try {
-            for (int i = 0; i < inputs.size(); ++i) {
+            for (int i = 0; i < inputs.size(); i ++) {
                 ProcessBuilder pbExecucao = new ProcessBuilder("python3", userFile.getName());
                 pbExecucao.redirectError(new File("./error.txt"));
                 pbExecucao.directory(userFile.getParentFile());
                 pbExecucao.redirectInput(inputs.get(i));
+                //System.out.println("Executando " + inputs.get(i).getName());
                 pbExecucao.redirectOutput(new File(pathOutputUser, "userOut0" + (i + 1) + ".out"));
                 Process processExecucao = pbExecucao.start();
                 processExecucao.waitFor();
@@ -86,7 +90,7 @@ public class JudgePy implements IJudge {
             String pathOutputUser = outputsUser.get(i).getAbsolutePath();
             String pathOutputExpected = outputsExpecteds.get(i).getAbsolutePath();
             try {
-                System.out.println("Comparando " + outputsExpecteds.get(i).getName() + " com " + outputsUser.get(i).getName());
+                //System.out.println("Comparando " + outputsExpecteds.get(i).getName() + " com " + outputsUser.get(i).getName());
                 ProcessBuilder pbDiff = new ProcessBuilder("diff", pathOutputExpected, pathOutputUser);
                 pbDiff.redirectOutput(new File(pathDiff, "diff0" + (i + 1) + ".out"));
                 Process pDiff = pbDiff.start();
@@ -146,7 +150,7 @@ public class JudgePy implements IJudge {
         } else {
             result = "RE_RESULT";
         }
-        //this.destroyArquivos();
+        this.destroyArquivos();
         return result;
     }
 }

@@ -60,7 +60,6 @@ public class Main extends Application {
 
     public static <T> void setModalResult(String pathModal, T controller) throws IOException {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource(pathModal));
-
         Parent modalParent = loader.load();
         Stage modalStage = new Stage();
         modalStage.initModality(Modality.WINDOW_MODAL);

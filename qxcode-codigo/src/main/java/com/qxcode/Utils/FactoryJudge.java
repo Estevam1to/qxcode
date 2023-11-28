@@ -7,6 +7,8 @@ public class FactoryJudge {
                 return new JudgePy();
             case "C++":
                 return new JudgeCpp();
+            case "C":
+                return new JudgeCpp();
             case "Java":
                 return new JudgeJava();
         }
