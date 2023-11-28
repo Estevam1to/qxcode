@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.io.IOException;
 import java.lang.InterruptedException;
 import java.lang.ProcessBuilder;
+import java.util.Collections;
 
 
 public class JudgeJava implements IJudge {
@@ -32,6 +33,8 @@ public class JudgeJava implements IJudge {
         diffs = new ArrayList<File>();
         carregar(pathInput, inputs);
         carregar(pathOutputExpected, outputsExpecteds);
+        Collections.reverse(inputs);
+        Collections.reverse(outputsExpecteds);
     }
 
     private void carregar(String path, ArrayList<File> list) {
@@ -58,6 +61,7 @@ public class JudgeJava implements IJudge {
             if (error.length() == 0) {
                 for (int i = 0; i < inputs.size(); ++i) {
                     ProcessBuilder pbExecucao = new ProcessBuilder("java", "Question");
+                    pbExecucao.directory(userFile.getParentFile());
                     pbExecucao.redirectInput(inputs.get(i));
                     pbExecucao.redirectOutput(new File(pathOutputUser, "userOut0" + (i + 1) + ".out"));
                     Process processExecucao = pbExecucao.start();
@@ -103,7 +107,7 @@ public class JudgeJava implements IJudge {
             }
         }
         carregar(pathDiff, diffs);
-        if (verifyIsNull(diffs)) {
+        if (!verifyIsNull(diffs)) {
             return false;
         }
         return true;
@@ -142,10 +146,10 @@ public class JudgeJava implements IJudge {
         this.compilar();
         boolean diffResult = this.verifyDiff();
         String result = "";
-        if (time > 1000) {
+        if (time > 2000) {
             result = "TLE_RESULT";
         } else if (diffResult) {
-            result = "WA_RESULT";
+            result = "AC_RESULT";
         }else if(!diffResult){
             result = "WA_RESULT";
         } else {

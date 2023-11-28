@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.io.IOException;
 import java.lang.InterruptedException;
 import java.lang.ProcessBuilder;
+import java.util.Collections;
 
 
 public class JudgeCpp implements IJudge {
@@ -33,6 +34,8 @@ public class JudgeCpp implements IJudge {
         diffs = new ArrayList<File>();
         carregar(pathInput, inputs);
         carregar(pathOutputExpected, outputsExpecteds);
+        Collections.reverse(inputs);
+        Collections.reverse(outputsExpecteds);
     }
 
     private void carregar(String path, ArrayList<File> list) {
@@ -70,6 +73,7 @@ public class JudgeCpp implements IJudge {
                     ProcessBuilder pbExecucao = new ProcessBuilder("./question");
                     pbExecucao.directory(userFile.getParentFile());
                     pbExecucao.redirectInput(inputs.get(i));
+                    System.out.println("Executando " + inputs.get(i).getName());
                     pbExecucao.redirectOutput(new File(pathOutputUser, "userOut0" + (i + 1) + ".out"));
                     Process processExecucao = pbExecucao.start();
                     processExecucao.waitFor();
@@ -94,7 +98,7 @@ public class JudgeCpp implements IJudge {
             String pathOutputUserTest = outputsUser.get(i).getAbsolutePath();
             String pathOutputExpectedTest = outputsExpecteds.get(i).getAbsolutePath();
             try {
-                //System.out.println("Comparando " + outputsExpecteds.get(i).getName() + " com " + outputsUser.get(i).getName());
+                System.out.println("Comparando " + outputsExpecteds.get(i).getName() + " com " + outputsUser.get(i).getName());
                 ProcessBuilder pbDiff = new ProcessBuilder("diff", pathOutputExpectedTest, pathOutputUserTest);
                 pbDiff.redirectOutput(new File(pathDiff, "diff0" + (i + 1) + ".out"));
                 Process pDiff = pbDiff.start();
@@ -104,7 +108,7 @@ public class JudgeCpp implements IJudge {
             }
         }
         carregar(pathDiff, diffs);
-        if (verifyIsNull(diffs)) {
+        if (!verifyIsNull(diffs)) {
             return false;
         }
         return true;
@@ -135,7 +139,7 @@ public class JudgeCpp implements IJudge {
         File error = new File("./error.txt");
         error.delete();
 
-        File exec = new File("./question");
+        File exec = new File("com/qxcode/Arquivos/File/question");
         exec.delete();
 
         File question = new File(pathQuestion);
@@ -149,7 +153,7 @@ public class JudgeCpp implements IJudge {
         if (time > 1000) {
             result = "TLE_RESULT";
         } else if (diffResult) {
-            result = "WA_RESULT";
+            result = "AC_RESULT";
         }else if(!diffResult){
             result = "WA_RESULT";
         } else {
