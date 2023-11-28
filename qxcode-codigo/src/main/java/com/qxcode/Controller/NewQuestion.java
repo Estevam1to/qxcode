@@ -68,9 +68,8 @@ public class NewQuestion{
     @FXML
     private void saveInputFiles(ActionEvent event) {
         FileChooser fc = new FileChooser();
-        fc.setInitialDirectory(new File("C:\\Users\\ofern\\OneDrive\\Documentos\\UFC\\qxcode\\qxcode-codigo"));
         fc.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("InputFiles", "*.txt"));
+                new FileChooser.ExtensionFilter("InputFiles", "*.in"));
         selectedInputFiles = fc.showOpenMultipleDialog(null);
 
         if(selectedInputFiles != null) {
@@ -83,9 +82,8 @@ public class NewQuestion{
     @FXML
     private void saveOutputFiles(ActionEvent event) {
         FileChooser fc = new FileChooser();
-        fc.setInitialDirectory(new File("C:\\Users\\ofern\\OneDrive\\Documentos\\UFC\\qxcode\\qxcode-codigo"));
         fc.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("OutputFiles", "*.txt"));
+                new FileChooser.ExtensionFilter("OutputFiles", "*.sol"));
         selectedOutputFiles = fc.showOpenMultipleDialog(null);
 
         if(selectedOutputFiles != null) {
