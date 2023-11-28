@@ -122,6 +122,6 @@ public class TelaCategory {
     }
 
     public String getTela() {
-        return "com/qxcode/View/telaCategory.fxml";
+        return "View/telaCategory.fxml";
     }
 }

@@ -16,10 +16,10 @@ public class NavBarComponent {
     NewQuestion newQuestion;
 
     public NavBarComponent(){
-        newCategory = new NewCategory();
         newQuestion = new NewQuestion();
         telaCategory = new TelaCategory();
         telaListQuestion = new TelaListQuestion();
+        newCategory = new NewCategory();
     }
 
     public void entrarInicio(MouseEvent mouseEvent) throws IOException {

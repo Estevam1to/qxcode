@@ -3,12 +3,15 @@ package com.qxcode.Controller;
 import com.qxcode.DAO.CategoryDAO;
 import com.qxcode.Main;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
+import java.net.URL;
 
 public class NewCategory {
 
@@ -18,10 +21,17 @@ public class NewCategory {
     @FXML
     private TextArea titleInput;
 
+    @FXML
+    private Pane navBar;
     private CategoryDAO categoryDAO;
 
-    public NewCategory() {
+
+    public NewCategory(){
         this.categoryDAO = new CategoryDAO();
+    }
+
+    public void initialize() throws IOException{
+        this.initNavBar();
     }
 
     @FXML
@@ -39,8 +49,21 @@ public class NewCategory {
         System.out.println("Descrição: " + descricao);
     }
 
-    public void entrarInicio(MouseEvent mouseEvent) throws IOException {
-        Main.setRoot("View/telaCategory.fxml");
+    private void initNavBar() throws IOException {
+        FXMLLoader childLoader = obterFXMLNavBarLoader();
+        AnchorPane childNode = childLoader.load();
+        navBar.getChildren().add(childNode);
+    }
+
+
+    private FXMLLoader obterFXMLNavBarLoader() {
+        URL resource = Main.class.getResource("View/components/navBar.fxml");
+        if (resource == null) {
+            System.out.println("FXML file not found");
+        } else {
+            System.out.println("FXML file found at: " + resource);
+        }
+        return new FXMLLoader(resource);
     }
 
     public String getTela() {

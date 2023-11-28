@@ -18,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
-public class NewQuestion implements Initializable {
+public class NewQuestion{
 
     @FXML
     private TextArea decriptionInput;
@@ -41,8 +41,9 @@ public class NewQuestion implements Initializable {
         this.categoryDAO = new CategoryDAO();
     }
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    @FXML
+    public void initialize() throws IOException{
+        this.initNavBar();
         loadCategoryInput();
     }
 
