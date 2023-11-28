@@ -28,12 +28,12 @@ public class QuestionComponent {
     CategoryDAO dao;
     private Question question;
 
-    private ControllerQuestionDAO controllerQuestionDAO;
+    private ControllerQuestion controllerQuestion;
 
     public QuestionComponent(){
         telaQuestion = new TelaQuestion();
         dao = new CategoryDAO();
-        controllerQuestionDAO = new ControllerQuestionDAO();
+        controllerQuestion = new ControllerQuestion();
     }
 
 
@@ -63,10 +63,8 @@ public class QuestionComponent {
     }
 
     public void checkboxAddFavorite() {
-        controllerQuestionDAO.updateQuestionFavorite(this.question.getId());
+        controllerQuestion.updateQuestionFavorite(this.question.getId());
     }
-
-
 
     public void entrarQuestion(MouseEvent mouseEvent) throws IOException {
         Main.setRoot(telaQuestion.getTela(), question.getId());

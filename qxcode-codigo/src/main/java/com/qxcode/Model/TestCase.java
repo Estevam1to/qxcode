@@ -8,7 +8,7 @@ public class TestCase {
     private String input;
     private String output;
 
-    public TestCase(int id, int id_question, String input, String output) {
+    public TestCase(int id, String input, String output,  int id_question) {
         this.id = id;
         this.id_question = id_question;
         this.input = input;

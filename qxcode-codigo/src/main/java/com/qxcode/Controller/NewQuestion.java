@@ -4,6 +4,7 @@ import com.qxcode.DAO.CategoryDAO;
 import com.qxcode.DAO.QuestionDAO;
 import com.qxcode.Main;
 import com.qxcode.Model.Category;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,7 +12,9 @@ import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -26,15 +29,22 @@ public class NewQuestion{
     private TextArea titleInput;
     @FXML
     private RadioButton difficulty1, difficulty2, difficulty3, difficulty4, difficulty5;
-    @FXML
-    private TextArea examplesInput;
+
     @FXML
     private ChoiceBox<String> categoryInput;
     @FXML
+    private ListView inputFiles;
+    @FXML
+    private ListView outputFiles;
+
+    private List<File> selectedInputFiles;
+    private List<File> selectedOutputFiles;
+    @FXML
     private Pane navBar;
 
-    private QuestionDAO questionDAO;
-    private CategoryDAO categoryDAO;
+    private final QuestionDAO questionDAO;
+    private final CategoryDAO categoryDAO;
+
 
     public NewQuestion() {
         this.questionDAO = new QuestionDAO();
@@ -55,6 +65,36 @@ public class NewQuestion{
         }
     }
 
+    @FXML
+    private void saveInputFiles(ActionEvent event) {
+        FileChooser fc = new FileChooser();
+        fc.setInitialDirectory(new File("C:\\Users\\ofern\\OneDrive\\Documentos\\UFC\\qxcode\\qxcode-codigo"));
+        fc.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("InputFiles", "*.txt"));
+        selectedInputFiles = fc.showOpenMultipleDialog(null);
+
+        if(selectedInputFiles != null) {
+            for(int i = 0; i < selectedInputFiles.size(); i++){
+                inputFiles.getItems().add(selectedInputFiles.get(i).getName());
+            }
+        }
+    }
+
+    @FXML
+    private void saveOutputFiles(ActionEvent event) {
+        FileChooser fc = new FileChooser();
+        fc.setInitialDirectory(new File("C:\\Users\\ofern\\OneDrive\\Documentos\\UFC\\qxcode\\qxcode-codigo"));
+        fc.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("OutputFiles", "*.txt"));
+        selectedOutputFiles = fc.showOpenMultipleDialog(null);
+
+        if(selectedOutputFiles != null) {
+            for(int i = 0; i < selectedOutputFiles.size(); i++){
+                outputFiles.getItems().add(selectedOutputFiles.get(i).getName());
+            }
+        }
+    }
+
     private void initNavBar() throws IOException {
         FXMLLoader childLoader = obterFXMLNavBarLoader();
         AnchorPane childNode = childLoader.load();
@@ -67,24 +107,32 @@ public class NewQuestion{
         String titulo = titleInput.getText();
         String descricao = decriptionInput.getText();
         int dificuldade = this.getDifficulty();
-        String exemplos = examplesInput.getText();
         int id_categoria = this.getCategory(categoryInput.getValue());
 
+        questionDAO.insertQuestion(titulo, descricao, dificuldade, "exemplo", id_categoria);
 
-        questionDAO.insertQuestion(titulo, descricao, dificuldade, exemplos, id_categoria);
+        int idQuestion = questionDAO.getQuestionByTitle(titulo).getId();
 
-        // Limpar os campos após a adição da categoria
+        salvarCasosDeTeste(idQuestion);
+
+        clearFields();
+    }
+
+    private void clearFields(){
         titleInput.clear();
         decriptionInput.clear();
-        examplesInput.clear();
+        inputFiles.setItems(null);
+        outputFiles.setItems(null);
+        selectedInputFiles = null;
+        selectedOutputFiles = null;
+    }
 
+    private void salvarCasosDeTeste(int idQuestion) {
+        ControllerTestCase controllerTC = new ControllerTestCase();
 
-        System.out.println("Título: " + titulo);
-        System.out.println("Descrição: " + descricao);
-        System.out.println("Dificuldade: " + dificuldade);
-        System.out.println("Exemplos: " + exemplos);
-        System.out.println("Categoria: " + id_categoria);
-
+        if(selectedInputFiles != null && selectedOutputFiles != null){
+            controllerTC.saveTestCases(selectedInputFiles, selectedOutputFiles, idQuestion);
+        }
     }
 
     public int getCategory(String title){
