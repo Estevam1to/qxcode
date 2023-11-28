@@ -39,10 +39,10 @@ public class TelaQuestion {
 
     private int questionId;
 
-    private final String AC_RESULT = "AC";
-    private final String WA_RESULT = "WA";
-    private final String TLE_RESULT = "TLE";
-    private final String RE_RESULT = "ERROR";
+    private final String AC_RESULT = "AC_RESULT";
+    private final String WA_RESULT = "WA_RESULT";
+    private final String TLE_RESULT = "TLE_RESULT";
+    private final String RE_RESULT = "RE_RESULT";
 
 
     public TelaQuestion(){
@@ -72,12 +72,21 @@ public class TelaQuestion {
     @FXML
     public void initialize() throws IOException {
         addLanguage();
-        btnSubmeter.setOnAction(e -> submeterAcao());
+        btnSubmeter.setOnAction(e -> {
+            try {
+                submeterAcao();
+            } catch (IOException ex) {
+                System.out.println("Erro durante a submissão da ação: " + ex.getMessage());
+                ex.printStackTrace();
+            }
+        });
         this.initNavBar();
         initQuestion();
     }
 
-    private void submeterAcao() {
+
+
+    private void submeterAcao() throws IOException {
         // recebe a entrada do usuario e transforma em arquivo
         String entrada = entradaUsuario.getText();
         String linguagem = btnLinguagem.getText();
@@ -91,20 +100,26 @@ public class TelaQuestion {
 
         // compila e verifica a saida
         String saida = factoryJudge.getJudge(linguagem).getResult();
-        // mostra o resultado
-        System.out.println(saida);
-        //setModalResult(saida);
+        setModalResult(saida);
     }
 
-    public void setModalResult (String saida) {
+    public void setModalResult (String saida) throws IOException {
         if (saida.equals(AC_RESULT)) {
-            System.out.println("AC");
+            ControllerModalAc controller = new ControllerModalAc();
+            Main main = new Main();
+            main.setModalResult(controller.getPath(), controller);
         } else if (saida.equals(WA_RESULT)) {
-            System.out.println("WA");
+            ControllerModalWa controller = new ControllerModalWa();
+            Main main = new Main();
+            main.setModalResult(controller.getPath(), controller);
         } else if (saida.equals(TLE_RESULT)) {
-            System.out.println("TLE");
+            ControllerModalTle controller = new ControllerModalTle();
+            Main main = new Main();
+            main.setModalResult(controller.getPath(), controller);
         } else if (saida.equals(RE_RESULT)) {
-            System.out.println("RE");
+            ControllerModalErroCompilacao controller = new ControllerModalErroCompilacao();
+            Main main = new Main();
+            main.setModalResult(controller.getPath(), controller);
         }
     }
 

@@ -36,8 +36,6 @@ public class QuestionComponent {
         controllerQuestion = new ControllerQuestion();
     }
 
-
-
     public void setQuestion(Question question){
         this.question = question;
         this.setarInfoQuestion();

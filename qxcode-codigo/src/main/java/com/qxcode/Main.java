@@ -1,14 +1,12 @@
 package com.qxcode;
 
-import com.qxcode.Controller.ModalErroCompilacao;
 import com.qxcode.Controller.TelaListQuestion;
 import com.qxcode.Controller.TelaQuestion;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Dialog;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -25,7 +23,7 @@ public class Main extends Application {
 
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("View/telaCategory.fxml"));
 
-        scene = new Scene(loader.load(), 1450, 850);
+        scene = new Scene(loader.load(), 1280, 832);
 
         stage.setTitle("Category");
 
@@ -58,5 +56,21 @@ public class Main extends Application {
         controller.setId(questionId);
         loader.setController(controller);
         scene.setRoot(loader.load());
+    }
+
+    public static <T> void setModalResult(String pathModal, T controller) throws IOException {
+        FXMLLoader loader = new FXMLLoader(Main.class.getResource(pathModal));
+
+        Parent modalParent = loader.load();
+        Stage modalStage = new Stage();
+        modalStage.initModality(Modality.WINDOW_MODAL);
+        modalStage.initOwner(scene.getWindow());
+        Scene modalScene = new Scene(modalParent);
+        modalStage.setScene(modalScene);
+
+        // Obtém o controlador após o carregamento do FXML
+        controller = loader.getController();
+
+        modalStage.showAndWait();
     }
 }

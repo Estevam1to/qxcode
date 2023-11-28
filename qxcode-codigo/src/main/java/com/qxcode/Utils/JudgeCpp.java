@@ -104,7 +104,7 @@ public class JudgeCpp implements IJudge {
             }
         }
         carregar(pathDiff, diffs);
-        if (verifyIsNull(diffs)) {
+        if (!verifyIsNull(diffs)) {
             return false;
         }
         return true;
