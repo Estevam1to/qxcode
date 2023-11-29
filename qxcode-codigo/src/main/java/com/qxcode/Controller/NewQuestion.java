@@ -41,6 +41,8 @@ public class NewQuestion{
     private List<File> selectedOutputFiles;
     @FXML
     private Pane navBar;
+    @FXML
+    private Pane navBar2;
 
     private final QuestionDAO questionDAO;
     private final CategoryDAO categoryDAO;
@@ -98,6 +100,11 @@ public class NewQuestion{
         AnchorPane childNode = childLoader.load();
         NavBarComponent childController = childLoader.getController();
         navBar.getChildren().add(childNode);
+
+        FXMLLoader childLoader2 = obterFXMLNavBar2Loader();
+        AnchorPane childNode2 = childLoader2.load();
+        NavBar2Component childController2 = childLoader2.getController();
+        navBar2.getChildren().add(childNode2);
     }
 
     @FXML
@@ -162,6 +169,16 @@ public class NewQuestion{
         }
         return new FXMLLoader(resource);
     }
+    private FXMLLoader obterFXMLNavBar2Loader() {
+        URL resource = Main.class.getResource("View/components/navBar2.fxml");
+        if (resource == null) {
+            System.out.println("FXML file not found");
+        } else {
+            System.out.println("FXML file found at: " + resource);
+        }
+        return new FXMLLoader(resource);
+    }
+
 
     public String getTela() {
         return "/com/qxcode/View/telaNewQuestion.fxml";

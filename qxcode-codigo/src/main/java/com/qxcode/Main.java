@@ -10,10 +10,15 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Stack;
 
 public class Main extends Application {
 
     private static Scene scene;
+
+    public static Stack<Parent> lastScene = new Stack<Parent>();
+
+    private static Object lastLoadedController;
 
     public static void main(String[] args) {
         launch(args);
@@ -23,8 +28,8 @@ public class Main extends Application {
 
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("View/telaCategory.fxml"));
 
-        scene = new Scene(loader.load(), 1280, 832);
-
+        scene = new Scene(loader.load());
+        lastLoadedController = loader.getController();
         stage.setTitle("QXcode");
 
         stage.setScene(scene);
@@ -32,8 +37,17 @@ public class Main extends Application {
     }
     public static void setRoot(String tela) throws IOException {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource(tela));
+        Object newLoadedController = loader.getController();
 
+        if (!(lastLoadedController.equals(newLoadedController))) {
+            lastScene.add(scene.getRoot());
+            lastLoadedController = newLoadedController;
+        }
         scene.setRoot(loader.load());
+    }
+
+    public static void backLastScreen() {
+        scene.setRoot(lastScene.pop());
     }
 
     public static void setRoot(String tela, int categoryId, String nameCategory) throws IOException {
@@ -42,6 +56,13 @@ public class Main extends Application {
         controller.setCategory(nameCategory);
         controller.setId(categoryId);
         loader.setController(controller);
+
+        Object newLoadedController = loader.getController();
+
+        if (!(lastLoadedController.equals(newLoadedController))) {
+            lastScene.add(scene.getRoot());
+            lastLoadedController = newLoadedController;
+        }
         scene.setRoot(loader.load());
     }
 
@@ -50,6 +71,14 @@ public class Main extends Application {
         TelaQuestion controller = new TelaQuestion();
         controller.setId(questionId);
         loader.setController(controller);
+
+        Object newLoadedController = loader.getController();
+
+        if (!(lastLoadedController.equals(newLoadedController))) {
+            lastScene.add(scene.getRoot());
+            lastLoadedController = newLoadedController;
+        }
+
         scene.setRoot(loader.load());
     }
 
