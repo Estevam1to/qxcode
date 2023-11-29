@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollBar?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.SplitMenuButton?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -24,81 +25,32 @@
             </Label>
          </children>
       </Group>
-      <Group layoutY="-16.7080078125" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="192.0">
-         <children>
-            <Text fx:id="questionDescription" fill="WHITE" layoutX="20.0" layoutY="35.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.!" wrappingWidth="480.0">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="300.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="516.0" />
-            <Group layoutX="14.0" layoutY="12.0">
+      <ScrollPane hbarPolicy="NEVER" layoutX="80.0" layoutY="192.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="516.0" style="-fx-background-color: #0E1A25; -fx-border-color: #0E1A25;" vbarPolicy="NEVER" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="192.0">
+         <content>
+            <Group>
                <children>
-                  <Line endX="19.0" layoutX="-2.0" layoutY="-1.0" stroke="WHITE" />
-                  <Line endX="-3.0" endY="15.792892456054688" startX="-3.0" startY="-1.5" stroke="WHITE" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0e1924" height="300.0" layoutX="11.0" layoutY="6.0" stroke="TRANSPARENT" strokeType="INSIDE" width="516.0" />
+                  <Label fx:id="questionDescription" alignment="TOP_LEFT" layoutX="39.0" layoutY="35.0" prefHeight="250.0" prefWidth="460.0" style="-fx-background-color: #0E1A25 #0E1A25; -fx-background-color: #0E1A25;" text="Label" textFill="WHITE">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Label>
+                  <Group layoutX="28.0" layoutY="17.0">
+                     <children>
+                        <Line endX="19.0" layoutX="-2.0" layoutY="-1.0" stroke="WHITE" />
+                        <Line endX="-3.0" endY="15.792892456054688" startX="-3.0" startY="-1.5" stroke="WHITE" />
+                     </children>
+                  </Group>
+                  <Group layoutX="489.0" layoutY="298.0">
+                     <children>
+                        <Line endX="23.0" startX="4.0" stroke="WHITE" />
+                        <Line endX="23.0" startX="23.0" startY="-19.5" stroke="WHITE" />
+                     </children>
+                  </Group>
                </children>
             </Group>
-            <Group layoutX="467.0" layoutY="290.0">
-               <children>
-                  <Line endX="23.0" startX="4.0" stroke="WHITE" />
-                  <Line endX="23.0" startX="23.0" startY="-19.5" stroke="WHITE" />
-               </children>
-            </Group>
-            <ScrollBar layoutX="501.0" orientation="VERTICAL" prefHeight="298.0" prefWidth="15.0" />
-         </children>
-      </Group>
-      <Group layoutX="80.0" layoutY="506.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="516.0">
-         <children>
-            <Label text="Entrada" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Label layoutX="292.0" text="Saida" textFill="WHITE">
-               <font>
-                  <Font name="System Bold" size="20.0" />
-               </font>
-            </Label>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="198.0" layoutY="32.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="226.0" />
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="198.0" layoutX="290.0" layoutY="32.0" stroke="WHITE" strokeType="INSIDE" width="226.0" />
-            <Text fx:id="questionExInput" fill="WHITE" layoutX="50.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1 2 3 4 5" wrappingWidth="12.0">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Text fx:id="questionExOutput" fill="WHITE" layoutX="335.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1 2 3 4 5" wrappingWidth="12.0">
-               <font>
-                  <Font size="18.0" />
-               </font>
-            </Text>
-            <Group layoutX="16.0" layoutY="45.0">
-               <children>
-                  <Line endX="19.0" layoutX="-2.0" layoutY="-1.0" stroke="WHITE" />
-                  <Line endX="-3.0" endY="15.792892456054688" startX="-3.0" startY="-1.5" stroke="WHITE" />
-               </children>
-            </Group>
-            <Group layoutX="304.0" layoutY="45.0">
-               <children>
-                  <Line endX="19.0" layoutX="-2.0" layoutY="-1.0" stroke="WHITE" />
-                  <Line endX="-3.0" endY="15.792892456054688" startX="-3.0" startY="-1.5" stroke="WHITE" />
-               </children>
-            </Group>
-            <Group layoutX="467.0" layoutY="218.0">
-               <children>
-                  <Line endX="23.0" startX="4.0" stroke="WHITE" />
-                  <Line endX="23.0" startX="23.0" startY="-19.5" stroke="WHITE" />
-               </children>
-            </Group>
-            <Group layoutX="177.0" layoutY="217.0">
-               <children>
-                  <Line endX="23.0" startX="4.0" stroke="WHITE" />
-                  <Line endX="23.0" startX="23.0" startY="-19.5" stroke="WHITE" />
-               </children>
-            </Group>
-            <ScrollBar layoutX="211.0" layoutY="32.0" orientation="VERTICAL" prefHeight="198.0" prefWidth="15.0" />
-            <ScrollBar layoutX="501.0" layoutY="32.0" orientation="VERTICAL" prefHeight="198.0" prefWidth="15.0" />
-         </children>
-      </Group>
+         </content>
+      </ScrollPane>
       <SplitMenuButton fx:id="btnLinguagem" layoutX="701.0" layoutY="192.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="516.0" style="-fx-background-color: #0E1A25;" text="Selecione a linguagem" textFill="#0e1a25" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="192.0">
          <items>
          </items>
@@ -125,5 +77,44 @@
       </Button>
       <Pane fx:id="navBar" prefHeight="60.0" prefWidth="1120.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="32.0" />
       <Pane fx:id="navBar2" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="775.0" />
+      <Line endX="45.5" endY="-276.0" layoutX="37.0" layoutY="469.0" startX="45.49998474121094" startY="23.0" stroke="#0e1a25" />
+      <ScrollPane hbarPolicy="NEVER" layoutX="80.0" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0">
+         <content>
+            <Group>
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0e1924" height="200.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="200.0" />
+                  <Label layoutX="12.0" layoutY="8.0" text="Entrada" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Text fx:id="questionExInput" fill="WHITE" layoutX="14.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1 2 3 4 5" wrappingWidth="12.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Group>
+         </content>
+      </ScrollPane>
+      <ScrollPane hbarPolicy="NEVER" layoutX="384.0" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0">
+         <content>
+            <Group>
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0e1924" height="200.0" stroke="WHITE" strokeType="INSIDE" width="200.0" />
+                  <Label layoutX="14.0" layoutY="8.0" text="Saida" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Text fx:id="questionExOutput" fill="WHITE" layoutX="14.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1 2 3 4 5" wrappingWidth="12.0">
+                     <font>
+                        <Font size="18.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Group>
+         </content>
+      </ScrollPane>
    </children>
 </AnchorPane>
