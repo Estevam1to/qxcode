@@ -27,11 +27,12 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
 
         FXMLLoader loader = new FXMLLoader(Main.class.getResource("View/telaCategory.fxml"));
-
         scene = new Scene(loader.load());
-        lastLoadedController = loader.getController();
-        stage.setTitle("QXcode");
 
+        lastLoadedController = loader.getController();
+        lastScene.add(scene.getRoot());
+
+        stage.setTitle("QXcode");
         stage.setScene(scene);
         stage.show();
     }
@@ -39,7 +40,7 @@ public class Main extends Application {
         FXMLLoader loader = new FXMLLoader(Main.class.getResource(tela));
         Object newLoadedController = loader.getController();
 
-        if (!(lastLoadedController.equals(newLoadedController))) {
+        if (lastLoadedController != null && lastLoadedController != newLoadedController) {
             lastScene.add(scene.getRoot());
             lastLoadedController = newLoadedController;
         }
@@ -59,7 +60,7 @@ public class Main extends Application {
 
         Object newLoadedController = loader.getController();
 
-        if (!(lastLoadedController.equals(newLoadedController))) {
+        if (lastLoadedController != null && lastLoadedController != newLoadedController){
             lastScene.add(scene.getRoot());
             lastLoadedController = newLoadedController;
         }
@@ -74,7 +75,7 @@ public class Main extends Application {
 
         Object newLoadedController = loader.getController();
 
-        if (!(lastLoadedController.equals(newLoadedController))) {
+        if (lastLoadedController != null && lastLoadedController != newLoadedController){
             lastScene.add(scene.getRoot());
             lastLoadedController = newLoadedController;
         }
