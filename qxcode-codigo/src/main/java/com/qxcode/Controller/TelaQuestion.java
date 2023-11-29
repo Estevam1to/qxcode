@@ -28,7 +28,7 @@ public class TelaQuestion {
     @FXML
     private Button btnSubmeter;
     @FXML
-    private Label questionDescription;
+    private Text questionDescription;
     @FXML
     private Text questionExInput;
     @FXML
@@ -74,7 +74,7 @@ public class TelaQuestion {
         btnLinguagem.getItems().get(0).setOnAction(e -> btnLinguagem.setText("Python"));
         btnLinguagem.getItems().get(1).setOnAction(e -> btnLinguagem.setText("C++"));
         //btnLinguagem.getItems().get(2).setOnAction(e -> btnLinguagem.setText("Java"));
-        btnLinguagem.getItems().get(3).setOnAction(e -> btnLinguagem.setText("C"));
+        btnLinguagem.getItems().get(2).setOnAction(e -> btnLinguagem.setText("C"));
     }
 
     @FXML
@@ -120,7 +120,7 @@ public class TelaQuestion {
     }
 
     public void setModalResult (String saida) throws IOException {
-        //factoryJudge.getJudge(btnLinguagem.getText()).destroyArquivos();
+        factoryJudge.getJudge(btnLinguagem.getText()).destroyArquivos();
         if (saida.equals(AC_RESULT)) {
             ControllerModalAc controller = new ControllerModalAc();
             Main main = new Main();
