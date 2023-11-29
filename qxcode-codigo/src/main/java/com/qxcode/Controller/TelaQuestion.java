@@ -69,11 +69,11 @@ public class TelaQuestion {
     private void addLanguage() {
         btnLinguagem.getItems().add(new MenuItem("Python"));
         btnLinguagem.getItems().add(new MenuItem("C++"));
-        btnLinguagem.getItems().add(new MenuItem("Java"));
+        //btnLinguagem.getItems().add(new MenuItem("Java"));
         btnLinguagem.getItems().add(new MenuItem("C"));
         btnLinguagem.getItems().get(0).setOnAction(e -> btnLinguagem.setText("Python"));
         btnLinguagem.getItems().get(1).setOnAction(e -> btnLinguagem.setText("C++"));
-        btnLinguagem.getItems().get(2).setOnAction(e -> btnLinguagem.setText("Java"));
+        //btnLinguagem.getItems().get(2).setOnAction(e -> btnLinguagem.setText("Java"));
         btnLinguagem.getItems().get(3).setOnAction(e -> btnLinguagem.setText("C"));
     }
 
@@ -92,8 +92,6 @@ public class TelaQuestion {
         initQuestion();
     }
 
-
-
     private void submeterAcao() throws IOException {
         // recebe a entrada do usuario e transforma em arquivo
         String entrada = entradaUsuario.getText();
@@ -106,29 +104,39 @@ public class TelaQuestion {
         writeInputOutputInFile.WriteInputsByQuestionId(questionId);
         writeInputOutputInFile.WriteOutputsByQuestionId(questionId);
 
-        factoryJudge.getJudge(linguagem);
-        // compila e verifica a saida
-        //String saida = factoryJudge.getJudge(linguagem).getResult();
-        //setModalResult(saida);
+        boolean time = factoryJudge.getJudge(linguagem).getTime();
+        boolean compilar = factoryJudge.getJudge(linguagem).compilar();
+        boolean verify = factoryJudge.getJudge(linguagem).verifyDiff();
+        if (time) {
+            setModalResult(TLE_RESULT);
+        }else if (!compilar) {
+            setModalResult(RE_RESULT);
+        }else if (!verify) {
+            setModalResult(WA_RESULT);
+        }
+        else {
+            setModalResult(AC_RESULT);
+        }
     }
 
     public void setModalResult (String saida) throws IOException {
+        //factoryJudge.getJudge(btnLinguagem.getText()).destroyArquivos();
         if (saida.equals(AC_RESULT)) {
             ControllerModalAc controller = new ControllerModalAc();
             Main main = new Main();
-            main.setModalResult(controller.getPath(), controller);
+            Main.setModalResult(controller.getPath(), controller);
         } else if (saida.equals(WA_RESULT)) {
             ControllerModalWa controller = new ControllerModalWa();
             Main main = new Main();
-            main.setModalResult(controller.getPath(), controller);
+            Main.setModalResult(controller.getPath(), controller);
         } else if (saida.equals(TLE_RESULT)) {
             ControllerModalTle controller = new ControllerModalTle();
             Main main = new Main();
-            main.setModalResult(controller.getPath(), controller);
+            Main.setModalResult(controller.getPath(), controller);
         } else if (saida.equals(RE_RESULT)) {
             ControllerModalErroCompilacao controller = new ControllerModalErroCompilacao();
             Main main = new Main();
-            main.setModalResult(controller.getPath(), controller);
+            Main.setModalResult(controller.getPath(), controller);
         }
     }
 

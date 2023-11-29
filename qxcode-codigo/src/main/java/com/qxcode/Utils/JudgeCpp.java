@@ -35,19 +35,17 @@ public class JudgeCpp implements IJudge {
         diffs = new ArrayList<File>();
         carregar(pathInput, inputs);
         carregar(pathOutputExpected, outputsExpecteds);
+    }
 
-        inputs.sort(new Comparator<File>() {
+    private void sortArray(ArrayList<File> list) {
+        list.sort(new Comparator<File>() {
             @Override
             public int compare(File file1, File file2) {
-                return file1.getName().compareTo(file2.getName());
+                int num1 = Integer.parseInt(file1.getName().replaceAll("\\D", ""));
+                int num2 = Integer.parseInt(file2.getName().replaceAll("\\D", ""));
+                return Integer.compare(num1, num2);
             }
         });
-
-        for (int i = 0; i < inputs.size(); i ++) {
-            System.out.println(inputs.get(i).getName());
-        }
-
-
     }
 
     private void carregar(String path, ArrayList<File> list) {
@@ -56,6 +54,7 @@ public class JudgeCpp implements IJudge {
             File[] files = pasta.listFiles();
             Collections.addAll(list, files);
         }
+        sortArray(list);
     }
 
     private boolean verifyIsNull(ArrayList<File> list) {
@@ -67,7 +66,7 @@ public class JudgeCpp implements IJudge {
         return false;
     }
 
-    public void compilar() {
+    public boolean compilar() {
         long tempoInicial = System.currentTimeMillis();
         long tempoFinal = 0;
         try {
@@ -82,23 +81,22 @@ public class JudgeCpp implements IJudge {
                     ProcessBuilder pbExecucao = new ProcessBuilder("./question");
                     pbExecucao.directory(userFile.getParentFile());
                     pbExecucao.redirectInput(inputs.get(i));
-                    System.out.println("Executando " + inputs.get(i).getName());
+                    //System.out.println("Executando " + inputs.get(i).getName());
                     pbExecucao.redirectOutput(new File(pathOutputUser, "userOut0" + (i + 1) + ".out"));
                     Process processExecucao = pbExecucao.start();
                     processExecucao.waitFor();
+                    processExecucao.destroy();
                 }
 
             } else {
-                System.out.println("Não compilou");
+                return false;
             }
             tempoFinal = System.currentTimeMillis();
             time = tempoFinal - tempoInicial;
-        } catch (IOException e) {
-            System.out.println("Erro de IO" + e.getMessage());
-        } catch (InterruptedException e) {
-            System.out.println("Erro de interrupção" + e.getMessage());
+        } catch (Exception e) {
+           return false;
         }
-
+        return true;
     }
 
     public boolean verifyDiff() {
@@ -155,8 +153,8 @@ public class JudgeCpp implements IJudge {
         question.delete();
     }
 
-    public String getResult() {
-        return "a";
+    public boolean getTime() {
+        return time > 1000;
     }
 
 }
