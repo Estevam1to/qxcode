@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Group?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,18 +13,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: #0E1A25;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Group layoutX="10.0" layoutY="10.0" AnchorPane.topAnchor="775.0">
-         <children>
-            <Rectangle fill="#0e1a25" height="60.0" strokeType="INSIDE" strokeWidth="0.0" width="1280.0" />
-            <Rectangle fill="#2a4d6f" height="3.0" strokeType="INSIDE" strokeWidth="0.0" width="1280.0" />
-            <Group layoutX="-15.0" layoutY="15.0">
-               <children>
-                  <Button layoutX="15.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Voltar" />
-                  <Button layoutX="90.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="60.0" text="Avançar" />
-               </children>
-            </Group>
-         </children>
-      </Group>
       <Group layoutX="80.0" layoutY="130.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="124.0">
          <children>
             <Label fx:id="nameCategory" text="Nome da categoria" textFill="WHITE">
@@ -80,5 +67,6 @@
             </GridPane>
          </content>
       </ScrollPane>
+      <Pane fx:id="navBar2" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="775.0" />
    </children>
 </AnchorPane>

@@ -40,6 +40,6 @@
                 </GridPane>
             </content>
         </ScrollPane>
-
+        <Pane fx:id="navBar2" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="775.0" />
     </children>
 </AnchorPane>

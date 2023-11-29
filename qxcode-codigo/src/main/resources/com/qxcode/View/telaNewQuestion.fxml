@@ -145,5 +145,6 @@
             </children>
         </Group>
       <Pane fx:id="navBar" prefHeight="60.0" prefWidth="1120.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="32.0" />
+        <Pane fx:id="navBar2" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="775.0" />
     </children>
 </AnchorPane>
