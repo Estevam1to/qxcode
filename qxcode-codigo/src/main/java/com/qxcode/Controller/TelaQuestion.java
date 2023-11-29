@@ -28,7 +28,7 @@ public class TelaQuestion {
     @FXML
     private Button btnSubmeter;
     @FXML
-    private Text questionDescription;
+    private Label questionDescription;
     @FXML
     private Text questionExInput;
     @FXML

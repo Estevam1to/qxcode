@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -8,24 +7,39 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="256.0" prefWidth="480.0" style="-fx-background-color: #386694;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qxcode.Controller.ControllerModalTle">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="256.0" prefWidth="480.0" style="-fx-background-color: #386694;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qxcode.Controller.ControllerModalTle">
     <children>
-        <Line endX="340.0" layoutX="147.0" layoutY="42.0" startX="-140.0" AnchorPane.leftAnchor="4.05" AnchorPane.rightAnchor="4.050000000000011" AnchorPane.topAnchor="40.0" />
-        <ImageView fitHeight="61.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="109.0" AnchorPane.leftAnchor="217.55" AnchorPane.rightAnchor="217.55" AnchorPane.topAnchor="70.0">
+        <Line endX="340.0" layoutX="140.0" layoutY="35.0" startX="-140.0" AnchorPane.leftAnchor="-0.5" AnchorPane.rightAnchor="-0.5" AnchorPane.topAnchor="34.5" />
+        <ImageView fitHeight="61.0" fitWidth="61.0" layoutX="213.0" layoutY="67.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="128.0" AnchorPane.leftAnchor="213.0" AnchorPane.rightAnchor="213.0" AnchorPane.topAnchor="67.0">
             <image>
                 <Image url="@../../Assets/icon-tempo-limite-excedido.png" />
             </image>
         </ImageView>
-        <Text layoutX="138.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tempo Limite Excedido!" AnchorPane.bottomAnchor="79.0" AnchorPane.leftAnchor="109.0" AnchorPane.rightAnchor="108.45937500000002">
+        <Text layoutX="78.0" layoutY="181.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tempo Limite Excedido!" AnchorPane.bottomAnchor="69.33984375" AnchorPane.leftAnchor="78.0" AnchorPane.rightAnchor="77.0625">
             <font>
                 <Font name="System Bold" size="24.0" />
             </font>
         </Text>
-        <Line endX="340.0" layoutX="148.0" layoutY="186.0" startX="-140.0" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="4.05" AnchorPane.rightAnchor="4.050000000000011" />
-        <Button layoutX="161.0" layoutY="207.0" mnemonicParsing="false" text="Próximo Problema" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="172.95" AnchorPane.rightAnchor="172.95000000000005">
-            <font>
-                <Font size="15.0" />
-            </font>
-        </Button>
+        <Line endX="340.0" layoutX="140.0" layoutY="217.0" startX="-140.0" AnchorPane.bottomAnchor="38.5" AnchorPane.leftAnchor="-0.5" AnchorPane.rightAnchor="-0.5" />
+      <ImageView fitHeight="61.0" fitWidth="80.0" layoutX="14.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true" >
+          <image>
+              <Image url="@../../Assets/relogio1.png" />
+          </image>
+      </ImageView>
+      <ImageView fitHeight="61.0" fitWidth="71.0" layoutX="395.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" >
+          <image>
+              <Image url="@../../Assets/relogio2.png" />
+          </image>
+      </ImageView>
+        <ImageView fitHeight="61.0" fitWidth="108.0" layoutX="341.0" layoutY="195.0" pickOnBounds="true" preserveRatio="true" >
+            <image>
+                <Image url="@../../Assets/relogio3.png" />
+            </image>
+        </ImageView>
+        <ImageView fitHeight="72.0" fitWidth="80.0" layoutX="110.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true" >
+            <image>
+                <Image url="@../../Assets/relogio4.png" />
+            </image>
+        </ImageView>
     </children>
 </AnchorPane>
