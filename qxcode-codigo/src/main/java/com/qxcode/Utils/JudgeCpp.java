@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.lang.InterruptedException;
 import java.lang.ProcessBuilder;
 import java.util.Collections;
+import java.util.Comparator;
 
 
 public class JudgeCpp implements IJudge {
@@ -34,18 +35,26 @@ public class JudgeCpp implements IJudge {
         diffs = new ArrayList<File>();
         carregar(pathInput, inputs);
         carregar(pathOutputExpected, outputsExpecteds);
-        Collections.reverse(inputs);
-        Collections.reverse(outputsExpecteds);
+
+        inputs.sort(new Comparator<File>() {
+            @Override
+            public int compare(File file1, File file2) {
+                return file1.getName().compareTo(file2.getName());
+            }
+        });
+
+        for (int i = 0; i < inputs.size(); i ++) {
+            System.out.println(inputs.get(i).getName());
+        }
+
+
     }
 
     private void carregar(String path, ArrayList<File> list) {
-        File file = new File(path);
-        if (file.isDirectory() && file.exists()) {
-            File[] files = file.listFiles();
-            assert files != null;
-            for (File file1 : files) {
-                list.add(file1);
-            }
+        File pasta = new File(path);
+        if (pasta.isDirectory() && pasta.exists()) {
+            File[] files = pasta.listFiles();
+            Collections.addAll(list, files);
         }
     }
 
@@ -147,19 +156,7 @@ public class JudgeCpp implements IJudge {
     }
 
     public String getResult() {
-        this.compilar();
-        boolean diffResult = this.verifyDiff();
-        String result = "";
-        if (time > 1000) {
-            result = "TLE_RESULT";
-        } else if (diffResult) {
-            result = "AC_RESULT";
-        }else if(!diffResult){
-            result = "WA_RESULT";
-        } else {
-            result = "RE_RESULT";
-        }
-        this.destroyArquivos();
-        return result;
+        return "a";
     }
+
 }

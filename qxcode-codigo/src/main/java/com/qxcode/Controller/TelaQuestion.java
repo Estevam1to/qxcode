@@ -104,9 +104,10 @@ public class TelaQuestion {
         writeInputOutputInFile.WriteInputsByQuestionId(questionId);
         writeInputOutputInFile.WriteOutputsByQuestionId(questionId);
 
+        factoryJudge.getJudge(linguagem);
         // compila e verifica a saida
-        String saida = factoryJudge.getJudge(linguagem).getResult();
-        setModalResult(saida);
+        //String saida = factoryJudge.getJudge(linguagem).getResult();
+        //setModalResult(saida);
     }
 
     public void setModalResult (String saida) throws IOException {
