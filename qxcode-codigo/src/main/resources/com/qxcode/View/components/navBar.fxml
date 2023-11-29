@@ -1,38 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1120.0" style="-fx-background-color: #0E1A25;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qxcode.Controller.NavBarComponent">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1120.0" style="-fx-background-color: #0E1A25;" stylesheets="@../../CSS/styleNavBar.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qxcode.Controller.NavBarComponent">
    <children>
-      <HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1120.0" style="-fx-background-color: #2a4d6f; -fx-border-radius: 66; -fx-background-radius: 66;">
+      <HBox alignment="CENTER_LEFT" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1120.0" style="-fx-background-color: #2a4d6f; -fx-border-radius: 66; -fx-background-radius: 66;">
          <children>
-                     <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#entrarInicio" prefHeight="60.0" prefWidth="180.0" text="Inicio" textAlignment="CENTER" textFill="WHITE">
-                         <font>
-                             <Font name="System Bold" size="24.0" />
-                         </font>
-               <padding>
-                  <Insets left="50.0" />
-               </padding>
-                     </Label>
-                     <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#entrarFavoritos" prefHeight="60.0" prefWidth="160.0" text="Favoritos" textAlignment="CENTER" textFill="WHITE">
-                         <font>
-                             <Font name="System Bold" size="24.0" />
-                         </font>
-                     </Label>
-                     <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#entrarNovaCategoria" prefHeight="60.0" prefWidth="260.0" text="Nova Categoria" textAlignment="CENTER" textFill="WHITE">
-                         <font>
-                             <Font name="System Bold" size="24.0" />
-                         </font>
-                     </Label>
-                     <Label alignment="CENTER" contentDisplay="CENTER" onMouseClicked="#entrarNovaQuestao" prefHeight="60.0" prefWidth="220.0" text="Nova Questão" textAlignment="CENTER" textFill="WHITE">
-                         <font>
-                             <Font name="System Bold" size="24.0" />
-                         </font>
-                     </Label>
+            <ImageView fitHeight="60.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon-NavBar.png" />
+               </image>
+               <HBox.margin>
+                  <Insets left="15.0" />
+               </HBox.margin>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" stroke="TRANSPARENT" strokeType="INSIDE" width="35.0" />
+            <Button maxHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#entrarInicio" prefHeight="50.0" text="Inicio">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font></Button>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" stroke="TRANSPARENT" strokeType="INSIDE" width="59.0" />
+            <Button maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#entrarFavoritos" prefHeight="50.0" text="Favoritos">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font></Button>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" stroke="TRANSPARENT" strokeType="INSIDE" width="59.0" />
+            <Button maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#entrarNovaCategoria" prefHeight="50.0" text="Nova Categoria">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font></Button>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" stroke="TRANSPARENT" strokeType="INSIDE" width="59.0" />
+            <Button maxHeight="-Infinity" minHeight="-Infinity" mnemonicParsing="false" onMouseClicked="#entrarNovaQuestao" prefHeight="50.0" text="Nova Questão">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font></Button>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="50.0" stroke="TRANSPARENT" strokeType="INSIDE" width="35.0" />
+            <ImageView fitHeight="60.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Assets/icon-NavBar.png" />
+               </image>
+            </ImageView>
          </children>
       </HBox>
    </children>
