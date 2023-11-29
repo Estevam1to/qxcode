@@ -25,28 +25,16 @@
             </Label>
          </children>
       </Group>
-      <ScrollPane hbarPolicy="NEVER" layoutX="80.0" layoutY="192.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="516.0" style="-fx-background-color: #0E1A25; -fx-border-color: #0E1A25;" vbarPolicy="NEVER" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="192.0">
+      <ScrollPane fx:id="scrollPaneDescription" hbarPolicy="NEVER" layoutX="80.0" layoutY="192.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="516.0" style="-fx-background-color: #0E1A25;" vbarPolicy="NEVER" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="192.0">
          <content>
             <Group>
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0e1924" height="300.0" layoutX="11.0" layoutY="6.0" stroke="TRANSPARENT" strokeType="INSIDE" width="516.0" />
-                  <Label fx:id="questionDescription" alignment="TOP_LEFT" layoutX="39.0" layoutY="35.0" prefHeight="250.0" prefWidth="460.0" style="-fx-background-color: #0E1A25 #0E1A25; -fx-background-color: #0E1A25;" text="Label" textFill="WHITE">
+                  <Label fx:id="questionDescription" alignment="TOP_LEFT" layoutX="-39.0" prefWidth="490.0" style="-fx-background-color: #0E1A25 #0E1A25; -fx-background-color: #0E1A25;" text="Label" textFill="WHITE">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
-                  <Group layoutX="28.0" layoutY="17.0">
-                     <children>
-                        <Line endX="19.0" layoutX="-2.0" layoutY="-1.0" stroke="WHITE" />
-                        <Line endX="-3.0" endY="15.792892456054688" startX="-3.0" startY="-1.5" stroke="WHITE" />
-                     </children>
-                  </Group>
-                  <Group layoutX="489.0" layoutY="298.0">
-                     <children>
-                        <Line endX="23.0" startX="4.0" stroke="WHITE" />
-                        <Line endX="23.0" startX="23.0" startY="-19.5" stroke="WHITE" />
-                     </children>
-                  </Group>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="300.0" layoutX="-52.0" layoutY="-14.0" stroke="TRANSPARENT" strokeType="INSIDE" width="516.0" />
                </children>
             </Group>
          </content>

@@ -8,3 +8,13 @@
 #btnSubmeter:hover {
         -fx-background-color: #1C334A;
 }
+
+#scrollPaneDescription > .viewport {
+        -fx-background-color: #0E1A25;
+}
+.scroll-pane {
+        -fx-border-color: #FFFFFF;
+        -fx-border-width: 2px;
+        -fx-border-style: solid;
+}
+
