@@ -11,12 +11,8 @@ O nosso software de prática de programação oferece uma série de recursos e f
 
 - **Ambiente de Codificação**: Um ambiente de codificação integrado que permite aos usuários escrever, testar e depurar código diretamente na plataforma.
 
-- **Plataforma de Aprendizado**: Recursos de aprendizado, incluindo dicas, soluções passo a passo e links para recursos externos relacionados aos problemas.
-
-- **Histórico de Desempenho**: Um registro de desempenho pessoal que acompanha o progresso do usuário, destacando áreas de melhoria.
-
-- **Contas de Usuário**: A capacidade de criar contas de usuário, salvar progresso e rastrear conquistas.
-
+- **Plataforma de Aprendizado**: Recursos de aprendizado, contando com questões da própria OBI.
+  
 ### Protótipo
 - **Para utilizar o protótipo interativo, é necessário baixar o software Balsamiq, que é utilizado para criação de protótipos de baixa fidelidade.**
 - **O protótipo de alta fidelidade foi criado na plataforma Figma, segue o link**
