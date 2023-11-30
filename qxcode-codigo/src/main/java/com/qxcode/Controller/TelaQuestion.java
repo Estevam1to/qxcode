@@ -111,7 +111,7 @@ public class TelaQuestion {
             setModalResult(TLE_RESULT);
         }else if (!compilar) {
             setModalResult(RE_RESULT);
-        }else if (!verify) {
+        }else if (verify == false) {
             setModalResult(WA_RESULT);
         }
         else {

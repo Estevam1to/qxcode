@@ -59,11 +59,11 @@ public class JudgeCpp implements IJudge {
 
     private boolean verifyIsNull(ArrayList<File> list) {
         for (File file : list) {
-            if (file.length() == 0) {
-                return true;
+            if (file.length() != 0) {
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
     public boolean compilar() {
