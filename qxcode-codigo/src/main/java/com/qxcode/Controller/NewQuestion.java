@@ -70,6 +70,7 @@ public class NewQuestion{
     @FXML
     private void saveInputFiles(ActionEvent event) {
         FileChooser fc = new FileChooser();
+        inputFiles.refresh();
         fc.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("InputFiles", "*.in"));
         selectedInputFiles = fc.showOpenMultipleDialog(null);

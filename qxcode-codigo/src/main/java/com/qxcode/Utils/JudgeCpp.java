@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.lang.InterruptedException;
 import java.lang.ProcessBuilder;
 import java.util.Collections;
+import java.util.Comparator;
 
 
 public class JudgeCpp implements IJudge {
@@ -34,31 +35,38 @@ public class JudgeCpp implements IJudge {
         diffs = new ArrayList<File>();
         carregar(pathInput, inputs);
         carregar(pathOutputExpected, outputsExpecteds);
-        Collections.reverse(inputs);
-        Collections.reverse(outputsExpecteds);
+    }
+
+    private void sortArray(ArrayList<File> list) {
+        list.sort(new Comparator<File>() {
+            @Override
+            public int compare(File file1, File file2) {
+                int num1 = Integer.parseInt(file1.getName().replaceAll("\\D", ""));
+                int num2 = Integer.parseInt(file2.getName().replaceAll("\\D", ""));
+                return Integer.compare(num1, num2);
+            }
+        });
     }
 
     private void carregar(String path, ArrayList<File> list) {
-        File file = new File(path);
-        if (file.isDirectory() && file.exists()) {
-            File[] files = file.listFiles();
-            assert files != null;
-            for (File file1 : files) {
-                list.add(file1);
-            }
+        File pasta = new File(path);
+        if (pasta.isDirectory() && pasta.exists()) {
+            File[] files = pasta.listFiles();
+            Collections.addAll(list, files);
         }
+        sortArray(list);
     }
 
     private boolean verifyIsNull(ArrayList<File> list) {
         for (File file : list) {
-            if (file.length() == 0) {
-                return true;
+            if (file.length() != 0) {
+                return false;
             }
         }
-        return false;
+        return true;
     }
 
-    public void compilar() {
+    public boolean compilar() {
         long tempoInicial = System.currentTimeMillis();
         long tempoFinal = 0;
         try {
@@ -73,23 +81,22 @@ public class JudgeCpp implements IJudge {
                     ProcessBuilder pbExecucao = new ProcessBuilder("./question");
                     pbExecucao.directory(userFile.getParentFile());
                     pbExecucao.redirectInput(inputs.get(i));
-                    System.out.println("Executando " + inputs.get(i).getName());
+                    //System.out.println("Executando " + inputs.get(i).getName());
                     pbExecucao.redirectOutput(new File(pathOutputUser, "userOut0" + (i + 1) + ".out"));
                     Process processExecucao = pbExecucao.start();
                     processExecucao.waitFor();
+                    processExecucao.destroy();
                 }
 
             } else {
-                System.out.println("Não compilou");
+                return false;
             }
             tempoFinal = System.currentTimeMillis();
             time = tempoFinal - tempoInicial;
-        } catch (IOException e) {
-            System.out.println("Erro de IO" + e.getMessage());
-        } catch (InterruptedException e) {
-            System.out.println("Erro de interrupção" + e.getMessage());
+        } catch (Exception e) {
+           return false;
         }
-
+        return true;
     }
 
     public boolean verifyDiff() {
@@ -146,20 +153,8 @@ public class JudgeCpp implements IJudge {
         question.delete();
     }
 
-    public String getResult() {
-        this.compilar();
-        boolean diffResult = this.verifyDiff();
-        String result = "";
-        if (time > 1000) {
-            result = "TLE_RESULT";
-        } else if (diffResult) {
-            result = "AC_RESULT";
-        }else if(!diffResult){
-            result = "WA_RESULT";
-        } else {
-            result = "RE_RESULT";
-        }
-        this.destroyArquivos();
-        return result;
+    public boolean getTime() {
+        return time > 1000;
     }
+
 }

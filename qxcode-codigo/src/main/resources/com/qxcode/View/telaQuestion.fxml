@@ -29,12 +29,12 @@
          <content>
             <Group>
                <children>
-                  <Label fx:id="questionDescription" alignment="TOP_LEFT" layoutX="-39.0" prefWidth="490.0" style="-fx-background-color: #0E1A25 #0E1A25; -fx-background-color: #0E1A25;" text="Label" textFill="WHITE">
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="300.0" layoutX="-52.0" layoutY="-14.0" stroke="TRANSPARENT" strokeType="INSIDE" width="516.0" />
+                  <Text fx:id="questionDescription" fill="WHITE" layoutX="-38.0" layoutY="13.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="480.7294921875">
                      <font>
                         <Font size="18.0" />
                      </font>
-                  </Label>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="300.0" layoutX="-52.0" layoutY="-14.0" stroke="TRANSPARENT" strokeType="INSIDE" width="516.0" />
+                  </Text>
                </children>
             </Group>
          </content>
@@ -50,7 +50,7 @@
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="400.0" stroke="WHITE" strokeType="INSIDE" width="516.0" />
             <ScrollBar layoutX="502.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="15.0" />
-            <TextArea fx:id="entradaUsuario" prefHeight="400.0" prefWidth="503.0" promptText="Seu código aqui" text="public class Main {&#10;    public static void main(String[] args) {&#10;        System.out.println(&quot;Hello World!&quot;);&#10;    }&#10;}&#10;" wrapText="true">
+            <TextArea fx:id="entradaUsuario" prefHeight="400.0" prefWidth="503.0" promptText="Seu código aqui" text="# include &lt;iostream&gt;&#10;&#10;using namespace std;&#10;&#10;int main() {&#10;&#10;    cout &lt;&lt; &quot;Hello World!&quot; &lt;&lt; endl;&#10;&#10;    return 0;&#10;}   " wrapText="true">
                <font>
                   <Font size="18.0" />
                </font>
@@ -66,17 +66,17 @@
       <Pane fx:id="navBar" prefHeight="60.0" prefWidth="1120.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="32.0" />
       <Pane fx:id="navBar2" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="775.0" />
       <Line endX="45.5" endY="-276.0" layoutX="37.0" layoutY="469.0" startX="45.49998474121094" startY="23.0" stroke="#0e1a25" />
-      <ScrollPane hbarPolicy="NEVER" layoutX="80.0" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0">
+      <ScrollPane fx:id="scrollEntrada" hbarPolicy="NEVER" layoutX="80.0" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0">
          <content>
             <Group>
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0e1924" height="200.0" stroke="WHITE" strokeType="INSIDE" strokeWidth="2.0" width="200.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0e1924" height="200.0" stroke="#ffffff00" strokeType="INSIDE" strokeWidth="2.0" width="200.0" />
                   <Label layoutX="12.0" layoutY="8.0" text="Entrada" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Text fx:id="questionExInput" fill="WHITE" layoutX="14.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1 2 3 4 5" wrappingWidth="12.0">
+                  <Text fx:id="questionExInput" fill="WHITE" layoutX="14.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1 2 3 4 5" wrappingWidth="158.0">
                      <font>
                         <Font size="18.0" />
                      </font>
@@ -85,17 +85,17 @@
             </Group>
          </content>
       </ScrollPane>
-      <ScrollPane hbarPolicy="NEVER" layoutX="384.0" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0">
+      <ScrollPane fx:id="scrollSaida" hbarPolicy="NEVER" layoutX="384.0" layoutY="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0">
          <content>
             <Group>
                <children>
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0e1924" height="200.0" stroke="WHITE" strokeType="INSIDE" width="200.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0e1924" height="200.0" stroke="#ffffff00" strokeType="INSIDE" width="200.0" />
                   <Label layoutX="14.0" layoutY="8.0" text="Saida" textFill="WHITE">
                      <font>
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Label>
-                  <Text fx:id="questionExOutput" fill="WHITE" layoutX="14.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1 2 3 4 5" wrappingWidth="12.0">
+                  <Text fx:id="questionExOutput" fill="WHITE" layoutX="14.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1 2 3 4 5" wrappingWidth="156.0">
                      <font>
                         <Font size="18.0" />
                      </font>

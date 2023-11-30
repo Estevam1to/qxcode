@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.lang.InterruptedException;
 import java.lang.ProcessBuilder;
 import java.util.Collections;
+import java.util.Comparator;
 
 
 public class JudgeJava implements IJudge {
@@ -33,52 +34,58 @@ public class JudgeJava implements IJudge {
         diffs = new ArrayList<File>();
         carregar(pathInput, inputs);
         carregar(pathOutputExpected, outputsExpecteds);
-        Collections.reverse(inputs);
-        Collections.reverse(outputsExpecteds);
+
+    }
+
+    private void sortArray(ArrayList<File> list) {
+        list.sort(new Comparator<File>() {
+            @Override
+            public int compare(File file1, File file2) {
+                int num1 = Integer.parseInt(file1.getName().replaceAll("\\D", ""));
+                int num2 = Integer.parseInt(file2.getName().replaceAll("\\D", ""));
+                return Integer.compare(num1, num2);
+            }
+        });
     }
 
     private void carregar(String path, ArrayList<File> list) {
-        File file = new File(path);
-        if (file.isDirectory() && file.exists()) {
-            File[] files = file.listFiles();
-            assert files != null;
-            for (File file1 : files) {
-                list.add(file1);
-            }
+        File pasta = new File(path);
+        if (pasta.isDirectory() && pasta.exists()) {
+            File[] files = pasta.listFiles();
+            Collections.addAll(list, files);
         }
+        sortArray(list);
     }
 
-    public void compilar() {
+    public boolean compilar() {
         long tempoInicial = System.currentTimeMillis();
         long tempoFinal = 0;
         try {
-            ProcessBuilder pbCompilacao = new ProcessBuilder("javac", userFile.getName());
+            ProcessBuilder pbCompilacao = new ProcessBuilder("javac", userFile.getAbsolutePath());
             pbCompilacao.directory(userFile.getParentFile());
             pbCompilacao.redirectError(new File("error.txt"));
             File error = new File("./error.txt");
             Process process = pbCompilacao.start();
-            process.waitFor();
-            if (error.length() == 0) {
+            int exit = process.waitFor();
+            if (exit == 0) {
                 for (int i = 0; i < inputs.size(); ++i) {
                     ProcessBuilder pbExecucao = new ProcessBuilder("java", "Question");
-                    pbExecucao.directory(userFile.getParentFile());
                     pbExecucao.redirectInput(inputs.get(i));
+                    pbExecucao.redirectError(new File("error.txt"));
                     pbExecucao.redirectOutput(new File(pathOutputUser, "userOut0" + (i + 1) + ".out"));
                     Process processExecucao = pbExecucao.start();
                     processExecucao.waitFor();
                 }
 
-            } else {
-                System.out.println("Não compilou");
             }
             tempoFinal = System.currentTimeMillis();
             //System.out.println("Executado em = " + (tempoFinal - tempoInicial) + " ms");
             time = tempoFinal - tempoInicial;
-        } catch (IOException e) {
-            System.out.println("Erro de I/O" + e.getMessage());
-        } catch (InterruptedException e) {
-            System.out.println("Erro de interrupção" + e.getMessage());
+        } catch (IOException | InterruptedException e) {
+            System.out.println("aaaaaaaaaa"+ e);
+            return false;
         }
+        return true;
 
     }
 
@@ -97,7 +104,7 @@ public class JudgeJava implements IJudge {
             String pathOutputUserTest = outputsUser.get(i).getAbsolutePath();
             String pathOutputExpectedTest = outputsExpecteds.get(i).getAbsolutePath();
             try {
-                System.out.println("Comparando " + outputsExpecteds.get(i).getName() + " com " + outputsUser.get(i).getName());
+                //System.out.println("Comparando " + outputsExpecteds.get(i).getName() + " com " + outputsUser.get(i).getName());
                 ProcessBuilder pbDiff = new ProcessBuilder("diff", pathOutputExpectedTest, pathOutputUserTest);
                 pbDiff.redirectOutput(new File(pathDiff, "diff0" + (i + 1) + ".out"));
                 Process pDiff = pbDiff.start();
@@ -125,11 +132,10 @@ public class JudgeJava implements IJudge {
     }
 
     public  void destroyArquivos() {
-        ArrayList<String> paths = new ArrayList<String>();
+        ArrayList<String> paths = new ArrayList<>();
         paths.add(pathOutputUser);
         paths.add(pathDiff);
         paths.add(pathOutputExpected);
-        paths.add(pathInput);
 
         for (String path : paths) {
             Destroy(path);
@@ -142,20 +148,7 @@ public class JudgeJava implements IJudge {
         question.delete();
     }
 
-    public String getResult() {
-        this.compilar();
-        boolean diffResult = this.verifyDiff();
-        String result = "";
-        if (time > 2000) {
-            result = "TLE_RESULT";
-        } else if (diffResult) {
-            result = "AC_RESULT";
-        }else if(!diffResult){
-            result = "WA_RESULT";
-        } else {
-            result = "RE_RESULT";
-        }
-        this.destroyArquivos();
-        return result;
+    public boolean getTime() {
+        return time > 2500;
     }
 }

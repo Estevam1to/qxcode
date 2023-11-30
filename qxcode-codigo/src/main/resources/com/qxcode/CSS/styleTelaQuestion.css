@@ -12,6 +12,12 @@
 #scrollPaneDescription > .viewport {
         -fx-background-color: #0E1A25;
 }
+#scrollSaida > .viewport {
+        -fx-background-color: #0E1A25;
+}
+#scrollEntrada > .viewport {
+        -fx-background-color: #0E1A25;
+}
 .scroll-pane {
         -fx-border-color: #FFFFFF;
         -fx-border-width: 2px;
