@@ -71,10 +71,17 @@ public class JudgePy implements IJudge {
                 Process processExecucao = pbExecucao.start();
                 processExecucao.waitFor();
                 processExecucao.destroy();
+
+                File error = new File("./error.txt");
+                if (error.length() != 0) {
+                    return false;
+                }
             }
             tempoFinal = System.currentTimeMillis();
             //System.out.println("Executado em = " + (tempoFinal - tempoInicial) + " ms");
             time = tempoFinal - tempoInicial;
+
+
         } catch (IOException | InterruptedException e) {
             return false;
         }

@@ -120,7 +120,6 @@ public class TelaQuestion {
     }
 
     public void setModalResult (String saida) throws IOException {
-        factoryJudge.getJudge(btnLinguagem.getText()).destroyArquivos();
         if (saida.equals(AC_RESULT)) {
             ControllerModalAc controller = new ControllerModalAc();
             Main main = new Main();
@@ -138,6 +137,8 @@ public class TelaQuestion {
             Main main = new Main();
             Main.setModalResult(controller.getPath(), controller);
         }
+
+        factoryJudge.getJudge(btnLinguagem.getText()).destroyArquivos();
     }
 
     public void initQuestion(){
