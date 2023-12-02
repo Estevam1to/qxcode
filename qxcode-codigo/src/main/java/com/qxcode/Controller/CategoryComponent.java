@@ -11,7 +11,7 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-public class CategoryComponent {
+public class CategoryComponent implements IComponentController{
 
     TelaListQuestion telaListQuestion = new TelaListQuestion();
 
@@ -26,10 +26,10 @@ public class CategoryComponent {
 
     public void setCategory(Category categoria){
         this.categoria = categoria;
-        this.setarInfoCategory();
+        this.setInfo();
     }
 
-    private void setarInfoCategory() {
+    public void setInfo() {
         if (categoria != null) {
             this.categoryTitle.setText(categoria.getTitle());
             this.categoryDescription.setText(categoria.getDescription());
@@ -42,7 +42,7 @@ public class CategoryComponent {
 
 
 
-    public void entrarListQuestion(MouseEvent mouseEvent) throws IOException {
+    public void entrarDetalhes(MouseEvent mouseEvent) throws IOException {
         Main.setRoot(telaListQuestion.getTela(), categoria.getId(), categoria.getTitle());
     }
 }

@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class TelaCategory {
+public class TelaCategory implements IViewController {
     @FXML
     public AnchorPane telaCategory;
     @FXML
@@ -40,7 +40,7 @@ public class TelaCategory {
     @FXML
     private ScrollPane scrollPane;
 
-
+    @Override
     @FXML
     public void initialize() throws IOException {
         this.initNavBar();
@@ -49,7 +49,7 @@ public class TelaCategory {
     }
 
 
-    private void initNavBar() throws IOException {
+    public void initNavBar() throws IOException {
         FXMLLoader childLoader = obterFXMLNavBarLoader();
         AnchorPane childNode = childLoader.load();
         NavBarComponent childController = childLoader.getController();

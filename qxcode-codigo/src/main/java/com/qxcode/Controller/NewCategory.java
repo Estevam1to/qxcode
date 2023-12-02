@@ -13,7 +13,7 @@ import javafx.scene.layout.Pane;
 import java.io.IOException;
 import java.net.URL;
 
-public class NewCategory {
+public class NewCategory implements IViewController{
 
     @FXML
     private TextArea decriptionInput;
@@ -33,6 +33,7 @@ public class NewCategory {
         this.categoryDAO = new CategoryDAO();
     }
 
+    @Override
     public void initialize() throws IOException{
         this.initNavBar();
     }
@@ -52,7 +53,7 @@ public class NewCategory {
         System.out.println("Descrição: " + descricao);
     }
 
-    private void initNavBar() throws IOException {
+    public void initNavBar() throws IOException {
         FXMLLoader childLoader = obterFXMLNavBarLoader();
         AnchorPane childNode = childLoader.load();
         navBar.getChildren().add(childNode);

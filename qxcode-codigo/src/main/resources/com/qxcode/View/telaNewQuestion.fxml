@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="newQuestion" prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: #0E1A25;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qxcode.Controller.NewQuestion">
+<AnchorPane fx:id="newQuestion" prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: #0E1A25;" stylesheets="@../CSS/styleTelaQuestion.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qxcode.Controller.NewQuestion">
 
     <children>
         <Group layoutX="80.0" layoutY="124.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="124.0">
@@ -90,7 +90,7 @@
                     </font>
                 </Label>
             <ListView fx:id="inputFiles" layoutX="604.0" layoutY="149.0" prefHeight="168.0" prefWidth="250.0" />
-              <Button fx:id="btnAddInput" layoutX="603.0" layoutY="334.0" mnemonicParsing="false" onAction="#saveInputFiles" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #2A4D6F; -fx-border-radius: 66; -fx-background-radius: 66;" stylesheets="../CSS/styleTelaQuestion.css" text="Adicionar arquivos de entrada" textFill="WHITE">
+              <Button fx:id="btnAddInput" layoutX="603.0" layoutY="334.0" mnemonicParsing="false" onAction="#saveInputFiles" prefHeight="30.0" prefWidth="250.0" text="Adicionar arquivos de entrada" textFill="WHITE">
                   <font>
                       <Font name="System Bold" size="14.0" />
                   </font>
@@ -101,7 +101,7 @@
                     </font>
                 </Label>
             <ListView fx:id="outputFiles" layoutX="871.0" layoutY="149.0" prefHeight="168.0" prefWidth="250.0" />
-              <Button fx:id="btnAddOutput" layoutX="871.0" layoutY="334.0" mnemonicParsing="false" onAction="#saveOutputFiles" prefHeight="30.0" prefWidth="250.0" style="-fx-background-color: #2A4D6F; -fx-border-radius: 66; -fx-background-radius: 66;" stylesheets="../CSS/styleTelaQuestion.css" text="Adicionar arquivos de saída" textFill="WHITE">
+              <Button fx:id="btnAddOutput" layoutX="871.0" layoutY="334.0" mnemonicParsing="false" onAction="#saveOutputFiles" prefHeight="30.0" prefWidth="250.0"  text="Adicionar arquivos de saída" textFill="WHITE">
                   <font>
                       <Font name="System Bold" size="14.0" />
                   </font>
@@ -112,7 +112,7 @@
                     </font>
                 </Label>
                 <ChoiceBox fx:id="categoryInput" layoutX="603.0" layoutY="420.0" prefHeight="54.0" prefWidth="516.0" />
-                <Button fx:id="btnSalvar" layoutX="604.0" layoutY="493.0" mnemonicParsing="false" onAction="#salvarQuestao" prefHeight="56.0" prefWidth="516.0" style="-fx-background-color: #2A4D6F; -fx-border-radius: 66; -fx-background-radius: 66;" stylesheets="../CSS/styleTelaQuestion.css" text="Salvar" textFill="WHITE">
+                <Button fx:id="btnSalvar" layoutX="604.0" layoutY="493.0" mnemonicParsing="false" onAction="#salvarQuestao" prefHeight="56.0" prefWidth="516.0" text="Salvar" textFill="WHITE">
                     <font>
                         <Font name="System Bold" size="24.0" />
                     </font>

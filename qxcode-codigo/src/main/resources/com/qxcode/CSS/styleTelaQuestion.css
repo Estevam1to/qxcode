@@ -1,11 +1,11 @@
-#btnSubmeter {
+.button {
         -fx-background-color: #2A4D6F;
         -fx-border-radius: 66;
         -fx-background-radius: 66;
         -fx-text-fill: white;
 }
 
-#btnSubmeter:hover {
+.button:hover {
         -fx-background-color: #1C334A;
 }
 
