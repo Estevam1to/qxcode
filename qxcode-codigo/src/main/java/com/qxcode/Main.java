@@ -1,7 +1,7 @@
 package com.qxcode;
 
-import com.qxcode.Controller.TelaListQuestion;
-import com.qxcode.Controller.TelaQuestion;
+import com.qxcode.Controller.TelasController.TelaListQuestion;
+import com.qxcode.Controller.TelasController.TelaQuestion;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;

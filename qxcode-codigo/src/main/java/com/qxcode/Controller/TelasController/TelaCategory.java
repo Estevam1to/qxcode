@@ -1,57 +1,51 @@
-package com.qxcode.Controller;
+package com.qxcode.Controller.TelasController;
 
-
+import com.qxcode.Controller.ComponentController.CategoryComponent;
+import com.qxcode.Controller.ComponentController.IComponentController;
+import com.qxcode.Controller.ControllerCategory;
+import com.qxcode.Controller.NavBar2Component;
+import com.qxcode.Controller.NavBarComponent;
 import com.qxcode.Main;
 import com.qxcode.Model.Category;
-import com.qxcode.Model.Question;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class TelaListQuestion implements IViewController {
-
+public class TelaCategory implements IViewController {
     @FXML
-    public AnchorPane telaListQuestion;
+    public AnchorPane telaCategory;
     @FXML
     private GridPane gridPane;
     @FXML
-    private Label nameCategory;
-
-    private String nameCategorySelect;
-
-    private int idCategorySelect;
-
-    private int currentRowIndex = 0;
+    private ArrayList<Pane> categoryCards;
 
     @FXML
     private Pane navBar;
     @FXML
     private Pane navBar2;
+    @FXML
+    private Rectangle teste;
+    @FXML
+    private ScrollPane scrollPane;
 
     @Override
     @FXML
     public void initialize() throws IOException {
         this.initNavBar();
-        this.initGridQuestions();
+        this.initGridCategories();
 
     }
 
-    public void setCategory(String category) {
-        this.nameCategorySelect = category;
-    }
-
-    public void setId(int id) {
-        this.idCategorySelect = id;
-    }
 
     public void initNavBar() throws IOException {
         FXMLLoader childLoader = obterFXMLNavBarLoader();
@@ -65,35 +59,39 @@ public class TelaListQuestion implements IViewController {
         navBar2.getChildren().add(childNode2);
     }
 
-    private void initGridQuestions() {
-        List<Question> questions = getAllQuestions();
-        this.nameCategory.setText(nameCategorySelect);
 
-        for (Question question : questions) {
-            if (question != null) {
-                this.adicionarQuestionEmGrid(question);
+    private void initGridCategories(){
+        List<Category> categories = getAllCategories();
+
+        for (Category categoria : categories) {
+            if (categoria != null) {
+                this.adicionarCategoryEmGrid(categoria);
             } else {
                 // handle the null case, e.g. log a warning
-                System.out.println("Warning: null Question object encountered");
+                System.out.println("Warning: null Category object encountered");
             }
         }
+
     }
 
-    private void adicionarQuestionEmGrid(Question question) {
-        try {
-            FXMLLoader childLoader = obterFXMLQuestionLoader();
-            AnchorPane childNode = childLoader.load();
-            QuestionComponent childController = childLoader.getController();
-            childController.setQuestion(question);
 
+    private void adicionarCategoryEmGrid(Category categoria) {
+        try {
+            FXMLLoader childLoader = obterFXMLCategoryLoader();
+            AnchorPane childNode = childLoader.load();
+            IComponentController childController = childLoader.getController();
+            childController.setModel(categoria);
+
+            // Adiciona o categoryCard ao gridPane
             gridPane.getChildren().add(childNode);
 
-            GridPane.setColumnIndex(childNode, 0);
+            // Calcula as posições da coluna e da linha
+            int columnIndex = gridPane.getChildren().indexOf(childNode) % gridPane.getColumnCount();
             int rowIndex = gridPane.getChildren().indexOf(childNode) / gridPane.getColumnCount();
 
-
+            // Define as posições na grade
+            GridPane.setColumnIndex(childNode, columnIndex);
             GridPane.setRowIndex(childNode, rowIndex);
-            currentRowIndex++;
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -102,9 +100,8 @@ public class TelaListQuestion implements IViewController {
 
 
 
-
-    private FXMLLoader obterFXMLQuestionLoader() {
-        URL resource = Main.class.getResource("View/components/questionComponent.fxml");
+    private FXMLLoader obterFXMLCategoryLoader() {
+        URL resource = Main.class.getResource("View/components/categoryComponent.fxml");
         if (resource == null) {
             System.out.println("FXML file not found");
         } else {
@@ -134,22 +131,19 @@ public class TelaListQuestion implements IViewController {
     }
 
 
-    private List<Question> getAllQuestions() {
-        ControllerQuestion controllerQuestion = new ControllerQuestion();
-        List<Question> questions;
-        if(this.idCategorySelect == -1){
-            questions = controllerQuestion.getFavoriteQuestions();
-        }else{
-            questions = controllerQuestion.getQuestionByCategory(this.idCategorySelect);
+    private List<Category> getAllCategories() {
+        ControllerCategory controller = new ControllerCategory();
+        List<Category> categories = controller.getAllCategories();
+        if (categories != null) {
+            return categories;
+        } else {
+            // handle the null case, e.g. return an empty list
+            return new ArrayList<>();
         }
-
-        if (questions != null) {
-            return questions;
-        }
-        return new ArrayList<>();
     }
 
+    @Override
     public String getTela() {
-        return "View/telaListQuestion.fxml";
+        return "View/telaCategory.fxml";
     }
 }

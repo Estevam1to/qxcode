@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="60.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qxcode.Controller.QuestionComponent">
+<AnchorPane prefHeight="60.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qxcode.Controller.ComponentController.QuestionComponent">
    <children>
       <HBox alignment="CENTER" onMouseClicked="#entrarDetalhes" prefHeight="60.0" prefWidth="1120.0">
          <children>
