@@ -1,5 +1,6 @@
 package com.qxcode.Controller;
 
+import com.qxcode.Controller.ModalsController.*;
 import com.qxcode.DAO.QuestionDAO;
 import com.qxcode.Main;
 import com.qxcode.Model.Question;
@@ -19,7 +20,6 @@ import javafx.scene.control.MenuItem;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 
 public class TelaQuestion {
     TranformaEmArquivo tranformaEmArquivo;
@@ -120,22 +120,23 @@ public class TelaQuestion {
     }
 
     public void setModalResult (String saida) throws IOException {
+        IControllerModal controllerModal = null;
         if (saida.equals(AC_RESULT)) {
-            ControllerModalAc controller = new ControllerModalAc();
+            controllerModal = new ControllerModalAc();
             Main main = new Main();
-            Main.setModalResult(controller.getPath(), controller);
+            Main.setModalResult(controllerModal.getPath(), controllerModal);
         } else if (saida.equals(WA_RESULT)) {
-            ControllerModalWa controller = new ControllerModalWa();
+            controllerModal = new ControllerModalWa();
             Main main = new Main();
-            Main.setModalResult(controller.getPath(), controller);
+            Main.setModalResult(controllerModal.getPath(), controllerModal);
         } else if (saida.equals(TLE_RESULT)) {
-            ControllerModalTle controller = new ControllerModalTle();
+            controllerModal = new ControllerModalTle();
             Main main = new Main();
-            Main.setModalResult(controller.getPath(), controller);
+            Main.setModalResult(controllerModal.getPath(), controllerModal);
         } else if (saida.equals(RE_RESULT)) {
-            ControllerModalErroCompilacao controller = new ControllerModalErroCompilacao();
+            controllerModal = new ControllerModalRe();
             Main main = new Main();
-            Main.setModalResult(controller.getPath(), controller);
+            Main.setModalResult(controllerModal.getPath(), controllerModal);
         }
 
         factoryJudge.getJudge(btnLinguagem.getText()).destroyArquivos();

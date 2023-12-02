@@ -1,8 +1,7 @@
-package com.qxcode.Controller;
+package com.qxcode.Controller.ModalsController;
 
-public class ControllerModalTle {
+public class ControllerModalTle implements  IControllerModal {
     public void initialize() {
-
     }
 
     public String getPath() {
