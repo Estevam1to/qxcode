@@ -1,6 +1,6 @@
 package com.qxcode.Model;
 
-public class Question {
+public class Question implements IModel {
     private int id;
     private String description;
     private String title;
@@ -47,6 +47,18 @@ public class Question {
 
     public int getFavorite() {
         return favorite;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
 }
