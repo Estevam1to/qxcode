@@ -128,7 +128,7 @@ public class TelaQuestion {
     }
 
     public void initQuestion(){
-        Question question = dao.getQuestionById(questionId);
+        Question question = dao.getById(questionId);
         questionName.setText(question.getTitle());
         questionDescription.setText(question.getDescription());
         questionExOutput.setText(controllerQuestion.getExTestCaseOutput(question.getId()));

@@ -1,7 +1,6 @@
 package com.qxcode.Controller;
 
 import com.qxcode.DAO.QuestionDAO;
-import com.qxcode.Model.Category;
 import com.qxcode.Model.Question;
 
 import java.util.List;
@@ -31,7 +30,7 @@ public class ControllerQuestion {
     }
 
     public Question getQuestionByTitle(String title) {
-        return questionDAO.getQuestionByTitle(title);
+        return questionDAO.getByTitle(title);
     }
 
     public List<Question> getFavoriteQuestion() {

@@ -7,9 +7,7 @@ import com.qxcode.Model.Category;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.FileChooser;
@@ -17,9 +15,7 @@ import javafx.stage.FileChooser;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.ResourceBundle;
 
 public class NewQuestion{
 
@@ -117,7 +113,7 @@ public class NewQuestion{
 
         questionDAO.insertQuestion(titulo, descricao, dificuldade, "exemplo", id_categoria);
 
-        int idQuestion = questionDAO.getQuestionByTitle(titulo).getId();
+        int idQuestion = questionDAO.getByTitle(titulo).getId();
 
         salvarCasosDeTeste(idQuestion);
 
@@ -142,7 +138,7 @@ public class NewQuestion{
     }
 
     public int getCategory(String title){
-        Category category = categoryDAO.getCategoryByTitle(title);
+        Category category = categoryDAO.getByTitle(title);
         return category.getId();
     }
 

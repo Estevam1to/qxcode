@@ -1,6 +1,6 @@
 package com.qxcode.Model;
 
-public class Category {
+public class Category implements IModel{
     private int id;
     private String title;
     private String description;
