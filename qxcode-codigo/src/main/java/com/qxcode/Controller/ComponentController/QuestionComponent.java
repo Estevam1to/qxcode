@@ -1,14 +1,16 @@
-package com.qxcode.Controller;
+package com.qxcode.Controller.ComponentController;
 
+import com.qxcode.Controller.ControllerQuestion;
+import com.qxcode.Controller.TelasController.IViewController;
+import com.qxcode.Controller.TelasController.TelaQuestion;
 import com.qxcode.DAO.CategoryDAO;
 import com.qxcode.Main;
+import com.qxcode.Model.Category;
 import com.qxcode.Model.Question;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.text.Text;
 
 import java.io.IOException;
 
@@ -36,8 +38,8 @@ public class QuestionComponent implements IComponentController{
         controllerQuestion = new ControllerQuestion();
     }
 
-    public void setQuestion(Question question){
-        this.question = question;
+    public <T> void setModel(T question){
+        this.question = (Question) question;
         this.setInfo();
     }
 

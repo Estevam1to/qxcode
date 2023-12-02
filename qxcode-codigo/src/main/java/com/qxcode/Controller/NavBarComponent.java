@@ -1,5 +1,6 @@
 package com.qxcode.Controller;
 
+import com.qxcode.Controller.TelasController.*;
 import com.qxcode.Main;
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;

@@ -1,4 +1,4 @@
-package com.qxcode.Controller;
+package com.qxcode.Controller.TelasController;
 
 import java.io.IOException;
 

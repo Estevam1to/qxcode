@@ -1,12 +1,11 @@
-package com.qxcode.Controller;
+package com.qxcode.Controller.TelasController;
 
+import com.qxcode.Controller.NavBar2Component;
 import com.qxcode.DAO.CategoryDAO;
 import com.qxcode.Main;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 

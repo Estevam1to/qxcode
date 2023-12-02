@@ -1,9 +1,10 @@
-package com.qxcode.Controller;
+package com.qxcode.Controller.ComponentController;
 
+import com.qxcode.Controller.TelasController.IViewController;
+import com.qxcode.Controller.TelasController.TelaListQuestion;
 import com.qxcode.DAO.CategoryDAO;
 import com.qxcode.Main;
 import com.qxcode.Model.Category;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -24,8 +25,8 @@ public class CategoryComponent implements IComponentController{
     private Category categoria;
 
 
-    public void setCategory(Category categoria){
-        this.categoria = categoria;
+    public <T> void setModel(T categoria){
+        this.categoria = (Category) categoria;
         this.setInfo();
     }
 

@@ -1,5 +1,8 @@
-package com.qxcode.Controller;
+package com.qxcode.Controller.TelasController;
 
+import com.qxcode.Controller.ControllerTestCase;
+import com.qxcode.Controller.NavBar2Component;
+import com.qxcode.Controller.NavBarComponent;
 import com.qxcode.DAO.CategoryDAO;
 import com.qxcode.DAO.QuestionDAO;
 import com.qxcode.Main;
