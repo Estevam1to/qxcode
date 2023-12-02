@@ -40,6 +40,12 @@ public class TelaListQuestion implements IViewController {
     @FXML
     private Pane navBar2;
 
+    private ControllerQuestion controllerQuestion;
+
+    public TelaListQuestion() {
+        controllerQuestion = new ControllerQuestion();
+    }
+
     @Override
     @FXML
     public void initialize() throws IOException {
@@ -138,7 +144,6 @@ public class TelaListQuestion implements IViewController {
 
 
     private List<Question> getAllQuestions() {
-        ControllerQuestion controllerQuestion = new ControllerQuestion();
         List<Question> questions;
         if(this.idCategorySelect == -1){
             questions = controllerQuestion.getFavoriteQuestions();

@@ -27,14 +27,11 @@ public class QuestionComponent implements IComponentController{
 
     IViewController telaQuestion;
 
-    CategoryDAO dao;
     private Question question;
-
     private ControllerQuestion controllerQuestion;
 
     public QuestionComponent(){
         telaQuestion = new TelaQuestion();
-        dao = new CategoryDAO();
         controllerQuestion = new ControllerQuestion();
     }
 

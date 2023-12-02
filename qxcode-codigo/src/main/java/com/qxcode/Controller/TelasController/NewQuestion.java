@@ -1,8 +1,6 @@
 package com.qxcode.Controller.TelasController;
 
-import com.qxcode.Controller.ControllerTestCase;
-import com.qxcode.Controller.NavBar2Component;
-import com.qxcode.Controller.NavBarComponent;
+import com.qxcode.Controller.*;
 import com.qxcode.DAO.CategoryDAO;
 import com.qxcode.DAO.QuestionDAO;
 import com.qxcode.Main;
@@ -43,13 +41,14 @@ public class NewQuestion implements IViewController{
     @FXML
     private Pane navBar2;
 
-    private final QuestionDAO questionDAO;
-    private final CategoryDAO categoryDAO;
+    private ControllerQuestion controllerQuestion;
+
+    private ControllerCategory controllerCategory;
 
 
     public NewQuestion() {
-        this.questionDAO = new QuestionDAO();
-        this.categoryDAO = new CategoryDAO();
+        controllerCategory = new ControllerCategory();
+        controllerQuestion = new ControllerQuestion();
     }
 
     @Override
@@ -60,7 +59,7 @@ public class NewQuestion implements IViewController{
     }
 
     private void loadCategoryInput(){
-        List<Category> categories = categoryDAO.getAllCategories();
+        List<Category> categories = controllerCategory.getAllCategories();
         for(Category category : categories){
             String title = category.getTitle();
             categoryInput.getItems().add(title);
@@ -115,9 +114,9 @@ public class NewQuestion implements IViewController{
         int dificuldade = this.getDifficulty();
         int id_categoria = this.getCategory(categoryInput.getValue());
 
-        questionDAO.insertQuestion(titulo, descricao, dificuldade, "exemplo", id_categoria);
+        controllerQuestion.insertQuestion(titulo, descricao, dificuldade, "exemplo", id_categoria);
 
-        int idQuestion = questionDAO.getByTitle(titulo).getId();
+        int idQuestion = controllerQuestion.getByTitle(titulo).getId();
 
         salvarCasosDeTeste(idQuestion);
 
@@ -142,7 +141,7 @@ public class NewQuestion implements IViewController{
     }
 
     public int getCategory(String title){
-        Category category = categoryDAO.getByTitle(title);
+        Category category = controllerCategory.getByTitle(title);
         return category.getId();
     }
 

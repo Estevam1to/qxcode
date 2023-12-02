@@ -38,6 +38,12 @@ public class TelaCategory implements IViewController {
     @FXML
     private ScrollPane scrollPane;
 
+    private ControllerCategory controllerCategory;
+
+    public TelaCategory() {
+        controllerCategory = new ControllerCategory();
+    }
+
     @Override
     @FXML
     public void initialize() throws IOException {
@@ -132,8 +138,7 @@ public class TelaCategory implements IViewController {
 
 
     private List<Category> getAllCategories() {
-        ControllerCategory controller = new ControllerCategory();
-        List<Category> categories = controller.getAllCategories();
+        List<Category> categories = controllerCategory.getAllCategories();
         if (categories != null) {
             return categories;
         } else {
