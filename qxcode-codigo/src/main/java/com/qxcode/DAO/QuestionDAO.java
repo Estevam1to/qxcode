@@ -5,12 +5,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.qxcode.JDBC.JDBC;
-import com.qxcode.Model.Category;
 import com.qxcode.Model.Question;
 
-public class QuestionDAO {
+public class QuestionDAO implements IDAO{
 
-    public Question resultSetToQuestion(ResultSet resultSet) throws SQLException {
+    public Question resultSetToObject(ResultSet resultSet) throws SQLException {
 
         Question question = new Question(resultSet.getInt("id_questao"),
         resultSet.getString("descricao"),
@@ -59,14 +58,14 @@ public class QuestionDAO {
 
     public void updateQuestionFavorite(int id) {
 
-        if (this.getQuestionById(id).getFavorite() != 1) {
+        if (this.getById(id).getFavorite() != 1) {
             addFavorite(id);
         } else {
             removeFavorite(id);
         }
     }
 
-    public Question getQuestionById(int idQuestion){
+    public Question getById(int idQuestion){
         String sql = "SELECT * FROM questao WHERE id_questao = ?";
 
         try (Connection conn = JDBC.getConnection();
@@ -74,7 +73,7 @@ public class QuestionDAO {
             preparedStatement.setInt(1, idQuestion);
             ResultSet resultSet = preparedStatement.executeQuery();
 
-            Question question = resultSetToQuestion(resultSet);
+            Question question = resultSetToObject(resultSet);
 
             resultSet.close();
             return question;
@@ -95,7 +94,7 @@ public class QuestionDAO {
 
             while (resultSet.next()) {
 
-                Question question = resultSetToQuestion(resultSet);
+                Question question = resultSetToObject(resultSet);
                 questions.add(question);
 
             }
@@ -120,7 +119,7 @@ public class QuestionDAO {
 
             while (resultSet.next()) {
 
-                Question question = resultSetToQuestion(resultSet);
+                Question question = resultSetToObject(resultSet);
                 questions.add(question);
 
             }
@@ -183,7 +182,7 @@ public class QuestionDAO {
              ResultSet resultSet = preparedStatement.executeQuery();){
 
             while (resultSet.next()) {
-                Question question = resultSetToQuestion(resultSet);
+                Question question = resultSetToObject(resultSet);
                 questions.add(question);
             }
 
@@ -198,7 +197,7 @@ public class QuestionDAO {
 
     }
 
-    public Question getQuestionByTitle(String titulo) {
+    public Question getByTitle(String titulo) {
         String sql = "SELECT * FROM questao WHERE titulo = ?";
         try (Connection conn = JDBC.getConnection();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -206,7 +205,7 @@ public class QuestionDAO {
             stmt.setString(1, titulo);
             ResultSet resultSet = stmt.executeQuery();
 
-            Question question = resultSetToQuestion(resultSet);
+            Question question = resultSetToObject(resultSet);
 
             resultSet.close();
             stmt.close();

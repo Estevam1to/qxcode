@@ -7,9 +7,9 @@ import java.util.List;
 import com.qxcode.JDBC.JDBC;
 import com.qxcode.Model.Category;
 
-public class CategoryDAO {
+public class CategoryDAO implements IDAO{
 
-    public Category resultSetToCategory(ResultSet resultSet) throws SQLException {
+    public Category resultSetToObject(ResultSet resultSet) throws SQLException {
         Category category = new Category(
         resultSet.getInt("id_categoria"),
         resultSet.getString("titulo"),
@@ -31,7 +31,7 @@ public class CategoryDAO {
 
                 while (resultSet.next()) {
 
-                    Category category = resultSetToCategory(resultSet);
+                    Category category = resultSetToObject(resultSet);
                     categories.add(category);
 
                 }
@@ -46,7 +46,7 @@ public class CategoryDAO {
             }
     }
 
-    public Category getCategoryById(int idC) {
+    public Category getById(int idC) {
         Category categoria = null;
         String sql = "SELECT * FROM categoria WHERE id_categoria = ?";
 
@@ -56,7 +56,7 @@ public class CategoryDAO {
             stmt.setInt(1, idC);
             ResultSet resultSet = stmt.executeQuery();
 
-            categoria = resultSetToCategory(resultSet);
+            categoria = resultSetToObject(resultSet);
 
 
             return categoria;
@@ -66,8 +66,7 @@ public class CategoryDAO {
             return null;
         }
     }
-
-    public Category getCategoryByTitle(String titulo) {
+    public Category getByTitle(String titulo) {
         Category categoria = null;
         String sql = "SELECT * FROM categoria WHERE titulo = ?";
 
@@ -79,7 +78,7 @@ public class CategoryDAO {
 
             if (resultSet.next()) {
 
-                categoria = resultSetToCategory(resultSet);
+                categoria = resultSetToObject(resultSet);
             }
 
             return categoria;
@@ -120,6 +119,40 @@ public class CategoryDAO {
                     }
                 }
             }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void deleteCategory(int id) {
+        String sql = "DELETE FROM categoria WHERE id_categoria = ?";
+
+        try{
+            Connection conn = JDBC.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setInt(1, id);
+
+            stmt.executeUpdate();
+            stmt.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void updateCategory(int id, String titulo, String descricao) {
+        String sql = "UPDATE categoria SET titulo = ?, descricao = ? WHERE id_categoria = ?";
+
+        try{
+            Connection conn = JDBC.getConnection();
+            PreparedStatement stmt = conn.prepareStatement(sql);
+
+            stmt.setString(1, titulo);
+            stmt.setString(2, descricao);
+            stmt.setInt(3, id);
+
+            stmt.executeUpdate();
+            stmt.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
