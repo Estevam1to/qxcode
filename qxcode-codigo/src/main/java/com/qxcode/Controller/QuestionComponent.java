@@ -23,7 +23,7 @@ public class QuestionComponent implements IComponentController{
     @FXML
     private Label levelQuestion;
 
-    TelaQuestion telaQuestion;
+    IViewController telaQuestion;
 
     CategoryDAO dao;
     private Question question;

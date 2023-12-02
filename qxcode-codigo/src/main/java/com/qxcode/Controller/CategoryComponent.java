@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class CategoryComponent implements IComponentController{
 
-    TelaListQuestion telaListQuestion = new TelaListQuestion();
+    IViewController telaListQuestion = new TelaListQuestion();
 
     @FXML
     private Label categoryTitle;

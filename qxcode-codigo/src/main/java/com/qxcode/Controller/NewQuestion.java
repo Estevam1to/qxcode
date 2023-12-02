@@ -177,7 +177,7 @@ public class NewQuestion implements IViewController{
         return new FXMLLoader(resource);
     }
 
-
+    @Override
     public String getTela() {
         return "/com/qxcode/View/telaNewQuestion.fxml";
     }

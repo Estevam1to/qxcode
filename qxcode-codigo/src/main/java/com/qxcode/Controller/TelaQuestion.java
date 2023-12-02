@@ -158,7 +158,7 @@ public class TelaQuestion implements IViewController {
         return new FXMLLoader(resource);
     }
 
-
+    @Override
     public String getTela() {
         return "View/telaQuestion.fxml";
     }

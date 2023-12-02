@@ -85,6 +85,7 @@ public class NewCategory implements IViewController{
         return new FXMLLoader(resource);
     }
 
+    @Override
     public String getTela() {
         return "/com/qxcode/View/telaNewCategory.fxml";
     }
