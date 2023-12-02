@@ -111,7 +111,7 @@ public class TelaQuestion {
             setModalResult(TLE_RESULT);
         }else if (!compilar) {
             setModalResult(RE_RESULT);
-        }else if (verify == false) {
+        }else if (!verify) {
             setModalResult(WA_RESULT);
         }
         else {
@@ -121,24 +121,9 @@ public class TelaQuestion {
 
     public void setModalResult (String saida) throws IOException {
         IControllerModal controllerModal = null;
-        if (saida.equals(AC_RESULT)) {
-            controllerModal = new ControllerModalAc();
-            Main main = new Main();
-            Main.setModalResult(controllerModal.getPath(), controllerModal);
-        } else if (saida.equals(WA_RESULT)) {
-            controllerModal = new ControllerModalWa();
-            Main main = new Main();
-            Main.setModalResult(controllerModal.getPath(), controllerModal);
-        } else if (saida.equals(TLE_RESULT)) {
-            controllerModal = new ControllerModalTle();
-            Main main = new Main();
-            Main.setModalResult(controllerModal.getPath(), controllerModal);
-        } else if (saida.equals(RE_RESULT)) {
-            controllerModal = new ControllerModalRe();
-            Main main = new Main();
-            Main.setModalResult(controllerModal.getPath(), controllerModal);
-        }
-
+        FactoryModals factoryM = new FactoryModals();
+        controllerModal = factoryM.getController(saida);
+        Main.setModalResult(controllerModal.getPath(), controllerModal);
         factoryJudge.getJudge(btnLinguagem.getText()).destroyArquivos();
     }
 
