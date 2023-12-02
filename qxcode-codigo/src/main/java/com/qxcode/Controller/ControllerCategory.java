@@ -13,10 +13,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerCategory {
-    CategoryDAO dao = new CategoryDAO();
-    @FXML
-    public void initialize() {
-       
+    CategoryDAO dao;
+
+    public ControllerCategory() {
+        dao = new CategoryDAO();
     }
     
     public String getTela() {
@@ -28,7 +28,13 @@ public class ControllerCategory {
        return categories;
     }
 
+    public void insertCategory(String titulo, String descricao){
+        dao.insertCategory(titulo, descricao);
+    }
 
+    public Category getByTitle(String titulo){
+        return dao.getByTitle(titulo);
+    }
 
 
 }

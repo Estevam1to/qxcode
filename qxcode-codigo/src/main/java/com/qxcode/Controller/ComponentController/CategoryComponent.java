@@ -20,8 +20,6 @@ public class CategoryComponent implements IComponentController{
     private Label categoryTitle;
     @FXML
     private Text categoryDescription;
-
-    private CategoryDAO dao = new CategoryDAO();
     private Category categoria;
 
 

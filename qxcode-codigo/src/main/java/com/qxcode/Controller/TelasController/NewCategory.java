@@ -1,5 +1,6 @@
 package com.qxcode.Controller.TelasController;
 
+import com.qxcode.Controller.ControllerCategory;
 import com.qxcode.Controller.NavBar2Component;
 import com.qxcode.DAO.CategoryDAO;
 import com.qxcode.Main;
@@ -25,11 +26,11 @@ public class NewCategory implements IViewController{
 
     @FXML
     private Pane navBar2;
-    private CategoryDAO categoryDAO;
+    private ControllerCategory controllerCategory;
 
 
     public NewCategory(){
-        this.categoryDAO = new CategoryDAO();
+        this.controllerCategory = new ControllerCategory();
     }
 
     @Override
@@ -42,7 +43,7 @@ public class NewCategory implements IViewController{
         String titulo = titleInput.getText();
         String descricao = decriptionInput.getText();
 
-        categoryDAO.insertCategory(titulo, descricao);
+        controllerCategory.insertCategory(titulo, descricao);
 
         // Limpar os campos após a adição da categoria
         titleInput.clear();

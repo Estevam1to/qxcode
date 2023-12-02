@@ -29,7 +29,11 @@ public class ControllerQuestion {
         questionDAO.insertQuestion(title, description, difficulty, examples, categoryId);
     }
 
-    public Question getQuestionByTitle(String title) {
+    public Question getById(int id) {
+        return questionDAO.getById(id);
+    }
+
+    public Question getByTitle(String title) {
         return questionDAO.getByTitle(title);
     }
 

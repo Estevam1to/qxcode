@@ -44,9 +44,7 @@ public class TelaQuestion implements IViewController {
     @FXML
     private Pane navBar2;
 
-    QuestionDAO dao;
-
-    ControllerQuestion controllerQuestion;
+    private ControllerQuestion controllerQuestion;
 
     private int questionId;
 
@@ -57,7 +55,6 @@ public class TelaQuestion implements IViewController {
 
 
     public TelaQuestion(){
-        dao = new QuestionDAO();
         controllerQuestion = new ControllerQuestion();
     }
 
@@ -132,7 +129,7 @@ public class TelaQuestion implements IViewController {
     }
 
     public void initQuestion(){
-        Question question = dao.getById(questionId);
+        Question question = controllerQuestion.getById(questionId);
         questionName.setText(question.getTitle());
         questionDescription.setText(question.getDescription());
         questionExOutput.setText(controllerQuestion.getExTestCaseOutput(question.getId()));
