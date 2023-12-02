@@ -7,5 +7,6 @@ module com.qxcode {
     exports com.qxcode;
     opens com.qxcode.Controller to javafx.fxml;
     opens com.qxcode.Controller.ModalsController to javafx.fxml;
+    exports com.qxcode.Controller;
 
 }

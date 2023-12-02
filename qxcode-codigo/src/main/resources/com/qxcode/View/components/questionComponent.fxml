@@ -9,14 +9,14 @@
 
 <AnchorPane prefHeight="60.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qxcode.Controller.QuestionComponent">
    <children>
-      <HBox alignment="CENTER" onMouseClicked="#entrarQuestion" prefHeight="60.0" prefWidth="1120.0">
+      <HBox alignment="CENTER" onMouseClicked="#entrarDetalhes" prefHeight="60.0" prefWidth="1120.0">
          <children>
-            <Label fx:id="numberQuestion" alignment="CENTER" onMouseClicked="#entrarQuestion" prefHeight="60.0" prefWidth="165.0" text="Label" textFill="WHITE">
+            <Label fx:id="numberQuestion" alignment="CENTER" onMouseClicked="#entrarDetalhes" prefHeight="60.0" prefWidth="165.0" text="Label" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Label fx:id="nameQuestion" alignment="CENTER" onMouseClicked="#entrarQuestion" prefHeight="60.0" prefWidth="395.0" text="Label" textFill="WHITE">
+            <Label fx:id="nameQuestion" alignment="CENTER" onMouseClicked="#entrarDetalhes" prefHeight="60.0" prefWidth="395.0" text="Label" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>
@@ -35,7 +35,7 @@
                   <Insets left="116.0" />
                </padding>
             </CheckBox>
-            <Label fx:id="levelQuestion" alignment="CENTER" onMouseClicked="#entrarQuestion" prefHeight="60.0" prefWidth="308.0" text="Label" textFill="WHITE">
+            <Label fx:id="levelQuestion" alignment="CENTER" onMouseClicked="#entrarDetalhes" prefHeight="60.0" prefWidth="308.0" text="Label" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="24.0" />
                </font>

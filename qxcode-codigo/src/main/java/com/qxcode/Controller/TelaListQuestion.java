@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class TelaListQuestion {
+public class TelaListQuestion implements IViewController {
 
     @FXML
     public AnchorPane telaListQuestion;
@@ -37,7 +37,7 @@ public class TelaListQuestion {
     @FXML
     private Pane navBar2;
 
-
+    @Override
     @FXML
     public void initialize() throws IOException {
         this.initNavBar();
@@ -53,7 +53,7 @@ public class TelaListQuestion {
         this.idCategorySelect = id;
     }
 
-    private void initNavBar() throws IOException {
+    public void initNavBar() throws IOException {
         FXMLLoader childLoader = obterFXMLNavBarLoader();
         AnchorPane childNode = childLoader.load();
         NavBarComponent childController = childLoader.getController();

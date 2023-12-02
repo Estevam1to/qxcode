@@ -22,7 +22,7 @@ import javafx.scene.control.MenuItem;
 import java.io.IOException;
 import java.net.URL;
 
-public class TelaQuestion {
+public class TelaQuestion implements IViewController {
     TranformaEmArquivo tranformaEmArquivo;
     @FXML
     private TextArea entradaUsuario;
@@ -78,6 +78,7 @@ public class TelaQuestion {
         btnLinguagem.getItems().get(2).setOnAction(e -> btnLinguagem.setText("C"));
     }
 
+    @Override
     @FXML
     public void initialize() throws IOException {
         addLanguage();
@@ -134,7 +135,7 @@ public class TelaQuestion {
         questionExOutput.setText(controllerQuestion.getExTestCaseOutput(question.getId()));
         questionExInput.setText(controllerQuestion.getExTestCaseInput(question.getId()));
     }
-    private void initNavBar() throws IOException {
+    public void initNavBar() throws IOException {
         FXMLLoader childLoader = obterFXMLNavBarLoader();
         AnchorPane childNode = childLoader.load();
         NavBarComponent childController = childLoader.getController();

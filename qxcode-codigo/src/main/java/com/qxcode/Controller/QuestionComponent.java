@@ -12,7 +12,7 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-public class QuestionComponent {
+public class QuestionComponent implements IComponentController{
 
     @FXML
     private Label numberQuestion;
@@ -38,10 +38,10 @@ public class QuestionComponent {
 
     public void setQuestion(Question question){
         this.question = question;
-        this.setarInfoQuestion();
+        this.setInfo();
     }
 
-    private void setarInfoQuestion() {
+    public void setInfo() {
         boolean favorite;
         if(question.getFavorite() == 1){
             favorite = true;
@@ -62,7 +62,7 @@ public class QuestionComponent {
         controllerQuestion.updateQuestionFavorite(this.question.getId());
     }
 
-    public void entrarQuestion(MouseEvent mouseEvent) throws IOException {
+    public void entrarDetalhes(MouseEvent mouseEvent) throws IOException {
         Main.setRoot(telaQuestion.getTela(), question.getId());
     }
 }

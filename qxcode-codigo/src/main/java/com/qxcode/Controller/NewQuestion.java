@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 
-public class NewQuestion{
+public class NewQuestion implements IViewController{
 
     @FXML
     private TextArea decriptionInput;
@@ -49,6 +49,7 @@ public class NewQuestion{
         this.categoryDAO = new CategoryDAO();
     }
 
+    @Override
     @FXML
     public void initialize() throws IOException{
         this.initNavBar();
@@ -92,7 +93,7 @@ public class NewQuestion{
         }
     }
 
-    private void initNavBar() throws IOException {
+    public void initNavBar() throws IOException {
         FXMLLoader childLoader = obterFXMLNavBarLoader();
         AnchorPane childNode = childLoader.load();
         NavBarComponent childController = childLoader.getController();

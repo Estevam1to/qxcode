@@ -9,13 +9,13 @@
 
 <AnchorPane fx:id="cardCategory" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="240.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qxcode.Controller.CategoryComponent">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="240.0" onMouseClicked="#entrarListQuestion" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-background-color: #000000;" width="350.0" />
-      <Label fx:id="categoryTitle" layoutX="14.0" layoutY="14.0" prefHeight="40.0" prefWidth="320.0" onMouseClicked="#entrarListQuestion" text="NOME DA CATEGORIA">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="240.0" onMouseClicked="#entrarDetalhes" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" style="-fx-background-color: #000000;" width="350.0" />
+      <Label fx:id="categoryTitle" layoutX="14.0" layoutY="14.0" prefHeight="40.0" prefWidth="320.0" onMouseClicked="#entrarDetalhes" text="NOME DA CATEGORIA">
          <font>
             <Font name="System Bold" size="32.0" />
          </font>
       </Label>
-      <Text fx:id="categoryDescription" layoutX="14.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" onMouseClicked="#entrarListQuestion" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s." wrappingWidth="320.0">
+      <Text fx:id="categoryDescription" layoutX="14.0" layoutY="76.0" strokeType="OUTSIDE" strokeWidth="0.0" onMouseClicked="#entrarDetalhes" text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s." wrappingWidth="320.0">
          <font>
             <Font size="18.0" />
          </font>
