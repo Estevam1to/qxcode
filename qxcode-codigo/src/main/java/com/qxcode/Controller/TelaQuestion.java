@@ -1,8 +1,10 @@
 package com.qxcode.Controller;
 
+import com.qxcode.Controller.ModalsController.*;
 import com.qxcode.DAO.QuestionDAO;
 import com.qxcode.Main;
 import com.qxcode.Model.Question;
+import com.qxcode.Utils.IJudge;
 import com.qxcode.Utils.TranformaEmArquivo;
 import com.qxcode.Utils.FactoryJudge;
 import com.qxcode.Utils.WriteInputOutputInFile;
@@ -19,7 +21,6 @@ import javafx.scene.control.MenuItem;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 
 public class TelaQuestion {
     TranformaEmArquivo tranformaEmArquivo;
@@ -84,7 +85,6 @@ public class TelaQuestion {
             try {
                 submeterAcao();
             } catch (IOException ex) {
-                System.out.println("Erro durante a submissão da ação: " + ex.getMessage());
                 ex.printStackTrace();
             }
         });
@@ -104,40 +104,26 @@ public class TelaQuestion {
         writeInputOutputInFile.WriteInputsByQuestionId(questionId);
         writeInputOutputInFile.WriteOutputsByQuestionId(questionId);
 
-        boolean time = factoryJudge.getJudge(linguagem).getTime();
-        boolean compilar = factoryJudge.getJudge(linguagem).compilar();
-        boolean verify = factoryJudge.getJudge(linguagem).verifyDiff();
+        IJudge judge = factoryJudge.getJudge(linguagem);
+        boolean time = judge.getTime();
+        boolean compilar = judge.compilar();
+        boolean verify = judge.verifyDiff();
+
         if (time) {
             setModalResult(TLE_RESULT);
         }else if (!compilar) {
             setModalResult(RE_RESULT);
-        }else if (verify == false) {
+        }else if (!verify) {
             setModalResult(WA_RESULT);
-        }
-        else {
+        } else {
             setModalResult(AC_RESULT);
         }
     }
 
     public void setModalResult (String saida) throws IOException {
-        if (saida.equals(AC_RESULT)) {
-            ControllerModalAc controller = new ControllerModalAc();
-            Main main = new Main();
-            Main.setModalResult(controller.getPath(), controller);
-        } else if (saida.equals(WA_RESULT)) {
-            ControllerModalWa controller = new ControllerModalWa();
-            Main main = new Main();
-            Main.setModalResult(controller.getPath(), controller);
-        } else if (saida.equals(TLE_RESULT)) {
-            ControllerModalTle controller = new ControllerModalTle();
-            Main main = new Main();
-            Main.setModalResult(controller.getPath(), controller);
-        } else if (saida.equals(RE_RESULT)) {
-            ControllerModalErroCompilacao controller = new ControllerModalErroCompilacao();
-            Main main = new Main();
-            Main.setModalResult(controller.getPath(), controller);
-        }
-
+        FactoryModals factoryM = new FactoryModals();
+        IControllerModal controllerModal = factoryM.getController(saida);
+        Main.setModalResult(controllerModal.getPath(), controllerModal);
         factoryJudge.getJudge(btnLinguagem.getText()).destroyArquivos();
     }
 
@@ -163,21 +149,11 @@ public class TelaQuestion {
 
     private FXMLLoader obterFXMLNavBarLoader() {
         URL resource = Main.class.getResource("View/components/navBar.fxml");
-        if (resource == null) {
-            System.out.println("FXML file not found");
-        } else {
-            System.out.println("FXML file found at: " + resource);
-        }
         return new FXMLLoader(resource);
     }
 
     private FXMLLoader obterFXMLNavBar2Loader() {
         URL resource = Main.class.getResource("View/components/navBar2.fxml");
-        if (resource == null) {
-            System.out.println("FXML file not found");
-        } else {
-            System.out.println("FXML file found at: " + resource);
-        }
         return new FXMLLoader(resource);
     }
 
@@ -185,5 +161,4 @@ public class TelaQuestion {
     public String getTela() {
         return "View/telaQuestion.fxml";
     }
-
 }

@@ -1,6 +1,6 @@
-package com.qxcode.Controller;
+package com.qxcode.Controller.ModalsController;
 
-public class ControllerModalWa {
+public class ControllerModalWa implements  IControllerModal{
     public void initialize() {
     }
 

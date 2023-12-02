@@ -1,6 +1,6 @@
-package com.qxcode.Controller;
+package com.qxcode.Controller.ModalsController;
 
-public class ControllerModalErroCompilacao {
+public class ControllerModalRe implements  IControllerModal{
     public void initialize() {
       
     }
