@@ -17,6 +17,10 @@ public class JudgeJava implements IJudge {
     private final ArrayList<File> inputs;
     private final ArrayList<File> diffs;
 
+    private int i;
+
+    private IIterator iterator;
+
     private final String pathQuestion = "src/main/resources/com/qxcode/Arquivos/File/Question.java";
     private final String pathOutputUser = "src/main/resources/com/qxcode/Arquivos/OutputUser";
     private final String pathOutputExpected = "src/main/resources/com/qxcode/Arquivos/OutputExpecteds";
@@ -32,21 +36,14 @@ public class JudgeJava implements IJudge {
         outputsUser = new ArrayList<File>();
         inputs = new ArrayList<File>();
         diffs = new ArrayList<File>();
+        iterator = new Iterator();
+        i = 0;
         carregar(pathInput, inputs);
         carregar(pathOutputExpected, outputsExpecteds);
 
     }
 
-    private void sortArray(ArrayList<File> list) {
-        list.sort(new Comparator<File>() {
-            @Override
-            public int compare(File file1, File file2) {
-                int num1 = Integer.parseInt(file1.getName().replaceAll("\\D", ""));
-                int num2 = Integer.parseInt(file2.getName().replaceAll("\\D", ""));
-                return Integer.compare(num1, num2);
-            }
-        });
-    }
+
 
     private void carregar(String path, ArrayList<File> list) {
         File pasta = new File(path);
@@ -54,7 +51,7 @@ public class JudgeJava implements IJudge {
             File[] files = pasta.listFiles();
             Collections.addAll(list, files);
         }
-        sortArray(list);
+        list = iterator.sort(list);
     }
 
     public boolean compilar() {
@@ -68,13 +65,14 @@ public class JudgeJava implements IJudge {
             Process process = pbCompilacao.start();
             int exit = process.waitFor();
             if (exit == 0) {
-                for (int i = 0; i < inputs.size(); ++i) {
+                while (iterator.hasNext(inputs)) {
                     ProcessBuilder pbExecucao = new ProcessBuilder("java", "Question");
-                    pbExecucao.redirectInput(inputs.get(i));
+                    pbExecucao.redirectInput(iterator.next(inputs));
                     pbExecucao.redirectError(new File("error.txt"));
                     pbExecucao.redirectOutput(new File(pathOutputUser, "userOut0" + (i + 1) + ".out"));
                     Process processExecucao = pbExecucao.start();
                     processExecucao.waitFor();
+                    i++;
                 }
 
             }
