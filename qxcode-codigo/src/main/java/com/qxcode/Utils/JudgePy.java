@@ -42,6 +42,12 @@ public class JudgePy implements IJudge {
     }
 
     private void carregar(String path, ArrayList<File> list) {
+        try {
+            File f = new File(path);
+            f.mkdirs();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         File pasta = new File(path);
         if (pasta.isDirectory() && pasta.exists()) {
             File[] files = pasta.listFiles();
