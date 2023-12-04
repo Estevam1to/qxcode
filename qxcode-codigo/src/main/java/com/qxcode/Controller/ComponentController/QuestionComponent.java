@@ -64,4 +64,9 @@ public class QuestionComponent implements IComponentController{
     public void entrarDetalhes(MouseEvent mouseEvent) throws IOException {
         Main.setRoot(telaQuestion.getTela(), question.getId());
     }
+
+    public void deleteQuestion(MouseEvent mouseEvent) {
+        controllerQuestion.deleteQuestion(question.getId());
+        System.out.println("Questão deletada com sucesso!");
+    }
 }
