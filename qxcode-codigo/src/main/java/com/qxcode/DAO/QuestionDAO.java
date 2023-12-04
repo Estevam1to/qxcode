@@ -23,6 +23,20 @@ public class QuestionDAO implements IDAO{
         return question;
     }
 
+    public void deleteQuestion(int id) {
+        String sql = "DELETE FROM questao WHERE id_questao = ?";
+
+        try (Connection conn = JDBC.getConnection();
+             PreparedStatement stmt = conn.prepareStatement(sql)) {
+
+            stmt.setInt(1, id);
+            stmt.executeUpdate();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void addFavorite(int id) {
         String sql = "UPDATE questao SET favorito = ? WHERE id_questao = ?";
 

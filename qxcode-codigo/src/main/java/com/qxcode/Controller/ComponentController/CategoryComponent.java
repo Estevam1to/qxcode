@@ -1,5 +1,6 @@
 package com.qxcode.Controller.ComponentController;
 
+import com.qxcode.Controller.ControllerCategory;
 import com.qxcode.Controller.TelasController.IViewController;
 import com.qxcode.Controller.TelasController.TelaListQuestion;
 import com.qxcode.DAO.CategoryDAO;
@@ -15,6 +16,8 @@ import java.io.IOException;
 public class CategoryComponent implements IComponentController{
 
     IViewController telaListQuestion = new TelaListQuestion();
+
+    ControllerCategory dao = new ControllerCategory();
 
     @FXML
     private Label categoryTitle;
@@ -37,6 +40,11 @@ public class CategoryComponent implements IComponentController{
             this.categoryTitle.setText("Deu erro!");
             this.categoryDescription.setText("Erro ao setar info, category is null!");
         }
+    }
+
+    public void deleteCategory(MouseEvent mouseEvent) {
+        dao.deleteCategory(categoria.getId());
+        System.out.println("Categoria deletada com sucesso!");
     }
 
 

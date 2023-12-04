@@ -1,15 +1,8 @@
 package com.qxcode.Controller;
 
 import com.qxcode.DAO.CategoryDAO;
-import com.qxcode.JDBC.JDBC;
 import com.qxcode.Model.Category;
 
-import javafx.fxml.FXML;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class ControllerCategory {
@@ -36,5 +29,8 @@ public class ControllerCategory {
         return dao.getByTitle(titulo);
     }
 
+    public void deleteCategory(int id){
+        dao.deleteCategory(id);
+    }
 
 }

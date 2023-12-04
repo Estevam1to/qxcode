@@ -48,6 +48,9 @@ public class ControllerQuestion {
         questionDAO.updateQuestionFavorite(id);
     }
 
+    public void deleteQuestion(int id){
+        questionDAO.deleteQuestion(id);
+    }
     public String getExTestCaseInput(int idQuestion){
         return controllerTestCase.getExInputByQuestionId(idQuestion);
     }
