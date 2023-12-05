@@ -8,7 +8,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="60.0" prefWidth="1120.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qxcode.Controller.ComponentController.QuestionComponent">
+<AnchorPane prefHeight="60.0" stylesheets="@../../CSS/styleTelaQuestion.css" prefWidth="1120.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.qxcode.Controller.ComponentController.QuestionComponent">
    <children>
       <HBox alignment="CENTER" onMouseClicked="#entrarDetalhes" prefHeight="60.0" prefWidth="1120.0">
          <children>
@@ -41,7 +41,7 @@
                   <Font name="System Bold" size="24.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" onMouseClicked="#deleteQuestion" text="delete" />
+            <Button mnemonicParsing="false" onMouseClicked="#deleteQuestion" text="Delete" />
          </children>
       </HBox>
    </children>
