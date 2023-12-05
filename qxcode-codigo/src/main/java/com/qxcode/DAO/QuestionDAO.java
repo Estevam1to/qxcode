@@ -23,6 +23,20 @@ public class QuestionDAO implements IDAO{
         return question;
     }
 
+    public Question resultSetFromView(ResultSet resultSet) throws SQLException {
+
+        Question question = new Question(resultSet.getInt("id_questao"),
+                resultSet.getString("questao_descricao"),
+                resultSet.getString("questao_titulo"),
+                resultSet.getInt("questao_dificuldade"),
+                resultSet.getString("questao_exemplos"),
+                resultSet.getInt("id_categoria"),
+                resultSet.getInt("questao_favorito")
+        );
+
+        return question;
+    }
+
     public void deleteQuestion(int id) {
         String sql = "DELETE FROM questao WHERE id_questao = ?";
 
@@ -97,20 +111,19 @@ public class QuestionDAO implements IDAO{
         }
     }
 
-    public List<Question> getQuestionsByCategory(int categoryId){
+    public List<Question> getQuestionsByCategory(int categoryId) {
         List<Question> questions = new ArrayList<>();
-        String sql = "SELECT * FROM questao WHERE id_categoria = ?";
+        String sql = "SELECT * FROM vw_questoes_categorias WHERE id_categoria = ? AND id_questao IS NOT NULL";
 
         try (Connection conn = JDBC.getConnection();
              PreparedStatement preparedStatement = conn.prepareStatement(sql)) {
-             preparedStatement.setInt(1, categoryId);
-             ResultSet resultSet = preparedStatement.executeQuery();
+
+            preparedStatement.setInt(1, categoryId);
+            ResultSet resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-
-                Question question = resultSetToObject(resultSet);
+                Question question = resultSetFromView(resultSet);
                 questions.add(question);
-
             }
 
             resultSet.close();
@@ -121,32 +134,27 @@ public class QuestionDAO implements IDAO{
         }
     }
 
-
-    public List<Question> getFavoriteQuestions(){
+    public List<Question> getFavoriteQuestions() {
         List<Question> questions = new ArrayList<>();
-        String sql = "SELECT * FROM questao WHERE favorito = 1";
-
+        String sql = "SELECT * FROM vw_questoes_categorias WHERE questao_favorito = 1 AND id_questao IS NOT NULL";
 
         try (Connection conn = JDBC.getConnection();
              PreparedStatement preparedStatement = conn.prepareStatement(sql);
-             ResultSet resultSet = preparedStatement.executeQuery();){
+             ResultSet resultSet = preparedStatement.executeQuery();) {
 
             while (resultSet.next()) {
-
-                Question question = resultSetToObject(resultSet);
+                Question question = resultSetFromView(resultSet);
                 questions.add(question);
-
             }
 
             resultSet.close();
-            preparedStatement.close();
-
             return questions;
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
         }
     }
+
     public void insertQuestion(String title, String description, int difficulty, String examples, int categoryId) {
         String sql = "INSERT INTO questao (titulo, descricao, dificuldade, exemplos, id_categoria) VALUES (?, ?, ?, ?, ?)";
 
@@ -188,15 +196,14 @@ public class QuestionDAO implements IDAO{
 
     public List<Question> getAllQuestions() {
         List<Question> questions = new ArrayList<>();
-        String sql = "SELECT * FROM questao";
-
+        String sql = "SELECT * FROM vw_questoes_categorias";
 
         try (Connection conn = JDBC.getConnection();
              PreparedStatement preparedStatement = conn.prepareStatement(sql);
-             ResultSet resultSet = preparedStatement.executeQuery();){
+             ResultSet resultSet = preparedStatement.executeQuery();) {
 
             while (resultSet.next()) {
-                Question question = resultSetToObject(resultSet);
+                Question question = resultSetFromView(resultSet);
                 questions.add(question);
             }
 
@@ -208,7 +215,6 @@ public class QuestionDAO implements IDAO{
             e.printStackTrace();
             return null;
         }
-
     }
 
     public Question getByTitle(String titulo) {

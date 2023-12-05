@@ -20,31 +20,40 @@ public class CategoryDAO implements IDAO{
 
     }
 
+    public Category resultSetFromView(ResultSet resultSet) throws SQLException {
+        Category category = new Category(
+                resultSet.getInt("id_categoria"),
+                resultSet.getString("categoria_titulo"),
+                resultSet.getString("categoria_descricao")
+        );
+
+        return category;
+
+    }
+
     public List<Category> getAllCategories() {
         List<Category> categories = new ArrayList<>();
-        String sql = "SELECT * FROM categoria";
+        String sql = "SELECT DISTINCT id_categoria, categoria_titulo, categoria_descricao FROM vw_questoes_categorias";
 
+        try (Connection conn = JDBC.getConnection();
+             PreparedStatement preparedStatement = conn.prepareStatement(sql);
+             ResultSet resultSet = preparedStatement.executeQuery();) {
 
-            try (Connection conn = JDBC.getConnection();
-                 PreparedStatement preparedStatement = conn.prepareStatement(sql);
-                 ResultSet resultSet = preparedStatement.executeQuery();){
-
-                while (resultSet.next()) {
-
-                    Category category = resultSetToObject(resultSet);
-                    categories.add(category);
-
-                }
-
-                resultSet.close();
-                preparedStatement.close();
-
-                return categories;
-            } catch (SQLException e) {
-                e.printStackTrace();
-                return null;
+            while (resultSet.next()) {
+                Category category = resultSetFromView(resultSet);
+                categories.add(category);
             }
+
+            resultSet.close();
+            preparedStatement.close();
+
+            return categories;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
+
 
     public Category getById(int idC) {
         Category categoria = null;
