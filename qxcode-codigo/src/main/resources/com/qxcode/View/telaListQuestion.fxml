@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Group?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -11,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: #0E1A25;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" stylesheets="@../CSS/styleTelaCategory.css" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="832.0" prefWidth="1280.0" style="-fx-background-color: #0E1A25;" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Group layoutX="80.0" layoutY="130.0" AnchorPane.leftAnchor="80.0" AnchorPane.topAnchor="124.0">
          <children>
@@ -68,5 +70,7 @@
          </content>
       </ScrollPane>
       <Pane fx:id="navBar2" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="60.0" prefWidth="1280.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="775.0" />
+      <TextField fx:id="txtSearch" layoutX="984.0" layoutY="135.0" />
+      <Button fx:id="btnSearch" layoutX="1148.0" layoutY="135.0" mnemonicParsing="false" onAction="#btnFilter" text="Button" />
    </children>
 </AnchorPane>

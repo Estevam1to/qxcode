@@ -10,7 +10,10 @@ import com.qxcode.Main;
 import com.qxcode.Model.Question;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -28,6 +31,10 @@ public class TelaListQuestion implements IViewController {
     private GridPane gridPane;
     @FXML
     private Label nameCategory;
+    @FXML
+    private TextField txtSearch;
+    @FXML
+    private Button btnSearch;
 
     private String nameCategorySelect;
 
@@ -54,6 +61,24 @@ public class TelaListQuestion implements IViewController {
 
     }
 
+
+    public void btnFilter(){
+        if (txtSearch.getText().equals("")){
+            this.gridPane.getChildren().clear();
+            this.initGridQuestions();
+        } else {
+            List<Question> questions = this.getAllQuestions();
+            List<Question> questionsFilter = new ArrayList<>();
+            for (Question question : questions) {
+                if (question.getTitle().contains(txtSearch.getText())){
+                    questionsFilter.add(question);
+                }
+            }
+            this.gridPane.getChildren().clear();
+            this.initGridQuestions(questionsFilter);
+        }
+    }
+
     public void setCategory(String category) {
         this.nameCategorySelect = category;
     }
@@ -78,6 +103,17 @@ public class TelaListQuestion implements IViewController {
         List<Question> questions = getAllQuestions();
         this.nameCategory.setText(nameCategorySelect);
 
+        for (Question question : questions) {
+            if (question != null) {
+                this.adicionarQuestionEmGrid(question);
+            } else {
+                // handle the null case, e.g. log a warning
+                System.out.println("Warning: null Question object encountered");
+            }
+        }
+    }
+
+    private void initGridQuestions(List<Question> questions) {
         for (Question question : questions) {
             if (question != null) {
                 this.adicionarQuestionEmGrid(question);

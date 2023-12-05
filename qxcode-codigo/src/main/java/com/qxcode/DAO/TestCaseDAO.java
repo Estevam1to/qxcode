@@ -13,7 +13,7 @@ public class TestCaseDAO {
 
     public void insert (String inputs, String outputs, int questionId) {
 
-        String sql = "INSERT INTO caso_de_teste (input, output, id_questão) VALUES (?, ?, ?)";
+        String sql = "INSERT INTO caso_de_teste (input, output, id_questao) VALUES (?, ?, ?)";
 
         try (   Connection conn = JDBC.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -31,7 +31,7 @@ public class TestCaseDAO {
 
     public ArrayList<String> getInputByQuestionId(int id) {
         ArrayList<String> inputs = new ArrayList<>();
-        String sql = "SELECT input FROM caso_de_teste WHERE id_questão = ?";
+        String sql = "SELECT input FROM caso_de_teste WHERE id_questao = ?";
         try (   Connection conn = JDBC.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
 
@@ -51,7 +51,7 @@ public class TestCaseDAO {
 
     public ArrayList<String> getOutputByQuestionId(int id) {
         ArrayList<String> outputs = new ArrayList<String>();
-        String sql = "SELECT output FROM caso_de_teste WHERE id_questão = ?";
+        String sql = "SELECT output FROM caso_de_teste WHERE id_questao = ?";
         try (   Connection conn = JDBC.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setInt(1, id);
