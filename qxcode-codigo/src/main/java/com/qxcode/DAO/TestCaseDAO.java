@@ -74,6 +74,10 @@ public class TestCaseDAO {
         StringBuilder outputs = new StringBuilder();
         received = this.getOutputByQuestionId(id);
 
+        if (received.isEmpty()) {
+            return "";
+        }
+
         for (String x : received) {
             x = x.replace('/', '\n');
             outputs.append(x);
@@ -89,6 +93,10 @@ public class TestCaseDAO {
         ArrayList<String> received = new ArrayList<>();
         StringBuilder inputs = new StringBuilder();
         received = this.getInputByQuestionId(id);
+
+        if (received.isEmpty()) {
+            return "";
+        }
 
         for (String x : received) {
 
@@ -106,6 +114,11 @@ public class TestCaseDAO {
 
         ArrayList<String> received = new ArrayList<>();
         received = this.getOutputByQuestionId(id);
+
+        if (received.isEmpty()) {
+            return "";
+        }
+
         String x = received.get(0);
 
         x = x.replace('/', '\n');
@@ -117,6 +130,11 @@ public class TestCaseDAO {
 
         ArrayList<String> received = new ArrayList<>();
         received = this.getInputByQuestionId(id);
+
+        if (received.isEmpty()) {
+            return "";
+        }
+
         String x = received.get(0);
 
         x = x.replace('/', '\n');
