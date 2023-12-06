@@ -132,8 +132,13 @@ public class TelaQuestion implements IViewController {
         Question question = controllerQuestion.getById(questionId);
         questionName.setText(question.getTitle());
         questionDescription.setText(question.getDescription());
-        questionExOutput.setText(controllerQuestion.getExTestCaseOutput(question.getId()));
-        questionExInput.setText(controllerQuestion.getExTestCaseInput(question.getId()));
+        if (!controllerQuestion.getExTestCaseInput(question.getId()).isEmpty()) {
+            questionExOutput.setText(controllerQuestion.getExTestCaseOutput(question.getId()));
+            questionExInput.setText(controllerQuestion.getExTestCaseInput(question.getId()));
+        } else {
+            questionExOutput.setText("Não há exemplos para essa questão");
+            questionExInput.setText("Não há exemplos para essa questão");
+        }
     }
     public void initNavBar() throws IOException {
         FXMLLoader childLoader = obterFXMLNavBarLoader();
